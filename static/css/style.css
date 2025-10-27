@@ -20,6 +20,9 @@ header {
     padding: 10px;
     margin: 10px;
     justify-content: space-evenly;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* Nav Bar */
@@ -116,4 +119,21 @@ footer {
 
 .search input[type="text"]:focus {
 border-color: #ff0000;
+}
+
+.account-basket {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.account-basket img {
+    cursor: pointer;
+    /* transition: transform 0.2s ease; */ /* animations? */
+}
+
+.account-basket img:hover {
+    /* transform: scale(1.1); */
+    filter: invert(68%) sepia(92%) saturate(400%) hue-rotate(8deg) brightness(105%) contrast(97%);
 }
