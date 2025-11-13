@@ -22,7 +22,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 0 auto;
     gap: 20px;
 }
@@ -35,7 +35,16 @@ header {
 .header-links a{
     text-decoration: none;
     color: rgb(51,51,51);
-    
+    display: inline-block;
+}
+
+div .account-links{
+  float: left;
+  display: block;
+}
+
+div .basket-links{
+  float: right;
 }
 
 /* Nav Bar */
