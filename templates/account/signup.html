@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="Home Page">
+    <meta name="keywords" content="HTML, CSS, Django">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empowr</title>
+</head>
+
+<body style="margin: 0px;padding: 0px;">
+
+    <header>
+        <div class="header">
+
+            <img src="../../static/Empowr_Logo_C.svg" alt="Empowr Logo"
+                style="padding-top: 20px;padding-bottom: 20px; scale: 0.8;margin-left: -20px;">
+            <div class="search" style="width:500px;padding-left: 50px;margin-right: 150px;">
+                <input type="text" placeholder="Search.." name="search" style="width:480px">
+                <button type="submit">
+                    <img src="../../static/search_logo.svg" alt="Search" style="width:30px;height:30px;">
+                </button>
+            </div>
+            <div class="header-links" style="width: 400px;display: flex;align-items: center;height: 50px;">
+                <div class="account-links" style="width: 180px;">
+                    <div href="#" style="padding-right:25px;"><span data-action="myAccountMenu" role="button"
+                            aria-label="open my account menu" aria-pressed="false" style="display: flex;"><i></i> My
+                            Account</span>
+                    </div>
+                    <div style="justify-content: center; font-size: x-small">
+                        <ul style="list-style-type:none; display: flex; padding:0px; margin:0px">
+                            <li><a href="login" rel="nofollow" target="login"
+                                    style="border-right: 1px solid #5d5c5c;padding-right: 5px;">Login</a></li>
+
+                            <li><a href="register" rel="nofollow" target="register" style="padding-left: 5px;">Create
+                                    Account</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="basket-links">
+                    <a id="basket-links" href="#"
+                        style="margin-left:20px;padding-left: 5px;display: flex;justify-content: center;align-items: center;">
+                        <span class="items"><Strong>0</Strong></span>
+                        <img src="../../static/Basket_Logo.svg" alt="Basket Logo"
+                            style="width: 35px;margin-left: 3px;margin-right: 3px;"></img>
+                        <span class="price" style="margin-left: 3px;margin-right: 3px;">£0.00</span>
+                        <img src="../../static/Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
+                            style="width:20px;margin-left: 3px;margin-right: 3px;"></img>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <ul class="topnav">
+        <li><a href="#">Keyboards</a></li>
+        <li><a href="#">Mice</a></li>
+        <li><a href="#">Monitors</a></li>
+        <li><a href="#">Printers</a></li>
+        <li><a href="#">Controllers</a></li>
+        <li><a href="#">Desks & Chairs</a></li>
+        <li><a href="#">Cameras & Microphones</a></li>
+    </ul>
+
+    <div class="form">
+        <h1>Create Account</h1>
+        <form>
+            <div class="input">
+                <label>Title:</label>
+                <select>
+                    <option value>Choose Title</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                    <option value="Mx">Mx</option>
+                    <option value></option>
+                </select>
+            </div>
+
+            <div class="input" required="">
+                <label>First Name:<span class="validity"></span></label>
+                <input type="text">
+            </div>
+
+            <div class="input" required="">
+                <label>Last Name: <span class="validity"></span></label>
+                <input type="text">
+            </div>
+
+            <div class="input" required="">
+                <label>Email Address: <span class="validity"></span></label>
+                <input type="text">
+            </div>
+
+            <div class="input">
+                <label>Telephone: </span></label>
+                <input type="text">
+            </div>
+
+            <div class="input" required="">
+                <label>Password: <span class="validity"></span></label>
+                <input type="text">
+            </div>
+
+            <div class="input" required="">
+                <label>Confirm Password: <span class="validity"></span></label>
+                <input type="text">
+            </div>
+
+            <button class="submit">Submit</button>
+            <p>Already have an account? <a href="./login.html">Signin</a></p>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-links" style="color: black;">
+            <a href="#" style="color: black; text-decoration: none;">Information</a> ｜
+            <a href="#" style="color: black; text-decoration: none;">My Account</a> ｜
+            <a href="#" style="color: black; text-decoration: none;">Support</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
