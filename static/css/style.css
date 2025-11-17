@@ -197,33 +197,80 @@ footer {
     margin: 60px auto;
 }
 
-.input {
-    text-align: left;
-    display: grid;
-    padding-bottom: 10px;
+.dropdown-container{
+margin-left: 40px;
+margin-right: 40px;
 }
 
-input[type=text]{
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.dropdown-field:focus{
+  color: #e0d129;
 }
 
-input:invalid + span::after {
+.dropdown-field:focus + .input-highlight{
+width: 100%;
+}
+
+.dropdown-field{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  background-color: transparent;
+}
+
+.input-container {
+  position: relative;
+  margin: 40px;
+}
+
+.input-field {
+  display: block;
+  width: 92.6%;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  outline: none;
+  background-color: transparent;
+}
+
+.input-label {
   position: absolute;
-  content: "✖";
-  padding-left: 5px;
+  top: 0;
+  left: 0;
+  font-size: 16px;
+  color: rgba(204, 204, 204, 0);
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
-input:valid + span::after {
+.input-highlight {
   position: absolute;
-  content: "✓";
-  padding-left: 5px;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #e0d129;
+  transition: all 0.3s ease;
+}
+
+.input-field:focus + .input-label {
+  top: -20px;
+  font-size: 12px;
+  color: #e0d129;
+}
+
+.input-field:focus + .input-label + .input-highlight {
+  width: 100%;
 }
 
 .submit {
     border: none;
     outline: none;
-    background-color: #ffee32;
+    background-color: #e0d129;
     padding: 10px;
     border-radius: 10px;
     font-size: 16px;
