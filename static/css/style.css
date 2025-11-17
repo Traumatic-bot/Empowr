@@ -182,6 +182,70 @@ footer {
     outline: 3px solid #ffee32;
 }
 
+/* Homepage */
+
+main {
+    margin: 100px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.featured-carousel {
+    max-width: 1400px;
+    max-height: 400px;
+}
+
+.featured-advert>img {
+    border-radius: 45px;
+    border: 0px solid black;
+}
+
+.arrow {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    font-size: x-large;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    margin-left: 3px;
+    margin-right: 3px;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+
+.arrow:hover {
+    background-color: #ffee3270;
+    border-radius: 11px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.dot:hover {
+    background-color: #ffee32;
+}
+
+.active {
+    background-color: #e0d129;
+    width: 45px;
+    border-radius: 10px;
+}
+
 /* Registration Form */
 
 .form {
@@ -197,74 +261,74 @@ footer {
     margin: 60px auto;
 }
 
-.dropdown-container{
-margin-left: 40px;
-margin-right: 40px;
+.dropdown-container {
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
-.dropdown-field:focus{
-  color: #e0d129;
+.dropdown-field:focus {
+    color: #e0d129;
 }
 
-.dropdown-field:focus + .input-highlight{
-width: 100%;
+.dropdown-field:focus+.input-highlight {
+    width: 100%;
 }
 
-.dropdown-field{
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  outline: none;
-  background-color: transparent;
+.dropdown-field {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
 }
 
 .input-container {
-  position: relative;
-  margin: 40px;
+    position: relative;
+    margin: 40px;
 }
 
 .input-field {
-  display: block;
-  width: 92.6%;
-  padding: 10px;
-  font-size: 16px;
-  border: none;
-  border-bottom: 2px solid #ccc;
-  outline: none;
-  background-color: transparent;
+    display: block;
+    width: 92.6%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background-color: transparent;
 }
 
 .input-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 16px;
-  color: rgba(204, 204, 204, 0);
-  pointer-events: none;
-  transition: all 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 16px;
+    color: rgba(204, 204, 204, 0);
+    pointer-events: none;
+    transition: all 0.3s ease;
 }
 
 .input-highlight {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0;
-  background-color: #e0d129;
-  transition: all 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: #e0d129;
+    transition: all 0.3s ease;
 }
 
-.input-field:focus + .input-label {
-  top: -20px;
-  font-size: 12px;
-  color: #e0d129;
+.input-field:focus+.input-label {
+    top: -20px;
+    font-size: 12px;
+    color: #e0d129;
 }
 
-.input-field:focus + .input-label + .input-highlight {
-  width: 100%;
+.input-field:focus+.input-label+.input-highlight {
+    width: 100%;
 }
 
 .submit {
