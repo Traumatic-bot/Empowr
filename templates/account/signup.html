@@ -71,48 +71,54 @@
     <div class="form">
         <h1>Create Account</h1>
         <form>
-            <div class="input">
-                <label>Title:</label>
-                <select>
-                    <option value>Choose Title</option>
+            <div class="input-container">
+                <select class="input-field" style="width: 100%;">
                     <option value="Mr">Mr</option>
                     <option value="Mrs">Mrs</option>
                     <option value="Miss">Miss</option>
                     <option value="Ms">Ms</option>
                     <option value="Dr">Dr</option>
                     <option value="Mx">Mx</option>
-                    <option value></option>
+                    <option value="Other">Other</option>
                 </select>
+                <label for="input-field" class="input-label">Title<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input" required="">
-                <label>First Name:<span class="validity"></span></label>
-                <input type="text">
+            <div class="input-container" required="">
+                <input name="first-name-input" placeholder="First Name" class="input-field" type="text">
+                <label for="input-field" class="input-label">First Name<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input" required="">
-                <label>Last Name: <span class="validity"></span></label>
-                <input type="text">
+            <div class="input-container" required="">
+                <input placeholder="Last Name" class="input-field" type="text">
+                <label for="input-field" class="input-label">Last Name<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input" required="">
-                <label>Email Address: <span class="validity"></span></label>
-                <input type="text">
+            <div class="input-container" required="">
+                <input placeholder="Email Address" class="input-field" type="text">
+                <label for="input-field" class="input-label"> Email Address<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input">
-                <label>Telephone: </span></label>
-                <input type="text">
+            <div class="input-container">
+                <input placeholder="Telephone" class="input-field" type="text">
+                <label for="input-field" class="input-label">Telephone</span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input" required="">
-                <label>Password: <span class="validity"></span></label>
-                <input type="text">
+            <div class="input-container" required="">
+                <input placeholder="Password" class="input-field" type="text">
+                <label for="input-field" class="input-label">Password<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
-            <div class="input" required="">
-                <label>Confirm Password: <span class="validity"></span></label>
-                <input type="text">
+            <div class="input-container" required="">
+                <input placeholder="Confirm Password" class="input-field" type="text">
+                <label for="input-field" class="input-label">Confirm Password<span class="validity"></span></label>
+                <span class="input-highlight"></span>
             </div>
 
             <button class="submit">Submit</button>
