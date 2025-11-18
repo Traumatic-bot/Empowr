@@ -347,3 +347,13 @@ main {
     transition: .5s ease;
     cursor: pointer;
 }
+
+.forgot-password {
+    margin-top: 6px;
+    display: flex;
+    justify-content: end;
+    font-size: small;
+    text-decoration: none;
+    color: gray;
+    font-family: sans-serif;
+}
