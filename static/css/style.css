@@ -12,6 +12,10 @@ body {
     font-family: 'Heavitas', sans-serif;
 }
 
+ul {
+    list-style: none;
+}
+
 /* Header */
 
 header {
@@ -84,6 +88,19 @@ div .basket-links {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#popup {
+    position:fixed; 
+    top:50px; 
+    right:50px; 
+    background:white; 
+    color: #707070;
+    z-index:20; 
+    display:none; 
+    padding:20px; 
+    border-radius: 10px;
+    width: 650px;
 }
 
 /* Nav Bar */
