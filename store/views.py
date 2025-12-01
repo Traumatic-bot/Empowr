@@ -2,19 +2,21 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import user_passes_test, login_required
+from django.db.models import Sum
 
 from .models import Product, Category, CartItem, Customer
 
 
 def index(request):
     products = Product.objects.all()
-    return render(request, "index.html", {"products": products})
+    return render(request, "store/index.html", {"products": products})
 
 
 def category_view(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     products = Product.objects.filter(category=category)
-    return render(request, "category.html", {
+    return render(request, "store/category.html", {
         "category": category,
         "products": products,
     })
@@ -32,13 +34,12 @@ def signup_view(request):
 
         if password1 != password2:
             messages.error(request, "Passwords do not match.")
-            return render(request, "signup.html")
+            return render(request, "account/signup.html")
 
         if User.objects.filter(username=email).exists():
             messages.error(request, "An account with this email already exists.")
-            return render(request, "signup.html")
+            return render(request, "account/signup.html")
 
-        # create Django user account (email as username)
         user = User.objects.create_user(
             username=email,
             email=email,
@@ -47,7 +48,6 @@ def signup_view(request):
             last_name=last_name,
         )
 
-        # optional
         Customer.objects.create(
             first_name=first_name,
             last_name=last_name,
@@ -58,11 +58,13 @@ def signup_view(request):
         login(request, user)
         return redirect("index")
 
-    return render(request, "signup.html")
+    return render(request, "account/signup.html")
+
 
 def logout_view(request):
     logout(request)
-    return redirect('index')
+    return redirect("index")
+
 
 def cart_view(request):
     customer = Customer.objects.first()
@@ -70,7 +72,39 @@ def cart_view(request):
         cart_items = []
     else:
         cart_items = CartItem.objects.filter(customer=customer)
-    return render(request, "cart.html", {
+    return render(request, "store/cart.html", {
         "customer": customer,
         "cart_items": cart_items,
     })
+
+
+def staff_check(user):
+    return user.is_staff
+
+
+@user_passes_test(staff_check)
+def staff_dashboard(request):
+    product_count = Product.objects.count()
+    customer_count = Customer.objects.count()
+    cart_value = CartItem.objects.aggregate(
+        total=Sum("total_price")
+    )["total"] or 0
+
+    context = {
+        "product_count": product_count,
+        "customer_count": customer_count,
+        "cart_value": cart_value,
+    }
+    return render(request, "staff/dashboard.html", context)
+
+
+@login_required
+def customer_dashboard(request):
+    return render(request, "account/dashboard.html")
+
+
+@login_required
+def dashboard_router(request):
+    if request.user.is_staff:
+        return redirect("staff_dashboard")
+    return redirect("customer_dashboard")

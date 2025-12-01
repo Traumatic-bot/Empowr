@@ -47,6 +47,11 @@
                                     {{ user.first_name|default:user.username }}
                                 </span>
                             </li>
+                                <li>
+                                <a href="{% url 'dashboard' %}" rel="nofollow" style="border-right: 1px solid #5d5c5c; padding-left: 5px; padding-right: 5px;">
+                                    Dashboard
+                                </a>
+                            </li>
                             <li>
                                 <a href="{% url 'logout' %}" rel="nofollow" style="padding-left: 5px;">
                                     Logout
