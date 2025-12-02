@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<main>
+    <h1>Empowr'ing People</h1>
+    <p>
+        At Empowr, we believe that technology should be accessible to everyone.
+        Our mission is to make everyday computing, gaming, work, and creativity
+        more inclusive for disabled people by offering products that adapt to
+        the user - not the other way around.
+    </p>
+    
+    <h2>Who We Are</h2>
+    <p>
+        We are a specialist assistive technology store focused on providing
+        high-quality, adaptive tech solutions for people with a wide range of
+        disabilities and access needs. Whether someone has reduced mobility,
+        visual impairment, chronic pain, or neurological conditions, we aim to
+        offer tools that help them use technology comfortably, confidently,
+        and independently.
+    </p>
+    <p>
+        Our team research and curate products that are designed with accessibility
+        in mind - from larger keys and brighter colours, to fully hands-free
+        control systems. We work to remove barriers, not add new ones.
+    </p>
+
+    <h2>Our Commitment to Our Customers</h2>
+    <p>
+        We know that no two people have the same needs. Our goal is to help customers find
+        the right combination of tools so they can work, learn, game and communicate in the
+        way that suits them best. As our product range grows, we continue to look for new solutions
+        that remove barriers and promote digital inclusion.
+    </p>
+    <p>
+        If you have any questions or specific accessibility requirements, please visit our
+        <a href="{% url 'contact_us' %}">Contact Us</a> page - we're always happy to help.
+    </p>
+</main>
+
+{% endblock content %}

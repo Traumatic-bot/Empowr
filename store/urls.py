@@ -1,5 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 from . import views
 
 urlpatterns = [
@@ -12,6 +13,9 @@ urlpatterns = [
     path("logout/", views.logout_view, name="logout"),
     path("signup/", views.signup_view, name="signup"),
     path("cart/", views.cart_view, name="cart"),
+
+    path("about-us/", TemplateView.as_view(template_name="store/about_us.html"), name="about_us"),
+    path("contact-us/", views.contact_us, name="contact_us"),
 
     path("dashboard/", views.dashboard_router, name="dashboard"),
     path("staff/dashboard/", views.staff_dashboard, name="staff_dashboard"),
