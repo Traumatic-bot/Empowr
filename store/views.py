@@ -108,3 +108,10 @@ def dashboard_router(request):
     if request.user.is_staff:
         return redirect("staff_dashboard")
     return redirect("customer_dashboard")
+
+
+def contact_us(request):
+    if request.method == "POST":
+        return render(request, "store/contact_us.html", {"sent": True})
+
+    return render(request, "store/contact_us.html")
