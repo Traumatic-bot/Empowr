@@ -1,0 +1,15 @@
+{% extends "account/dashboard.html" %}
+
+{% block title %}My Orders{% endblock %}
+
+{% block account_content %}
+    <h1>My Orders</h1>
+
+    {% if orders %}
+        <!-- need to retrieve the orders here -->
+    {% else %}
+        <div class="empty-box">
+            No orders found
+        </div>
+    {% endif %}
+{% endblock %}
