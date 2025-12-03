@@ -12,7 +12,11 @@ urlpatterns = [
     ), name="login"),
     path("logout/", views.logout_view, name="logout"),
     path("signup/", views.signup_view, name="signup"),
-    path("cart/", views.cart_view, name="cart"),
+    path("checkout/", views.checkout_view, name="checkout"),
+    path("checkout/payment/", views.checkout_payment_view, name="checkout_payment"),
+    path("checkout/complete/", views.checkout_complete_view, name="checkout_complete"),
+
+
 
     path("about-us/", TemplateView.as_view(template_name="store/about_us.html"), name="about_us"),
     path("contact-us/", views.contact_us, name="contact_us"),
