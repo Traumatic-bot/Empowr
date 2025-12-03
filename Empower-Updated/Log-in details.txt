@@ -1,0 +1,14 @@
+Virtualmin:
+
+URL: https://cs2410-web01pvm.aston.ac.uk:10000
+Username: cs2team6
+Password: D5n6X1v3zc2ERHNp
+
+
+MySQL:
+URL: https://cs2410-web01pvm.aston.ac.uk/phpmyadmin
+Username: cs2team6
+Password: FCyDO3BMeFyeQqthl69HyXhut
+Database name: cs2team6_db
+
+ 
