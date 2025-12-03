@@ -34,7 +34,7 @@ class Product(models.Model):
         return self.product_name
 
 
-class CartItem(models.Model):
+class CheckoutItem(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)

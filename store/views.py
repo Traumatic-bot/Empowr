@@ -5,7 +5,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import user_passes_test, login_required
 from django.db.models import Sum
 
-from .models import Product, Category, CartItem, Customer
+from .models import Product, Category, CheckoutItem, Customer
+from decimal import Decimal
 
 
 def index(request):
@@ -65,17 +66,70 @@ def logout_view(request):
     logout(request)
     return redirect("index")
 
-
-def cart_view(request):
+def checkout_view(request):
     customer = Customer.objects.first()
-    if customer is None:
-        cart_items = []
-    else:
-        cart_items = CartItem.objects.filter(customer=customer)
-    return render(request, "store/cart.html", {
+    checkout_items = CheckoutItem.objects.filter(customer=customer) if customer else []
+
+    subtotal = sum((item.total_price for item in checkout_items), Decimal("0.00"))
+    delivery = Decimal("0.00")
+    total = subtotal + delivery
+
+    return render(request, "store/checkout.html", {
         "customer": customer,
-        "cart_items": cart_items,
+        "checkout_items": checkout_items,
+        "subtotal": subtotal,
+        "delivery": delivery,
+        "total": total,
     })
+
+def checkout_customer_view(request):
+    return render(request, "store/checkout_customer.html")
+
+from decimal import Decimal
+from django.shortcuts import redirect
+
+def checkout_view(request):
+    customer = Customer.objects.first()
+    checkout_items = CheckoutItem.objects.filter(customer=customer) if customer else []
+
+    subtotal = sum((item.total_price for item in checkout_items), Decimal("0.00"))
+    delivery = Decimal("0.00")
+    total = subtotal + delivery
+
+    return render(request, "store/checkout.html", {
+        "customer": customer,
+        "checkout_items": checkout_items,
+        "subtotal": subtotal,
+        "delivery": delivery,
+        "total": total,
+    })
+
+@login_required
+def checkout_payment_view(request):
+    customer = Customer.objects.filter(email=request.user.email).first()
+
+    checkout_items = CheckoutItem.objects.filter(customer=customer) if customer else []
+    subtotal = sum((item.total_price for item in checkout_items), Decimal("0.00"))
+    delivery = Decimal("0.00")
+    total = subtotal + delivery
+
+    if request.method == "POST":
+        #handle payment + save address
+
+        return redirect("checkout_complete")
+
+    return render(request, "store/checkout_payment.html", {
+        "customer": customer,
+        "subtotal": subtotal,
+        "delivery": delivery,
+        "total": total,
+    })
+
+
+
+def checkout_complete_view(request):
+    return render(request, "store/checkout_complete.html")
+
 
 
 def staff_check(user):
@@ -86,14 +140,14 @@ def staff_check(user):
 def staff_dashboard(request):
     product_count = Product.objects.count()
     customer_count = Customer.objects.count()
-    cart_value = CartItem.objects.aggregate(
+    checkout_value = CheckoutItem.objects.aggregate(
         total=Sum("total_price")
     )["total"] or 0
 
     context = {
         "product_count": product_count,
         "customer_count": customer_count,
-        "cart_value": cart_value,
+        "checkout_value": checkout_value,
     }
     return render(request, "staff/dashboard.html", context)
 
