@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="account-wrapper">
+    <aside class="account-sidebar">
+        <div class="account-user">
+            <div class="account-user-name">
+                Hi {{ user.first_name| default:"there" }}
+            </div>
+            <div class="account-user-email">
+                {{ user.email }}
+            </div>
+        </div>
+
+        <nav class="account-nav">
+            <a href="{% url 'order_history' %}"
+               class="account-nav-item {% if request.resolver_match.url_name == 'order_history' %} is-active {% endif %}">
+                <span class="icon">📋</span>
+                <span>Order History</span>
+            </a>
+
+            <a href="{% url 'personal_details' %}"
+               class="account-nav-item {% if request.resolver_match.url_name == 'personal_details' %} is-active {% endif %}">
+                <span class="icon">🪪</span>
+                <span>Personal Details</span>
+            </a>
+
+            <a href="{% url 'address_book' %}"
+               class="account-nav-item {% if request.resolver_match.url_name == 'address_book' %} is-active {% endif %}">
+                <span class="icon">📒</span>
+                <span>Addresses</span>
+            </a>
+
+            <a href="{% url 'payment_methods' %}"
+               class="account-nav-item {% if request.resolver_match.url_name == 'payment_methods' %} is-active {% endif %}">
+                <span class="icon">💳</span>
+                <span>Payment Methods</span>
+            </a>
+
+            <a href="{% url 'logout' %}" class="account-nav-item logout">
+                <span class="icon">❌</span>
+                <span>Sign Out</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="account-main">
+        {% block account_content %}
+        {% endblock %}
+    </main>
+</div>
+{% endblock %}
