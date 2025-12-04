@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Empowr">
+    <meta name="keywords" content="Empowr, ecommerce, tech, accessories">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Empowr</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
+</head>
+
+<body style="margin: 0; padding: 0;">
+
+<header>
+    <div class = "header">
+        <img src ="Images/Empowr_Logo_C.svg" alt = "Empowr Logo"
+        style = "padding-top: 20px;padding-bottom:20px;scale:0.8;margin-left:-20px;">
+        <div class = "search" style = "width:500px;padding-left: 50px;margin-right: 150px;">
+            <form method="get" action="index.html" style="display:flex;">
+                <input type="text" placeholder="Search.." name="q" style="width:480px">
+                <button type="submit">
+                    <img src="Images/search_logo.svg" alt="Search" style="width:30px; height:30px;">
+                </button>
+            </form>
+        </div>
+        <div class = "header-links" style = "width:400px;display:flex;align-items: center;height:50px;">
+         <div class="account-links" style = "width:180px;">
+            <div style = "padding-right:25px;">
+                <span data-action = "myAccountMenu" role=" button" aria-label = "open my account menu"
+                aria-pressed = "false" style = "display:flex;"><i></i></span>
+
+            </div>
+
+        <div style = "justify-content: center;font-size: x-small">
+        <ul style=" list-style-type: none;display:flex; padding:0px; margin: 0px">
+            <li><a href = "./account/login.html" rel="nofollow" target="login"
+                style="border-right: 1px solid #5d5c5c;padding-right: 5px;">Login</a></li>
+            </ul>
+        </div>
+        <div>
+        </div>
+        <div class = "basket-links">
+            <a id = "basket-links" href="#"
+            style = "margin-left:20px;padding-left:5px;display:flex;justify-content: center;align-items:center;">
+            <span class="items"><strong>1</strong></span>
+                        <img src="Images/Basket_Logo.svg" alt="Basket Logo"
+                            style="width: 35px;margin-left:3px;margin-right:3px;">
+                        <span class="price" style="margin-left:3px;margin-right:3px;">£0.00</span>
+                        <img src="Images/Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
+                            style="width:20px;margin-left:3px;margin-right:3px;">
+                    </a>
+                </div>
+            </div>
+        </div>
+</header>
+
+<nav>
+    <ul class = "topnav">
+
+    <li><a href="#">Keyboards</a></li>
+     <li><a href="#">Mice</a></li>
+        <li><a href="#">Monitors</a></li>
+        <li><a href="#">Printers</a></li>
+         <li><a href="#">Controllers</a></li>
+        <li><a href="#">Desks & Chairs</a></li>
+        <li><a href="#">Cameras & Microphones</a></li> 
+    </ul>
+</nav>
+
+<main>
+<section class = "page-banner">
+<p style = "margin: 0;color:#5d5c5c;;font-size: 15px;">
+<a href = "/" style = "color: #5d5c5c;; text-decoration: none;"> home peripherals</a> / 
+<a href = "#" style = "color:#5d5c5c; ; text-decoration: none;"> Smart devices</a> 
+</p>
+<h1>Empowr - Freedom Through Innovation</h1>
+<p style = "margin:0;">Smart choices,clear design, The Empowr Difference </p>
+</section>
+
+<div class="filters-row">
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+        <label style = "font-size: 15px;"> Sort by
+            <select>
+                <option>Most Popular</option>
+                <option>Price: High to Low</option>
+                <option>Price: Low to High</option>
+                <option>Customer rating</option>
+            </select>
+        </label>
+</div>
+<div class="layout-controls">
+<button>List</button>
+<button>Grid</button>
+</div>
+</div>
+
+<section class="product-layout">
+<aside class = "filter-panel">
+            <div>
+        <label for = "stocks-search" style = "font-size:15px;color:#4a4a4a;">Check stock in your area</label>
+        <div style="display:flex;gap:8px;margin-top:8px;">
+            <input id="stock-search" type="text" placeholder="Enter town or postcode"
+            style="flex:1;border-radius:14px;border:1px solid #d7d7d7; padding:10px 15px;">
+            <button style="border:none;background-color:#ffee32;border-radius: 15px;padding:10px 25px;cursor:pointer;">Go</button>
+            </div>
+
+            <div class = "filter-group">
+        <h3>Delivery and Collection</h3>
+        <label><input type="checkbox" checked> Delivery available (120)</label>
+            <label><input type="checkbox"> Collect from store (60)</label>
+
+
+    </div>
+
+    <div class ="filter-group">
+        <h3>By Price</h3>
+        <label><input type="checkbox">£1 - £60</label>
+        <label><input type="checkbox"> £60 - £120</label>
+        <label><input type="checkbox" checked> £120 - £240</label>
+        <label><input type="checkbox"> £120+</label>
+        
+    </div>
+
+    <div class="filter-group">
+        <h3>Brands</h3>
+            <label><input type="checkbox"> Empowr</label>
+        <label><input type="checkbox" checked> Meta</label>
+        <label><input type="checkbox">Sony  </label>
+        <label><input type="checkbox"> Alexa/Google Home</label>
+                <label><input type="checkbox">HumanWare </label>
+    </div>
+</aside>
+ <div class="product-results">
+            <div class="result-meta">
+                <span> 120 Items</span>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <div class="products-per-page">
+                        <span>Show: </span>
+                        <select class="per-page-select">
+                            <option value="20" selected>20</option>
+                            <option value="40">40</option>
+                            <option value="60">60</option>
+                           
+                        </select>
+                        <span> products per page</span>
+                    </div>
+                    <a href="#" style = "text-decoration:none;">Reset filters</a>
+                </div>
+            </div>
+
+        <article class = "product-card">
+            <div class ="card-content">
+                <div class = "product-image">
+                    <img src = "https://placehold.co/240x200?text=Empower+Speaker" alt="Empowr Speaker">
+
+                </div>
+                <div class="product-summary">
+                            <h2>Smart Speaker
+                            </h2>
+                            <div class = "rating-line">
+                                <span style = "color:yellow;">★★★★★ </span>
+                                <strong>5/5</strong>
+                                <span> 11 reviews</span>
+                            </div>
+
+
+                <ul class="benefits">
+                    <li>Voice-activated commands & hands-free control</li>
+                                <li>Assistive tasks & daily routines</li>
+                                <li>Audio / Entertainment</li>
+                </ul>
+                </div>
+            </div>
+    
+            <div class = "product-aside">
+            <div class = "price-line">
+                £49.00
+            </div>
+            <p style="margin: 5px 0; font-size: 14px; color: #1b1b1b;">Launch offer - includes case</p>
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; width: 25%;">
+                <span class="new-arrival-pill">New arrival</span>
+                <span class="delivery-pill-black">Free delivery </span>
+            </div>
+            <div class = "actions">
+                <button class="btn-outline">View product</button>
+                            <button class="btn-primary">Add to basket</button>
+            </div>
+
+
+
+
+           <article class = "product-card">
+            <div class ="card-content">
+                <div class = "product-image">
+                    <img src = "https://placehold.co/240x200?text= Security Camera" alt="Blink Mini Indoor Plug‑In Security Camera">
+
+                </div>
+                <div class="product-summary">
+                            <h2>
+                                Blink Mini Indoor Plug‑In Security Camera
+                            </h2>
+                            <div class = "rating-line">
+                                <span style = "color:yellow;">★★★★ </span>
+                                <strong>4/5</strong>
+                                <span> 25 reviews</span>
+                            </div>
+
+
+                <ul class="benefits">
+                    <li>Offer reliable motion detection and alerts (visual, audio, or vibration)</li>
+                                <li>Support remote operation</li>
+                                <li>Include two-way communication</li>
+                </ul>
+                </div>
+            </div>
+    
+            <div class = "product-aside">
+            <div class = "price-line">
+                £15.00
+            </div>
+            <p style="margin: 5px 0; font-size: 14px; color: #1b1b1b;">Launch offer - includes case</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; width: 25%;">
+                <span class="new-arrival-pill">New arrival</span>
+                <span class="delivery-pill-black">Free delivery </span>
+            </div>
+            <div class = "actions">
+                <button class="btn-outline">View product</button>
+                            <button class="btn-primary">Add to basket</button>
+</div>
+        </article>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="footer-links" style="color: black;">
+            <a href="#" style="color: black; text-decoration: none;">Information</a> ｜
+            <a href="#" style="color: black; text-decoration: none;">My Account</a> ｜
+            <a href="#" style="color: black; text-decoration: none;">Support</a>
+        </div>
+    </footer>
+
+</body>
+</html>
