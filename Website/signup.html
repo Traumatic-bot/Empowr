@@ -6,10 +6,10 @@
     <meta name="keywords" content="Empowr, ecommerce, tech, accessories">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Empowr</title>
+    <title>Sign Up</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
 </head>
 <body style="margin: 0; padding: 0;">
 
@@ -17,15 +17,15 @@
     <div class="header">
 
         <a href="index.html" class="logo-link" style="text-decoration: none; display: inline-block;">
-        <img src="Empowr_Logo_C.svg" alt="Empowr Logo" class="logo-image"
+        <img src="Images/Empowr_Logo_C.svg" alt="Empowr Logo" class="logo-image"
          style="padding-top: 20px; padding-bottom: 20px; scale: 0.8; margin-left: -20px;">
         </a>
-
+        
         <div class="search" style="width:500px; padding-left: 50px; margin-right: 150px;">
             <form method="get" action="index.html" style="display:flex;">
                 <input type="text" placeholder="Search.." name="q" style="width:480px">
                 <button type="submit">
-                    <img src="search_logo.svg" alt="Search" style="width:30px; height:30px;">
+                    <img src="Images/search_logo.svg" alt="Search" style="width:30px; height:30px;">
                 </button>
             </form>
         </div>
@@ -59,10 +59,10 @@
                 <a id="basket-links" href="#"
                    style="margin-left:20px; padding-left: 5px; display: flex; justify-content: center; align-items: center;">
                     <span class="items"><strong>0</strong></span>
-                    <img src="Basket_Logo.svg" alt="Basket Logo"
+                    <img src="Images/Basket_Logo.svg" alt="Basket Logo"
                          style="width: 35px; margin-left: 3px; margin-right: 3px;">
                     <span class="price" style="margin-left: 3px; margin-right: 3px;">£0.00</span>
-                    <img src="Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
+                    <img src="Images/Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
                          style="width:20px; margin-left: 3px; margin-right: 3px;">
                 </a>
             </div>
@@ -173,7 +173,64 @@
 </header>
 
 <main>
-    <!-- Content will be inserted here from individual pages -->
+<div class="form">
+    <h1>Create Account</h1>
+
+    <form method="post" action="signup.html">
+        <div class="input-container">
+            <select class="input-field" style="width: 100%;" name="title">
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Miss">Miss</option>
+                <option value="Ms">Ms</option>
+                <option value="Dr">Dr</option>
+                <option value="Mx">Mx</option>
+                <option value="Other">Other</option>
+            </select>
+            <label class="input-label">Title<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="first_name" placeholder="First Name" class="input-field" type="text" required>
+            <label class="input-label">First Name<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="last_name" placeholder="Last Name" class="input-field" type="text" required>
+            <label class="input-label">Last Name<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="email" placeholder="Email Address" class="input-field" type="email" required>
+            <label class="input-label">Email Address<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="phone" placeholder="Telephone" class="input-field" type="text">
+            <label class="input-label">Telephone</label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="password1" placeholder="Password" class="input-field" type="password" required>
+            <label class="input-label">Password<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <div class="input-container">
+            <input name="password2" placeholder="Confirm Password" class="input-field" type="password" required>
+            <label class="input-label">Confirm Password<span class="validity"></span></label>
+            <span class="input-highlight"></span>
+        </div>
+
+        <button class="submit" type="submit">Submit</button>
+        <p>Already have an account? <a href="login.html">Sign In</a></p>
+    </form>
+</div>
 </main>
 
 <footer>
