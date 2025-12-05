@@ -97,4 +97,24 @@ $shipping = 4.99;
     </div>
 </main>
 
+<script>
+function updateCartQuantity(productId, delta) {
+    fetch('update_cart.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'product_id=' + productId + '&quantity_change=' + delta
+    })
+    .then(() => window.location.reload());
+}
+
+function removeFromCart(productId) {
+    fetch('update_cart.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'product_id=' + productId + '&remove=1'
+    })
+    .then(() => window.location.reload());
+}
+</script>
+
 <?php require_once 'footer.php'; ?>
