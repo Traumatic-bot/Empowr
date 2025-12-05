@@ -100,15 +100,21 @@ body {
     <section class="carousel">
         <div class="featured-carousel">
             <div class="featured-advert">
-                <img src="Images/Banner_1.png" style="width:100%">
+                <a href="products.php">
+                    <img src="Images/Banner_1.png" style="width:100%">
+                </a>
             </div>
 
             <div class="featured-advert">
-                <img src="Images/Banner_3.png" style="width:100%">
+                <a href="product_details.php?id=3">
+                    <img src="Images/Banner_3.png" style="width:100%">
+                </a>
             </div>
 
             <div class="featured-advert">
-                <img src="Images/Banner_2.png" style="width:100%">
+                <a href="products.php">
+                    <img src="Images/Banner_2.png" style="width:100%">
+                    </a>
             </div>
         </div>
         <br>

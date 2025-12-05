@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-// Check if user is logged in 
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -13,12 +13,12 @@ $user_id = $_SESSION['user_id'];
 require_once 'header.php';
 $user_id = $_SESSION['user_id'];
 
-// Get user stats
+
 $orderCount = 0;
 $totalSpent = 0;
 $addressCount = 0;
 
-// Order count
+
 $orderQuery = "SELECT COUNT(*) as count FROM orders WHERE user_id = $user_id";
 $orderResult = mysqli_query($conn, $orderQuery);
 if ($orderResult) {
@@ -26,7 +26,7 @@ if ($orderResult) {
     $orderCount = $orderRow['count'];
 }
 
-// Total spent
+
 $totalQuery = "SELECT SUM(total_amount) as total FROM orders WHERE user_id = $user_id";
 $totalResult = mysqli_query($conn, $totalQuery);
 if ($totalResult) {
@@ -34,7 +34,7 @@ if ($totalResult) {
     $totalSpent = $totalRow['total'] ? number_format($totalRow['total'], 2) : '0.00';
 }
 
-// Address count
+
 $addressQuery = "SELECT COUNT(*) as count FROM user_addresses WHERE user_id = $user_id";
 $addressResult = mysqli_query($conn, $addressQuery);
 if ($addressResult) {

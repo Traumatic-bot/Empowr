@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-// Check if user is logged in 
+
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -13,7 +13,7 @@ require_once 'header.php';
 
 $order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
 
-// Get order details
+
 $orderQuery = "SELECT * FROM orders WHERE order_id = $order_id AND user_id = {$_SESSION['user_id']}";
 $orderResult = mysqli_query($conn, $orderQuery);
 

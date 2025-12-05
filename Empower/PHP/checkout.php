@@ -10,7 +10,7 @@ $pageTitle = 'Checkout';
 require_once 'header.php';
 $user_id = $_SESSION['user_id'];
 
-// Get cart items
+// get cart items
 $cartQuery = "SELECT c.*, p.product_name, p.price, p.stock_quantity 
              FROM cart c 
              JOIN products p ON c.product_id = p.product_id 
