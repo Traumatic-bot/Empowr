@@ -177,30 +177,8 @@ $total_pages = ceil($total_products / $per_page);
                         <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>" style="max-width: 100%; max-height: 160px; object-fit: contain;">
                     <?php else: ?>
                         <div style="width: 100%; height: 160px; display: flex; align-items: center; justify-content: center; color: #666; font-size: 13px; padding: 10px;">
-                            <?php echo htmlspecialchars($product['product_name']); ?>
+                            No image available
                         </div>
-                        <h3 style="margin: 10px 0;"><?php echo htmlspecialchars($product['product_name']); ?></h3>
-                        <p style="color: #666; font-size: 14px; min-height: 60px;"><?php echo htmlspecialchars($product['description']); ?></p>
-                        <div style="font-size: 20px; font-weight: bold; color: #333; margin: 15px 0;">
-                            £<?php echo number_format($product['price'], 2); ?>
-                        </div>
-                        <div style="color: #666; margin-bottom: 15px;">
-                            Category: <?php echo htmlspecialchars($product['category']); ?>
-                        </div>
-                        <?php if (isLoggedIn()): ?>
-                            <form method="post" action="add_to_cart.php" style="margin-top: 15px;">
-                                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                <div style="margin-bottom: 10px;">
-                                    <label for="quantity_<?php echo $product['product_id']; ?>" style="display: block; margin-bottom: 5px;">Quantity:</label>
-                                    <input type="number" name="quantity" id="quantity_<?php echo $product['product_id']; ?>" 
-                                           value="1" min="1" max="<?php echo $product['stock_quantity']; ?>" 
-                                           style="width: 80px; padding: 5px; border: none; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);" >
-                                </div>
-                                <button type="submit" style="background: #ffee32; border: none; padding: 10px 20px; 
-                                        border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">
-                                    Add to Cart
-                                </button>
-                            </form>
                     <?php endif; ?>
                 </div>
                 
