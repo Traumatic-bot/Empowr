@@ -30,9 +30,10 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
             <img src="Images/Empowr_Logo_C.svg" alt="Empowr Logo" class="logo-image"
                  style="padding-top: 20px; padding-bottom: 20px; scale: 0.8; margin-left: -20px;">
         </a>
-        
+
+        </form>
         <div class="search" style="width:500px; padding-left: 50px; margin-right: 150px;">
-            <form method="get" action="search.php" style="display:flex;">
+            <form method="get" action="products.php" style="display:flex;">
                 <input type="text" placeholder="Search.." name="q" style="width:480px">
                 <button type="submit">
                     <img src="Images/search_logo.svg" alt="Search" style="width:30px; height:30px;">

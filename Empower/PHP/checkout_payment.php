@@ -113,12 +113,6 @@ require_once 'header.php';
                 </p>
             </div>
 
-            <?php if (isset($error)): ?>
-                <div style="color: red; margin-bottom: 15px; padding: 10px; background: #ffe6e6; border-radius: 5px;">
-                    <?php echo htmlspecialchars($error); ?>
-                </div>
-            <?php endif; ?>
-
             <form method="post" class="form" id="payment-form" style="text-align:left;">
                 <!-- Delivery address -->
                 <h3>Delivery address</h3>

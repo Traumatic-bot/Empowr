@@ -3,23 +3,32 @@
 require_once 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /empower/PHP/login.php');
+    // Use a relative redirect (login.php lives in the same folder)
+    header('Location: login.php');
     exit();
 }
 
 $pageTitle = 'Checkout';
 require_once 'header.php';
-$user_id = $_SESSION['user_id'];
+$user_id = (int) $_SESSION['user_id'];
 
-// Get cart items
-$cartQuery = "SELECT c.*, p.product_name, p.price, p.stock_quantity 
-             FROM cart c 
-             JOIN products p ON c.product_id = p.product_id 
+// Get cart items (cast user id to int to avoid injection)
+$cartQuery = "SELECT c.*, p.product_name, p.price, p.stock_quantity
+             FROM cart c
+             JOIN products p ON c.product_id = p.product_id
              WHERE c.user_id = $user_id";
 $cartResult = mysqli_query($conn, $cartQuery);
 
 $subtotal = 0;
 $shipping = 4.99;
+
+// If the query failed, show a friendly message instead of warnings
+if ($cartResult === false) {
+    error_log('Cart query failed: ' . mysqli_error($conn));
+    $cartCount = 0;
+} else {
+    $cartCount = mysqli_num_rows($cartResult);
+}
 ?>
 
 <main>
@@ -27,7 +36,7 @@ $shipping = 4.99;
         <section class="checkout-items">
             <h1>Your basket</h1>
             
-            <?php if (mysqli_num_rows($cartResult) > 0): ?>
+            <?php if ($cartCount > 0 && $cartResult !== false): ?>
                 <?php while ($item = mysqli_fetch_assoc($cartResult)): 
                     $itemTotal = $item['price'] * $item['quantity'];
                     $subtotal += $itemTotal;
@@ -70,7 +79,7 @@ $shipping = 4.99;
             <?php endif; ?>
         </section>
 
-        <?php if (mysqli_num_rows($cartResult) > 0): ?>
+        <?php if ($cartCount > 0): ?>
             <aside class="checkout-summary">
                 <h2>Order summary</h2>
 
@@ -86,16 +95,25 @@ $shipping = 4.99;
                     <span>Total</span>
                     <span>£<?php echo number_format($subtotal + $shipping, 2); ?></span>
                 </div>
-
-                <a href="checkout_payment.php" class="btn-primary" style="width: 80%;">
+                <div class="summary-row">
+                   <a href="checkout_payment.php" class="btn-primary">
                     Checkout
                 </a>
+                </div>
                 <p style="text-align: center; margin-top: 10px;">
                     <a href="products.php" style="color: #666; text-decoration: none;">Continue shopping</a>
                 </p>
             </aside>
         <?php endif; ?>
     </div>
+    </div>
 </main>
 
-<?php require_once 'footer.php'; ?>
+<?php
+// Free result set when done
+if (isset($cartResult) && $cartResult !== false) {
+    mysqli_free_result($cartResult);
+}
+
+require_once 'footer.php';
+?>

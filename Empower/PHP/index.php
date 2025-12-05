@@ -12,15 +12,27 @@ require_once 'header.php';
     <section class="carousel">
         <div class="featured-carousel">
             <div class="featured-advert">
-                <img src="https://placehold.co/1400x400?text=1" style="width:100%">
+                <img src="Images/Mechanical_Keyboard.png" style="width:100%">
             </div>
 
             <div class="featured-advert">
-                <img src="https://placehold.co/1400x400?text=2" style="width:100%">
+                <img src="Images/Premium_Keyboard.jpg" style="width:100%">
             </div>
 
             <div class="featured-advert">
-                <img src="https://placehold.co/1400x400?text=3" style="width:100%">
+                <img src="Images/Basic_Gaming_Mouse.jpg" style="width:100%">
+            </div>
+
+             <div class="featured-advert">
+                <img src="Images/Pro_Gaming_Mouse.jpg" style="width:100%">
+            </div>
+
+             <div class="featured-advert">
+                <img src="Images/Pro_Wireless_Gaming_Mouse.png" style="width:100%">
+            </div>
+
+             <div class="featured-advert">
+                <img src="Images/Curved_Gaming_Monitor.jpg" style="width:100%">
             </div>
         </div>
         <br>
@@ -33,8 +45,10 @@ require_once 'header.php';
         </div>
 
        <!-- add text into here -->
-        <div style="text-align:center">
-
+        <div style="text-align:center; padding-top:50px;">
+        <p>
+            Welocome to Empower!
+        </p>
         </div>
 
         <script>

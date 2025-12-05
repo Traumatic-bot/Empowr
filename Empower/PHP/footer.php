@@ -1,12 +1,12 @@
 <footer>
     <div class="footer-links" style="color: black;">
-        <a href="about_us.html" style="color: black; text-decoration: none;">About Us</a> ｜
+        <a href="about_us.php" style="color: black; text-decoration: none;">About Us</a> ｜
         <?php if (isLoggedIn()): ?>
             <a href="dashboard.php" style="color: black; text-decoration: none;">My Account</a> ｜
         <?php else: ?>
             <a href="login.php" style="color: black; text-decoration: none;">My Account</a> ｜
         <?php endif; ?>
-        <a href="contact_us.html" style="color: black; text-decoration: none;">Contact Us</a>
+        <a href="contact_us.php" style="color: black; text-decoration: none;">Contact Us</a>
     </div>
 </footer>
 
