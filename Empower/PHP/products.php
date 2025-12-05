@@ -49,7 +49,7 @@ $result = mysqli_query($conn, $query);
                                     <label for="quantity_<?php echo $product['product_id']; ?>" style="display: block; margin-bottom: 5px;">Quantity:</label>
                                     <input type="number" name="quantity" id="quantity_<?php echo $product['product_id']; ?>" 
                                            value="1" min="1" max="<?php echo $product['stock_quantity']; ?>" 
-                                           style="width: 80px; padding: 5px;">
+                                           style="width: 80px; padding: 5px; border: none; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);" >
                                 </div>
                                 <button type="submit" style="background: #ffee32; border: none; padding: 10px 20px; 
                                         border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%;">
@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $query);
                                 </button>
                             </form>
                         <?php else: ?>
-                            <a href="login.php" style="display: inline-block; background: #ffee32; border: none; 
+                            <a href="/empower/PHP/login.php" style="display: inline-block; background: #ffee32; border: none; 
                                padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; 
                                text-decoration: none; color: #333; width: 100%; text-align: center;">
                                 Login to Purchase

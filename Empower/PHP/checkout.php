@@ -3,7 +3,7 @@
 require_once 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /login.php');
+    header('Location: /empower/PHP/login.php');
     exit();
 }
 
@@ -87,7 +87,7 @@ $shipping = 4.99;
                     <span>£<?php echo number_format($subtotal + $shipping, 2); ?></span>
                 </div>
 
-                <a href="checkout_payment.php" class="btn-primary">
+                <a href="checkout_payment.php" class="btn-primary" style="width: 80%;">
                     Checkout
                 </a>
                 <p style="text-align: center; margin-top: 10px;">

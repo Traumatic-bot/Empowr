@@ -45,7 +45,7 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                 <?php if (isLoggedIn()): ?>
                     <div href="#" style="padding-right:25px;">
                         <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
-                              aria-pressed="false" style="display: flex;">
+                              aria-pressed="false" style="display: flex; width: max-content;">
                             <i></i> Welcome, <?php echo htmlspecialchars($userInfo['first_name']); ?>
                         </span>
                     </div>
@@ -111,7 +111,8 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
 
     <div id="popup" style="display:none;">
         <div class="header" style="background: #ebecec; display: flex; height: 80px; align-items:center; padding:0 15px;">
-            <div style="flex:1;">Basket</div>
+            <div style="text-align: left; padding-left: 30px; border: #505050ff 1px solid; background-color: #505050ff;
+    color: white; width: 100px; height: 35px; display: flex; align-items: center; border-radius: 40px;">Basket</div>
             <span class="btn" id="closePopup">
                 <i style="display: block;
                           border-left: 3px solid #000000;
@@ -194,8 +195,8 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
             </ul>
         </div>
 
-        <div class="Total" style="height: 80px; overflow: hidden; margin: 0 15px;">
-            <a class="" href="checkout.php">CHECKOUT</a>
+        <div class="submit" style="width:96%; margin-top: 10px;">
+            <a class="" href="checkout.php" style="text-decoration: none; color: #000000;">CHECKOUT</a>
         </div>
     </div>
 

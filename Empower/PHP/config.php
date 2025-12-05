@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
-$username = 'cs2team6'; 
-$password = 'FCyDO3BMeFyeQqthl69HyXhut'; 
+$username = 'root'; 
+$password = ''; 
 $database = 'cs2team6_db';
 
 // Create connection
