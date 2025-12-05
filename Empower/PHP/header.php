@@ -120,9 +120,9 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                         style="display: flex; align-items: center; text-decoration: none; color: inherit; padding: 5px 10px; border-radius: 20px; background: #f0f0f0;">
                         <span id="darkmode-icon" style="margin-right: 5px;">
                             <?php if (isDarkModeEnabled($_SESSION['user_id'] ?? 0)): ?>
-                            <img src="/Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
+                            <img src="Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
                             <?php else: ?>
-                            <img src="/Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
+                            <img src="Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
                             <?php endif; ?>
                         </span>
                         <span id="darkmode-text" style="font-size: 12px;">

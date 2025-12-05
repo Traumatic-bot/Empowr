@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-$pageTitle = 'about_us';
+$pageTitle = 'Privacy Policy';
 
 require_once 'header.php';
 ?>
@@ -344,4 +344,3 @@ body {
 
 
 <?php require_once 'footer.php'; ?>
-a

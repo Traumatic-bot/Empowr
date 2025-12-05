@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Check stock
         if ($quantity > $product['stock_quantity']) {
             $_SESSION['error'] = 'Not enough stock available';
-            header('Location: /products.php');
+            header('Location: products.php');
             exit();
         }
         
@@ -45,6 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-header('Location: /products.php');
+header('Location: products.php');
 exit();
 ?>

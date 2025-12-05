@@ -100,15 +100,15 @@ body {
     <section class="carousel">
         <div class="featured-carousel">
             <div class="featured-advert">
-                <img src="/Images/Banner_1.png" style="width:100%">
+                <img src="Images/Banner_1.png" style="width:100%">
             </div>
 
             <div class="featured-advert">
-                <img src="/Images/Banner_3.png" style="width:100%">
+                <img src="Images/Banner_3.png" style="width:100%">
             </div>
 
             <div class="featured-advert">
-                <img src="/Images/Banner_2.png" style="width:100%">
+                <img src="Images/Banner_2.png" style="width:100%">
             </div>
         </div>
         <br>

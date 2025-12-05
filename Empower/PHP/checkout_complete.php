@@ -18,7 +18,7 @@ $orderQuery = "SELECT * FROM orders WHERE order_id = $order_id AND user_id = {$_
 $orderResult = mysqli_query($conn, $orderQuery);
 
 if (!$orderResult || mysqli_num_rows($orderResult) == 0) {
-    header('Location: /dashboard.php');
+    header('Location: dashboard.php');
     exit();
 }
 

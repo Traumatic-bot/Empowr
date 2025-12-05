@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 
-$pageTitle = 'about_us';
+$pageTitle = 'About Us';
 
 require_once 'header.php';
 ?>

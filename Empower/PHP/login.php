@@ -6,7 +6,7 @@ $error = '';
 
 // Check if user is already logged in
 if (isset($_SESSION['user_id'])) {
-    header('Location: /dashboard.php');
+    header('Location: dashboard.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['email'] = $user['email'];
             
             // Redirect to dashboard
-            header('Location: /dashboard.php');
+            header('Location: dashboard.php');
             exit();
         } else {
             $error = 'Invalid password';

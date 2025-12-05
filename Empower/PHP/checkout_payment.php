@@ -171,15 +171,15 @@ require_once 'header.php';
 
             <div class="summary-row">
                 <span>SUBTOTAL</span>
-                <span>£<?php echo number_format($cartTotal, 2); ?></span>
+                <span>£<?php echo number_format((float)str_replace(',', '', $cartTotal), 2); ?></span>
             </div>
             <div class="summary-row">
                 <span>DELIVERY</span>
-                <span>£<?php echo number_format($shipping, 2); ?></span>
+                <span>£<?php echo number_format((float)$shipping, 2); ?></span>
             </div>
             <div class="summary-row summary-total">
                 <span>TOTAL</span>
-                <span>£<?php echo number_format($total, 2); ?></span>
+                <span>£<?php echo number_format((float)str_replace(',', '', $total), 2); ?></span>
             </div>
 
             <button class="btn-primary" type="submit" form="payment-form">

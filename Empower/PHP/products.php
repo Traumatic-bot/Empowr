@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-$pageTitle = 'Empowr';
+$pageTitle = 'Products';
 require_once 'header.php';
 
 function buildQueryString($new_params = []) {
@@ -15,7 +15,7 @@ function buildQueryString($new_params = []) {
     return http_build_query($params);
 }
 
-// Get parameters with defaults
+
 $category = isset($_GET['category']) ? sanitize($_GET['category']) : '';
 $search = isset($_GET['q']) ? sanitize($_GET['q']) : '';
 $sort = isset($_GET['sort']) ? sanitize($_GET['sort']) : 'popular';
@@ -25,7 +25,7 @@ $per_page = isset($_GET['per_page']) ? (int)$_GET['per_page'] : 20;
 $page = isset($_GET['page']) ? max(1, (int)$_GET['page']) : 1;
 $offset = ($page - 1) * $per_page;
 
-// Get categories from database
+
 $category_query = "SELECT DISTINCT category FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category";
 $category_result = mysqli_query($conn, $category_query);
 $categories = [];
@@ -33,7 +33,7 @@ while ($cat = mysqli_fetch_assoc($category_result)) {
     $categories[] = $cat['category'];
 }
 
-// Get brands from database
+
 $brand_query = "SELECT DISTINCT category as brand FROM products WHERE category IS NOT NULL AND category != '' ORDER BY category";
 $brand_result = mysqli_query($conn, $brand_query);
 $brands = [];
@@ -41,7 +41,7 @@ while ($b = mysqli_fetch_assoc($brand_result)) {
     $brands[] = $b['brand'];
 }
 
-// Build query
+
 $query = "SELECT * FROM products WHERE 1=1";
 $count_query = "SELECT COUNT(*) as total FROM products WHERE 1=1";
 
@@ -58,7 +58,7 @@ if ($brand) {
     $count_query .= " AND category = '$brand'";
 }
 
-// Apply sorting
+
 switch($sort) {
     case 'price_high': $query .= " ORDER BY price DESC"; break;
     case 'price_low': $query .= " ORDER BY price ASC"; break;
@@ -66,10 +66,10 @@ switch($sort) {
     default: $query .= " ORDER BY product_name ASC"; break;
 }
 
-// Add pagination
+
 $query .= " LIMIT $per_page OFFSET $offset";
 
-// Execute
+
 $result = mysqli_query($conn, $query);
 $count_result = mysqli_query($conn, $count_query);
 $total_row = mysqli_fetch_assoc($count_result);
@@ -78,14 +78,10 @@ $total_pages = ceil($total_products / $per_page);
 ?>
 
 <main>
-    <section class="page-banner">
-        <p style="margin: 0;color:#5d5c5c;;font-size: 15px;">
-            <a href="index.php" style="color: #5d5c5c;; text-decoration: none;"> home peripherals</a> /
-            <a href="#" style="color:#5d5c5c; ; text-decoration: none;">
-                <?php echo $category ? htmlspecialchars($category) : 'Smart devices'; ?></a>
-        </p>
-        <h1>Empowr - Freedom Through Innovation</h1>
-        <p style="margin:0;">Smart choices,clear design, The Empowr Difference </p>
+    <section class="page-banner" style="text-align:center; margin: 30px 0;">
+        <h1 style="margin:0; font-size:32px; font-weight:bold; color:#000;">
+            <?php echo $category ? htmlspecialchars($category) : 'All Products'; ?>
+        </h1>
     </section>
 
     <div class="filters-row">
@@ -359,14 +355,4 @@ $total_pages = ceil($total_products / $per_page);
     </section>
 </main>
 
-<footer>
-    <div class="footer-links" style="color: black;">
-        <a href="#" style="color: black; text-decoration: none;">Information</a> ｜
-        <a href="#" style="color: black; text-decoration: none;">My Account</a> ｜
-        <a href="#" style="color: black; text-decoration: none;">Support</a>
-    </div>
-</footer>
-
-</body>
-
-</html>
+<?php require_once 'footer.php'; ?>

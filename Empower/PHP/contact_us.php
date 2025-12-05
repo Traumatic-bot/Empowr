@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-$pageTitle = 'about_us';
+$pageTitle = 'Contact Us';
 require_once 'header.php';
 
 if (isset($_SESSION['contact_success'])) {
