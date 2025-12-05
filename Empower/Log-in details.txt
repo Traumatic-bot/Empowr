@@ -11,4 +11,3 @@ Username: cs2team6
 Password: FCyDO3BMeFyeQqthl69HyXhut
 Database name: cs2team6_db
 
- 

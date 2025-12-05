@@ -1,18 +1,16 @@
 <?php
+//conect to database
 $host = 'localhost';
 $username = 'cs2team6'; 
 $password = 'FCyDO3BMeFyeQqthl69HyXhut'; 
 $database = 'cs2team6_db';
 
-// Create connection
 $conn = mysqli_connect($host, $username, $password, $database);
 
-// Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Set charset to UTF-8
 mysqli_set_charset($conn, "utf8");
 
 // Start session if not already started
@@ -20,14 +18,36 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Error reporting (disable in production)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Helper functions
 function sanitize($data) {
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
+}
+
+function isDarkModeEnabled($user_id) {
+    global $conn;
+    if (!$user_id) return false;
+    
+    $query = "SELECT dark_mode FROM users WHERE user_id = $user_id";
+    $result = mysqli_query($conn, $query);
+    
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        return (bool)$row['dark_mode'];
+    }
+    return false;
+}
+
+function toggleDarkMode($user_id) {
+    global $conn;
+    if (!$user_id) return false;
+    
+    $current = isDarkModeEnabled($user_id);
+    $new = $current ? 0 : 1;
+    
+    $query = "UPDATE users SET dark_mode = $new WHERE user_id = $user_id";
+    return mysqli_query($conn, $query);
 }
 
 function isLoggedIn() {

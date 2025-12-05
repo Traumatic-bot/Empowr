@@ -42,36 +42,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 require_once 'header.php';
 ?>
 <main>
-<div class="form">
-    <h1>Customer Login</h1>
-    
-    <?php if ($error): ?>
+    <div class="form">
+        <h1>Customer Login</h1>
+
+        <?php if ($error): ?>
         <div style="color: red; margin-bottom: 15px;"><?php echo $error; ?></div>
-    <?php endif; ?>
+        <?php endif; ?>
 
-    <form method="post" action="">
-        <div class="input-container">
-            <input placeholder="Email Address" class="input-field" type="email" name="email" required>
-            <label class="input-label">
-                Email Address<span class="validity"></span>
-            </label>
-            <span class="input-highlight"></span>
-        </div>
+        <form method="post" action="">
+            <div class="input-container">
+                <input placeholder="Email Address" class="input-field" type="email" name="email" required>
+                <label class="input-label">
+                    Email Address<span class="validity"></span>
+                </label>
+                <span class="input-highlight"></span>
+            </div>
 
-        <div class="input-container">
-            <input placeholder="Password" class="input-field" type="password" name="password" required>
-            <label class="input-label">
-                Password<span class="validity"></span>
-            </label>
-            <span class="input-highlight" style="bottom: 21px;"></span>
-            <a href="./forgot_password.php" class="forgot-password">Forgotten password?</a>
-        </div>
+            <div class="input-container">
+                <input placeholder="Password" class="input-field" type="password" name="password" required>
+                <label class="input-label">
+                    Password<span class="validity"></span>
+                </label>
+                <span class="input-highlight" style="bottom: 21px;"></span>
+                <a href="./forgot_password.php" class="forgot-password">Forgotten password?</a>
+            </div>
 
-        <button class="submit" type="submit">Sign In</button>
+            <button class="submit" type="submit">Sign In</button>
 
-        <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
-    </form>
-</div>
+            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+        </form>
+    </div>
 </main>
 
 <?php require_once 'footer.php'; ?>

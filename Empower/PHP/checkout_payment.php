@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_begin_transaction($conn);
     
     try {
-        // 1. Create order
         $shipping_address = "$address1\n$address2\n$city\n$postcode";
         $orderQuery = "INSERT INTO orders (user_id, total_amount, shipping_address, payment_method) 
                       VALUES ($user_id, $total, '$shipping_address', 'Credit Card')";
@@ -49,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $order_id = mysqli_insert_id($conn);
         
-        // 2. Add order items and update stock
         $itemsQuery = "SELECT c.*, p.product_name, p.price, p.stock_quantity 
                       FROM cart c 
                       JOIN products p ON c.product_id = p.product_id 
@@ -59,20 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($item = mysqli_fetch_assoc($itemsResult)) {
             $itemTotal = $item['price'] * $item['quantity'];
             
-            // Check stock
             if ($item['quantity'] > $item['stock_quantity']) {
                 throw new Exception('Insufficient stock for ' . $item['product_name']);
             }
-            
-            // Insert order item
+
             $orderItemQuery = "INSERT INTO order_items (order_id, product_id, quantity, unit_price, total_price) 
                               VALUES ($order_id, {$item['product_id']}, {$item['quantity']}, {$item['price']}, $itemTotal)";
             
             if (!mysqli_query($conn, $orderItemQuery)) {
                 throw new Exception('Failed to add order item');
             }
-            
-            // Update stock
+
             $updateStockQuery = "UPDATE products SET stock_quantity = stock_quantity - {$item['quantity']} 
                                 WHERE product_id = {$item['product_id']}";
             
@@ -81,18 +76,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         
-        // 3. Clear cart
         $clearCartQuery = "DELETE FROM cart WHERE user_id = $user_id";
         mysqli_query($conn, $clearCartQuery);
-        
-        // Commit transaction
+
         mysqli_commit($conn);
         
         header("Location: /checkout_complete.php?order_id=$order_id");
         exit();
         
     } catch (Exception $e) {
-        // Rollback on error
         mysqli_rollback($conn);
         $error = $e->getMessage();
     }
@@ -114,7 +106,6 @@ require_once 'header.php';
             </div>
 
             <form method="post" class="form" id="payment-form" style="text-align:left;">
-                <!-- Delivery address -->
                 <h3>Delivery address</h3>
 
                 <div class="input-container">
@@ -141,18 +132,19 @@ require_once 'header.php';
                     <span class="input-highlight"></span>
                 </div>
 
-                <!-- Payment details -->
                 <h3>Card details</h3>
 
                 <div class="input-container">
-                    <input class="input-field" type="text" name="card_name" 
-                           value="<?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?>" required>
+                    <input class="input-field" type="text" name="card_name"
+                        value="<?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?>"
+                        required>
                     <label class="input-label">Name on card</label>
                     <span class="input-highlight"></span>
                 </div>
 
                 <div class="input-container">
-                    <input class="input-field" type="text" name="card_number" maxlength="19" placeholder="Card number" required>
+                    <input class="input-field" type="text" name="card_number" maxlength="19" placeholder="Card number"
+                        required>
                     <label class="input-label">Card number</label>
                     <span class="input-highlight"></span>
                 </div>
