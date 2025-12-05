@@ -96,7 +96,7 @@ if ($cartResult === false) {
                     <span>£<?php echo number_format($subtotal + $shipping, 2); ?></span>
                 </div>
                 <div class="summary-row">
-                   <a href="checkout_payment.php" class="btn-primary">
+                   <a href="checkout_payment.php" class="btn-primary" style="width:80%;">
                     Checkout
                 </a>
                 </div>

@@ -45,6 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-header('Location: /empower/PHP/products.php');
+header('Location: /products.php');
 exit();
 ?>

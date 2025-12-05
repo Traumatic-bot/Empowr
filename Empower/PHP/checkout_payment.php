@@ -2,7 +2,7 @@
 require_once 'config.php';
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: /empower/PHP/login.php');
+    header('Location: /login.php');
     exit();
 }
 
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Commit transaction
         mysqli_commit($conn);
         
-        header("Location: /empower/PHP/checkout_complete.php?order_id=$order_id");
+        header("Location: /checkout_complete.php?order_id=$order_id");
         exit();
         
     } catch (Exception $e) {
