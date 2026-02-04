@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Wishlist | Empowr</title>
+
+  <!-- IMPORTANT: wishlist.html is inside /Empower/templates/, so go up one level -->
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body style="margin: 20px; font-family: Arial, sans-serif;">
+
+  <h1>My Wishlist</h1>
+  <p id="emptyMsg">Your wishlist is empty.</p>
+
+  <div id="wishlistList"></div>
+
+  <!-- Load wishlist logic (same folder as this file) -->
+  <script src="wishlist.js"></script>
+
+  <script>
+    function renderWishlist() {
+      const list = document.getElementById("wishlistList");
+      const empty = document.getElementById("emptyMsg");
+      const items = getWishlist();
+
+      list.innerHTML = "";
+
+      if (!items.length) {
+        empty.style.display = "block";
+        return;
+      }
+      empty.style.display = "none";
+
+      items.forEach(item => {
+        const row = document.createElement("div");
+        row.style.display = "flex";
+        row.style.justifyContent = "space-between";
+        row.style.alignItems = "center";
+        row.style.border = "1px solid #ddd";
+        row.style.padding = "10px";
+        row.style.marginBottom = "10px";
+        row.style.borderRadius = "10px";
+
+        row.innerHTML = `
+          <div>
+            <strong>${item.name}</strong><br>
+            <small>${item.price || ""}</small>
+          </div>
+          <button class="remove-btn" data-id="${item.id}" style="cursor:pointer;">
+            Remove
+          </button>
+        `;
+
+        list.appendChild(row);
+      });
+    }
+
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".remove-btn");
+      if (!btn) return;
+      removeFromWishlist(btn.dataset.id);
+      renderWishlist();
+    });
+
+    document.addEventListener("DOMContentLoaded", renderWishlist);
+  </script>
+</body>
+</html>
