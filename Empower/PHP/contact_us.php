@@ -157,7 +157,7 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
                     <ul class="contact-info-container">
                         <li><i class="fas fa-map-marker-alt"></i> 123 Aston Lane, City Centre, CV1 1JB</li>
                         <li><i class="fas fa-phone-alt"></i> 01234 567890</li>
-                        <li><i class="fas fa-envelope"></i> <a href="mailto:empowr@gmail.com. MOCK">empowr@gmail.com.
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:support@empowrtech.com MOCK">support@empowrtech.com
                             </a></li>
                         <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
                         <li><i class="fas fa-clock"></i> Saturday: By Appointment</li>
