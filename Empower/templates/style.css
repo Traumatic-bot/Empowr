@@ -394,3 +394,33 @@ main {
 .logo-image:hover {
     opacity: 0.9;
 }
+
+/* Skip to main content accessibility link */
+
+.skip-link {
+    position: absolute;
+    top: -50px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    z-index: 9999;
+    font-weight: 600;
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+/* Visible keyboard navigation */
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid #1a73e8;
+    outline-offset: 2px;
+}
