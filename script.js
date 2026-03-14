@@ -352,3 +352,35 @@ function debounce(func, wait) {
     timeout = setTimeout(later, wait);
   };
 }
+
+const cartToggleBtn = document.getElementById("openCart");
+const cartCloseBtn = document.getElementById("closeCart");
+const cartDropdown = document.getElementById("cartDropdown");
+
+if (cartToggleBtn && cartDropdown) {
+  cartToggleBtn.addEventListener("click", () => {
+    const isHidden = cartDropdown.hasAttribute("hidden");
+    if (isHidden) {
+      cartDropdown.removeAttribute("hidden");
+    } else {
+      cartDropdown.setAttribute("hidden", "");
+    }
+  });
+}
+
+if (cartCloseBtn && cartDropdown) {
+  cartCloseBtn.addEventListener("click", () => {
+    cartDropdown.setAttribute("hidden", "");
+  });
+}
+
+document.addEventListener("click", (event) => {
+  if (!cartDropdown || !cartToggleBtn) return;
+
+  const clickedInsideDropdown = cartDropdown.contains(event.target);
+  const clickedCartButton = cartToggleBtn.contains(event.target);
+
+  if (!clickedInsideDropdown && !clickedCartButton) {
+    cartDropdown.setAttribute("hidden", "");
+  }
+});

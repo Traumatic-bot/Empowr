@@ -89,8 +89,8 @@
                 width: 100%; z-index: 10; background: #333; display:none;">
     </div>
 
-    <div id="popup" style="display:none;">
-        <div class="header" style="background: #ebecec; display: flex; height: 80px; align-items:center; padding:0 15px;">
+    <div id="popup" class="basket-popup" style="display:none;">
+        <div class="header basket-popup-header" style="background: #ebecec; display: flex; height: 80px; align-items:center; padding:0 15px;">
             <div style="flex:1;">Basket</div>
             <span class="btn" id="closePopup">
                 <i style="display: block;
@@ -104,11 +104,11 @@
             </span>
         </div>
 
-        <div class="productList"
+        <div class="productList basket-product-list"
              style="min-height: 132px; max-height: 300px; overflow-y: auto;
                     padding: 0 10px 0 16px; color: #707070; margin-top: 8px; margin-right: 14px;">
             <ul style="margin:0; padding:0; list-style:none;">
-                <li class="basketEmpty" style="text-align: center;">
+                <li class="basketEmpty basket-empty" style="text-align: center;">
                     <i style="font-weight: normal; padding-top: 60px; display: block; color: #cccccc;">
                         You have no products in your basket
                     </i>
@@ -116,7 +116,7 @@
             </ul>
         </div>
 
-        <div class="subTotal" style="margin: 18px 15px 0; border-top: 4px solid #e2e2e2;">
+        <div class="subTotal basket-summary" style="margin: 18px 15px 0; border-top: 4px solid #e2e2e2;">
             <ul style="padding: 0; margin: 5px; list-style:none;">
                 <li style="display: table; width: 100%; border-bottom: 1px solid #e2e2e2; height: 50px; text-align: left;">
                     <span class="title" style="width: 80%;  display: table-cell;">
@@ -150,8 +150,8 @@
             </ul>
         </div>
 
-        <div class="Total" style="height: 80px; overflow: hidden; margin: 0 15px;">
-            <a class="" href="#">CHECKOUT</a>
+        <div class="Total basket-checkout-area" style="height: 80px; overflow: hidden; margin: 0 15px;">
+            <a class="basket-checkout-btn" href="#">CHECKOUT</a>
         </div>
     </div>
 
