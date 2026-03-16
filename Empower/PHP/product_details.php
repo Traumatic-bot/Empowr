@@ -28,6 +28,11 @@ if (!$product) {
     require_once 'footer.php';
     exit;
 }
+
+// Determine final price (use discounted price if available)
+$finalPrice = !empty($product['discounted_price']) && $product['discounted_price'] < $product['price']
+    ? $product['discounted_price']
+    : $product['price'];
 ?>
 
 <main style="max-width:1000px;margin:40px auto;padding:20px;">
@@ -58,7 +63,12 @@ if (!$product) {
             </div>
 
             <div style="margin:15px 0;font-size:28px;font-weight:bold;color:#111;">
-                £<?php echo number_format($product['price'], 2); ?>
+                <?php if($product['discounted_price'] && $product['discounted_price'] < $product['price']): ?>
+                    <del style="font-size:20px;color:#777;">£<?php echo number_format($product['price'], 2); ?></del>
+                    <span style="color:#d00;"> £<?php echo number_format($product['discounted_price'], 2); ?></span>
+                <?php else: ?>
+                    £<?php echo number_format($product['price'], 2); ?>
+                <?php endif; ?>
             </div>
 
             <?php if(!empty($product['description'])): ?>
@@ -86,6 +96,7 @@ if (!$product) {
             <?php if(isLoggedIn() && $product['stock_quantity'] > 0): ?>
                 <form method="post" action="add_to_cart.php" style="display:flex;gap:10px;align-items:center;margin-bottom:20px;">
                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                    <input type="hidden" name="discounted_price" value="<?php echo $finalPrice; ?>">
 
                     <label style="font-size:14px;">
                         Qty:
