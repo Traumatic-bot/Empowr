@@ -7,9 +7,7 @@ require_once 'header.php';
 ?>
 <!-- required for boxes for text -->
 <style>
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
-}
+
 
 .hero-about {
     width: 100%;

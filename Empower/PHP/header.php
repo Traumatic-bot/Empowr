@@ -53,8 +53,8 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                 </form>
             </div>
 
-            <div class="header-links" style="width: 400px; display: flex; align-items: center; height: 50px;">
-                <div class="account-links" style="width: 180px;">
+            <div class="header-links" style="width: 550px; display: flex; align-items: center; height: 50px;">
+                <div class="account-links" style="width: 200px;">
                     <?php if (isLoggedIn()): ?>
                     <div href="#" style="padding-right:25px;">
                         <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
@@ -252,12 +252,13 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
         </script>
 
         <ul class="topnav">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="products.php">Products</a></li>
+            <li><a href="products.php?category=Cameras+and+Microphones">Cameras and Microphones</a></li>
+            <li><a href="products.php?category=Controllers">Controllers</a></li>
+            <li><a href="products.php?category=Desks+%26+Chairs">Desks & Chairs</a></li>
             <li><a href="products.php?category=Keyboards">Keyboards</a></li>
             <li><a href="products.php?category=Mice">Mice</a></li>
             <li><a href="products.php?category=Monitors">Monitors</a></li>
-            <li><a href="about_us.php">About us</a></li>
+            <li><a href="products.php?category=Printers">Printers</a></li>
         </ul>
 
         <script>

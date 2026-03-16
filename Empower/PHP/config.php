@@ -1,8 +1,8 @@
 <?php
 //conect to database
 $host = 'localhost';
-$username = 'cs2team6'; 
-$password = 'FCyDO3BMeFyeQqthl69HyXhut'; 
+$username = 'root'; //cs2team6
+$password = ''; //FCyDO3BMeFyeQqthl69HyXhut
 $database = 'cs2team6_db';
 
 $conn = mysqli_connect($host, $username, $password, $database);
