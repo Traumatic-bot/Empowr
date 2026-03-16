@@ -192,8 +192,27 @@ INSERT INTO `products` (`product_id`, `product_name`, `price`, `stock_quantity`,
 (12, 'Herman Miller Aeron Chair', '899.99', 500, 'Desks & Chairs', 'This chair was designed for the use of customers who suffer from extreme back pains, limited mobility, or poor posture. This chair comes fitted with adjustable back support to accommodate for users who are unable to sit properly, comes with breathable technology to accommodate users who sit for extended periods of time, and also reduces back strains through promoting healthy seating positions and long-term comfort.', 'https://ukstore.hermanmiller.com/cdn/shop/products/01-Herman_Miller-Aeron-Graphite-Standard_01a3c410-e443-4aae-a2d1-009f32cdabfd.jpg?height=1180&v=1665747538&width=960'),
 (13, 'Fully Adjustable Standing Desk', '276.99', 499, 'Desks & Chairs', 'This is a free-standing desk which is able to adjust to different heights to assist with comfortability for users who are in wheelchairs, suffer from chronic pains, or limited mobility. This desk comes equipped with electric height customisation through the use of simply clicking a button.', 'https://m.media-amazon.com/images/I/61G1jVwInTL._AC_UF894,1000_QL80_.jpg'),
 (14, 'Canon PowerShot SX740 HS', '499.99', 499, 'Cameras and Microphones', 'This camera is built to accommodate users who suffer from limited hand mobility, hand tremors, and weaker arms through the use of its weightless design and advanced stabilisation. The camera is lightweight which assists in keeping the camera stable, the camera is fitted with larger buttons making this accessible for users with limited vision, and is also fitted with state of the art image stabilisation technology which reduces the likelihood of images turning out blurry from movement while the picture/video is being taken.', 'https://m.media-amazon.com/images/I/61coV46OzML.jpg'),
-(15, 'GoPro Hero12', '217.99', 500, 'Cameras and Microphone', 'GoPro Hero12', 'https://static.gopro.com/assets/blta2b8522e5372af40/blt86b2d5c67d4f1ed5/64d0e286369276296caf7a71/02-pdp-h12b-gallery-1920.png');
-
+(15, 'GoPro Hero12', '217.99', 500, 'Cameras and Microphone', 'GoPro Hero12', 'https://static.gopro.com/assets/blta2b8522e5372af40/blt86b2d5c67d4f1ed5/64d0e286369276296caf7a71/02-pdp-h12b-gallery-1920.png'),
+(16, 'Shure MV7X XLR Dynamic Microphone', '199.99', 15, 'Microphones', 'Professional XLR dynamic microphone', 'https://m.media-amazon.com/images/I/712Xa1xLMIL._AC_SY879_.jpg'),
+(17, 'Shure BETA 58A Vocal Microphone', '179.99', 20, 'Microphones', 'Vocal microphone for live performances', 'https://m.media-amazon.com/images/I/71-RRWoERbL._AC_SY550_.jpg'),
+(18, 'Shure Super 55 Deluxe Vocal Microphone', '159.99', 18, 'Microphones', 'Vintage style vocal microphone', 'https://m.media-amazon.com/images/I/61w7BmiDcUL._AC_SY879_.jpg'),
+(19, 'BUERTT Xbox One Controller', '59.99', 25, 'Controllers', 'Official Xbox One controller by BUERTT', 'https://m.media-amazon.com/images/I/51vTx+sefrL._SX425_.jpg'),
+(20, 'GameSir G7 SE Wired Controller for Xbox', '49.99', 20, 'Controllers', 'Wired controller compatible with Xbox', 'https://m.media-amazon.com/images/I/51iXILIT27L._SX425_.jpg'),
+(21, 'NINIFEI For Xbox One Controller', '39.99', 22, 'Controllers', 'Third-party controller for Xbox One', 'https://m.media-amazon.com/images/I/51v0ZNhBo6L._SX425_.jpg'),
+(22, 'Lufeiya Gaming Desk with LED Lights and Storage Shelves', '299.99', 8, 'Desks & Chairs', 'Gaming desk with LED lights and shelves', 'https://m.media-amazon.com/images/I/71ujWChhVPL._AC_SX569_.jpg'),
+(23, 'Lufeiya Reversible Gaming Desk with LED Lights and Power Outlets', '349.99', 5, 'Desks & Chairs', 'Reversible desk with LED lights and outlets', 'https://m.media-amazon.com/images/I/71LU4nJD3rL._AC_SX569_.jpg'),
+(24, 'Lufeiya 47 inch Computer Desk with 4 Drawers', '279.99', 7, 'Desks & Chairs', '47 inch computer desk with 4 drawers', 'https://m.media-amazon.com/images/I/71nwBbod7uL._AC_SX569_.jpg'),
+(25, 'Epson EcoTank ET-2803', '299.99', 10, 'Printers', 'EcoTank printer with refillable ink', 'https://m.media-amazon.com/images/I/71DRljgLdvL._AC_SX425_.jpg'),
+(26, 'Epson Expression Home XP-4200', '149.99', 12, 'Printers', 'All-in-one color inkjet printer', 'https://m.media-amazon.com/images/I/71t9MdkSaML._AC_SX425_.jpg'),
+(27, 'Epson Workforce WF-2960', '199.99', 8, 'Printers', 'Wireless printer with scanning and copying', 'https://m.media-amazon.com/images/I/81FxNlcL57L._AC_SX425_.jpg'),
+(28, 'Dell 27 Plus Monitor - S2725HSM', '399.99', 7, 'Monitors', '27 inch monitor with high resolution', 'https://m.media-amazon.com/images/I/71P5Rv9+DwL._AC_SX425_.jpg'),
+(29, 'Dell S2425HS Monitor - 23.8 Inch', '249.99', 10, 'Monitors', '23.8 inch monitor with vibrant colors', 'https://m.media-amazon.com/images/I/710HmaQgX3L._AC_SY300_SX300_QL70_FMwebp_.jpg'),
+(30, 'Dell E2420H 23.8 Inch', '199.99', 12, 'Monitors', 'Business monitor 23.8 inch', 'https://m.media-amazon.com/images/I/71MB2+sAHtL._AC_SX425_.jpg'),
+(31, 'Dell Mobile Wireless Mouse - MS3320W', '49.99', 20, 'Mice', 'Wireless mobile mouse', 'https://m.media-amazon.com/images/I/61yhJuYUoEL._AC_SX425_.jpg'),
+(32, 'Dell MS700 Bluetooth Travel Mouse', '39.99', 15, 'Mice', 'Bluetooth travel mouse', 'https://m.media-amazon.com/images/I/51zGjgek1WL._AC_SX425_.jpg'),
+(33, 'Logitech MX Keys S Wireless Keyboard', '129.99', 15, 'Keyboards', 'Wireless keyboard with perfect typing experience', 'https://m.media-amazon.com/images/I/71G7uXAb9BL._AC_SX425_.jpg'),
+(34, 'Logitech Wave Keys Wireless Ergonomic Keyboard with Cushioned Palm Rest', '149.99', 12, 'Keyboards', 'Ergonomic wireless keyboard', 'https://m.media-amazon.com/images/I/71Yp7pxBFOL._AC_SX425_.jpg'),
+(35, 'Logitech MX Mechanical Wireless Illuminated Performance Keyboard', '179.99', 10, 'Keyboards', 'Mechanical wireless keyboard with illumination', 'https://m.media-amazon.com/images/I/61++ok6AqtL._AC_SY300_SX300_QL70_FMwebp_.jpg');
 -- --------------------------------------------------------
 
 --
@@ -356,6 +375,20 @@ ALTER TABLE `order_items`
 ALTER TABLE `user_addresses`
   ADD CONSTRAINT `user_addresses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 COMMIT;
+
+-- Add discount column to products
+ALTER TABLE `products`
+ADD COLUMN `discount_percent` DECIMAL(5,2) NOT NULL DEFAULT 0 AFTER `price`;
+
+-- Optional: add discounted price column to order_items
+ALTER TABLE `order_items`
+ADD COLUMN `discounted_price` DECIMAL(10,2) NULL AFTER `total_price`;
+
+-- Example: update discounted_price for existing order_items
+UPDATE `order_items` oi
+JOIN `products` p ON oi.product_id = p.product_id
+SET oi.discounted_price = ROUND(oi.total_price * (1 - p.discount_percent / 100), 2);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
