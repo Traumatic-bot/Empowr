@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-
+// Get form data safely
 $name = isset($_POST['contact-name']) ? sanitize($_POST['contact-name']) : '';
 $email = isset($_POST['contact-email']) ? sanitize($_POST['contact-email']) : '';
 $subject = isset($_POST['contact-subject']) ? sanitize($_POST['contact-subject']) : '';
 $message = isset($_POST['contact-message']) ? sanitize($_POST['contact-message']) : '';
 
-
 $errors = [];
 
+// Validation
 if (empty($name)) {
     $errors[] = 'Full name is required';
 }
@@ -37,7 +37,7 @@ if (empty($message)) {
     $errors[] = 'Message is required';
 }
 
-
+// If validation fails
 if (!empty($errors)) {
     $_SESSION['contact_errors'] = $errors;
     $_SESSION['contact_form_data'] = [
@@ -50,9 +50,23 @@ if (!empty($errors)) {
     exit;
 }
 
-// Email config
-$to = '240111586@aston.ac.uk'; 
+/* ===============================
+   EMAIL CONFIGURATION
+   =============================== */
+
+// List of emails that will receive the contact message
+$emails = [
+    '240111586@aston.ac.uk',
+    'support@empowrtech.com',
+    'admin@empowrtech.com'
+];
+
+// Convert array to comma-separated string
+$to = implode(",", $emails);
+
 $email_subject = "Contact Form: $subject";
+
+// Email HTML Body
 $email_body = "
 <html>
 <head>
@@ -68,44 +82,51 @@ $email_body = "
     </style>
 </head>
 <body>
-    <div class='container'>
-        <div class='header'>
-            <h2>New Contact Form Submission</h2>
-        </div>
-        
-        <div class='field'>
-            <div class='label'>From:</div>
-            <div class='value'>$name ($email)</div>
-        </div>
-        
-        <div class='field'>
-            <div class='label'>Subject:</div>
-            <div class='value'>$subject</div>
-        </div>
-        
-        <div class='field'>
-            <div class='label'>Message:</div>
-            <div class='value' style='white-space: pre-wrap; padding: 10px; background-color: #f5f5f5; border-radius: 3px;'>$message</div>
-        </div>
-        
-        <div class='field'>
-            <div class='label'>Submitted:</div>
-            <div class='value'>" . date('F j, Y, g:i a') . "</div>
-        </div>
-        
-        <div class='field'>
-            <div class='label'>IP Address:</div>
-            <div class='value'>" . $_SERVER['REMOTE_ADDR'] . "</div>
-        </div>
-        
-        <div class='footer'>
-            This email was sent from the contact form on your website.
-        </div>
-    </div>
+
+<div class='container'>
+
+<div class='header'>
+<h2>New Contact Form Submission</h2>
+</div>
+
+<div class='field'>
+<div class='label'>From:</div>
+<div class='value'>$name ($email)</div>
+</div>
+
+<div class='field'>
+<div class='label'>Subject:</div>
+<div class='value'>$subject</div>
+</div>
+
+<div class='field'>
+<div class='label'>Message:</div>
+<div class='value' style='white-space: pre-wrap; padding: 10px; background-color: #f5f5f5; border-radius: 3px;'>$message</div>
+</div>
+
+<div class='field'>
+<div class='label'>Submitted:</div>
+<div class='value'>" . date('F j, Y, g:i a') . "</div>
+</div>
+
+<div class='field'>
+<div class='label'>IP Address:</div>
+<div class='value'>" . $_SERVER['REMOTE_ADDR'] . "</div>
+</div>
+
+<div class='footer'>
+This email was sent from the contact form on your website.
+</div>
+
+</div>
+
 </body>
 </html>
 ";
 
+/* ===============================
+   EMAIL HEADERS
+   =============================== */
 
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -113,16 +134,28 @@ $headers .= "From: $name <$email>" . "\r\n";
 $headers .= "Reply-To: $email" . "\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
+/* ===============================
+   SEND EMAIL
+   =============================== */
+
 $mail_sent = mail($to, $email_subject, $email_body, $headers);
 
+/* ===============================
+   SUCCESS / ERROR HANDLING
+   =============================== */
+
 if ($mail_sent) {
+
     $_SESSION['contact_success'] = 'Thank you for your message! We will get back to you soon.';
 
     if (isset($_SESSION['contact_form_data'])) {
         unset($_SESSION['contact_form_data']);
     }
+
 } else {
+
     $_SESSION['contact_error'] = 'Sorry, there was an error sending your message. Please try again later.';
+
     $_SESSION['contact_form_data'] = [
         'name' => $name,
         'email' => $email,
