@@ -646,10 +646,11 @@ main {
 
 /* Account Dashboard Styles */
 .account-wrapper {
-    display: flex;
-    max-width: 1200px;
-    margin: 40px auto;
+    max-width: none;
+    width: 100%;
+    margin: 40px 0;
     padding: 0 20px;
+    display: flex;
 }
 
 .account-sidebar {
@@ -717,7 +718,7 @@ main {
     background: white;
     border-radius: 8px;
     padding: 30px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Dashboard specific */
@@ -921,20 +922,35 @@ main {
 }
 
 .order-status {
-    padding: 5px 10px;
-    border-radius: 4px;
-    font-size: 0.9em;
-    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.85em;
+    font-weight: 600;
+}
+
+.status-processing {
+    background: #e0e0e0;
+    color: #555;
+}
+
+.status-packed {
+    background: #d6e4ff;
+    color: #003a8c;
+}
+
+.status-transit {
+    background: #bae7ff;
+    color: #0050b3;
+}
+
+.status-out {
+    background: #ffe7ba;
+    color: #ad6800;
 }
 
 .status-delivered {
     background: #d4edda;
     color: #155724;
-}
-
-.status-processing {
-    background: #fff3cd;
-    color: #856404;
 }
 
 .view-order {
@@ -1046,14 +1062,14 @@ main {
     align-items: center;
 }
 
-.contact-details-list li i { 
+.contact-details-list li i {
     color: #111111;
     margin-right: 12px;
     width: 20px;
     text-align: center;
 }
 
-.contact-details-list li a { 
+.contact-details-list li a {
     color: #111111;
     text-decoration: none;
 }
@@ -1171,12 +1187,193 @@ main {
     }
 }
 
+.order-details-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.order-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+}
+
+.order-detail-label {
+    font-size: 12px;
+    color: #777;
+}
+
+.order-detail-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+
+.order-tracking-section,
+.order-items-section,
+.order-extra-details,
+.order-address-details {
+    margin-top: 30px;
+    padding: 24px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.tracking-progress {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+.tracking-progress::before {
+    content: "";
+    position: absolute;
+    top: 52px;
+    left: 10%;
+    width: 80%;
+    height: 4px;
+    background: #d9d9d9;
+    border-radius: 999px;
+}
+
+.tracking-progress-bar {
+    position: absolute;
+    top: 52px;
+    left: 10%;
+    height: 4px;
+    background: #e6d96a;
+    border-radius: 999px;
+    z-index: 1;
+}
+
+.tracking-step {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    text-align: center;
+}
+
+.tracking-icon {
+    margin-bottom: 14px;
+}
+
+.tracking-dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 auto 12px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #d9d9d9;
+}
+
+.tracking-dot.is-active {
+    background: #e6d96a;
+    box-shadow: 0 0 0 2px #e6d96a;
+}
+
+.tracking-label {
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+.order-items-list {
+    margin-top: 20px;
+}
+
+.order-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+}
+
+.order-item-image {
+    flex-shrink: 0;
+}
+
+.order-item-info {
+    flex: 1;
+    text-align: left;
+}
+
+.order-item-qty,
+.order-item-total {
+    min-width: 100px;
+    text-align: center;
+}
+
+.order-bottom-sections {
+    display: flex;
+    gap: 30px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.order-extra-details,
+.order-address-details {
+    flex: 1;
+}
+
+.order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.order-summary-row.total {
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.order-address-details h4 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.address-block h5 {
+    text-align: center;
+    margin: 0 0 12px 0;
+}
+
+.address-block + .address-block {
+    margin-top: 24px;
+}
+
+.address-text {
+    text-align: left;
+    line-height: 1.6;
+}
 
 
 /*dark mode switing feature*/
-body, header, .form, .product-card, .filter-panel, footer,
-.account-sidebar, .account-main, .checkout-items, .checkout-summary,
-.section-modern, .value-card, #popup, .stat-card, .address-card {
+body,
+header,
+.form,
+.product-card,
+.filter-panel,
+footer,
+.account-sidebar,
+.account-main,
+.checkout-items,
+.checkout-summary,
+.section-modern,
+.value-card,
+#popup,
+.stat-card,
+.address-card {
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 

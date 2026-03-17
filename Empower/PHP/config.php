@@ -21,40 +21,45 @@ if (session_status() == PHP_SESSION_NONE) {
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-function sanitize($data) {
+function sanitize($data)
+{
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
 }
 
-function isDarkModeEnabled($user_id) {
+function isDarkModeEnabled($user_id)
+{
     global $conn;
     if (!$user_id) return false;
-    
+
     $query = "SELECT dark_mode FROM users WHERE user_id = $user_id";
     $result = mysqli_query($conn, $query);
-    
+
     if ($result && $row = mysqli_fetch_assoc($result)) {
         return (bool)$row['dark_mode'];
     }
     return false;
 }
 
-function toggleDarkMode($user_id) {
+function toggleDarkMode($user_id)
+{
     global $conn;
     if (!$user_id) return false;
-    
+
     $current = isDarkModeEnabled($user_id);
     $new = $current ? 0 : 1;
-    
+
     $query = "UPDATE users SET dark_mode = $new WHERE user_id = $user_id";
     return mysqli_query($conn, $query);
 }
 
-function isLoggedIn() {
+function isLoggedIn()
+{
     return isset($_SESSION['user_id']);
 }
 
-function getUserInfo() {
+function getUserInfo()
+{
     if (isLoggedIn()) {
         return [
             'user_id' => $_SESSION['user_id'],
@@ -66,38 +71,62 @@ function getUserInfo() {
     return null;
 }
 
-function calculateCartTotal($user_id) {
+function calculateCartTotal($user_id)
+{
     global $conn;
     $total = 0;
-    
+
     if ($user_id) {
         $query = "SELECT SUM(p.price * c.quantity) as total 
                   FROM cart c 
                   JOIN products p ON c.product_id = p.product_id 
                   WHERE c.user_id = $user_id";
         $result = mysqli_query($conn, $query);
-        
+
         if ($result && $row = mysqli_fetch_assoc($result)) {
             $total = $row['total'] ?: 0;
         }
     }
-    
+
     return number_format($total, 2);
 }
 
-function getCartCount($user_id) {
+function getCartCount($user_id)
+{
     global $conn;
     $count = 0;
-    
+
     if ($user_id) {
         $query = "SELECT SUM(quantity) as count FROM cart WHERE user_id = $user_id";
         $result = mysqli_query($conn, $query);
-        
+
         if ($result && $row = mysqli_fetch_assoc($result)) {
             $count = $row['count'] ?: 0;
         }
     }
-    
+
     return $count;
 }
-?>
+
+function getDisplayOrderStatus($status, $orderDate)
+{
+    $display_status = $status;
+
+    if (strtolower($status) === 'processing') {
+        $days_since_order = floor((time() - strtotime($orderDate)) / 86400);
+
+        if ($days_since_order >= 4) {
+            $display_status = 'Delivered';
+        } elseif ($days_since_order >= 3) {
+            $display_status = 'Out for Delivery';
+        } elseif ($days_since_order >= 2) {
+            $display_status = 'In Transit';
+        } elseif ($days_since_order >= 1) {
+            $display_status = 'Order Packed';
+        } else {
+            $display_status = 'Processing';
+        }
+    }
+
+    return $display_status;
+}
