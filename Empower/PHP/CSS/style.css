@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Heavitas';
-    src: url('../Fonts/Heavitas.ttf') format('ttf');
+    src: url('../Fonts/Heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,6 +9,13 @@ body {
     background-color: #ffffff;
     text-align: center;
     padding: 10px;
+    font-family: 'Heavitas', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
     font-family: 'Heavitas', sans-serif;
 }
 
