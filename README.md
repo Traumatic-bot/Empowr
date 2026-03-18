@@ -101,14 +101,12 @@ header.php  → Shared header + basket logic
 ## Known Issues
 
 * Order status is currently auto-generated based on time (temporary solution)
-* No admin panel for manual order updates yet
 * Passwords are stored without hashing (for development purposes)
 
 ---
 
 ## Future Improvements
 
-* Admin dashboard for order management
 * Secure password hashing
 * Payment gateway integration
 * Email notifications for orders
