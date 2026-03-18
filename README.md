@@ -1,4 +1,5 @@
-![Empowr logo 3 colour invert](https://github.com/user-attachments/assets/2a460387-0d53-4cad-86ac-d9f77c882579)
+![Empowr logo 3 colour invert](https://github.com/user-attachments/assets/b0e98959-319b-4d09-8452-3db8a699405e)
+
 
 # Empowr
 
