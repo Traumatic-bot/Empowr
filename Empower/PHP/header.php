@@ -71,7 +71,7 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="logout.php" rel="nofollow" style="padding-left: 5px;">
+                                    <a href="index.php" rel="nofollow" style="padding-left: 5px;">
                                         Log Out
                                     </a>
                                 </li>

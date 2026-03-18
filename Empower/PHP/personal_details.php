@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
             </div>
             <?php endif; ?>
 
-            <form method="POST" action="personal_details.php" class="details-form">
+            <form method="POST" action="personal_details.php" class="details-form" style="display: inline-grid;width: 100%;">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <select id="title" name="title"
