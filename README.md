@@ -1,3 +1,5 @@
+![Empowr logo 3 colour invert](https://github.com/user-attachments/assets/2a460387-0d53-4cad-86ac-d9f77c882579)
+
 # Empowr
 
 Empowr is a full-stack e-commerce web application for tech accessories. It allows users to browse products, apply filters, manage a shopping cart, place orders, and track order progress.
