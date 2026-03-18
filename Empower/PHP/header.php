@@ -23,13 +23,13 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
     <?php if (isLoggedIn() && isDarkModeEnabled($_SESSION['user_id'])): ?>
-    <link rel="stylesheet" href="CSS/darkmode.css" id="darkmode-stylesheet">
+        <link rel="stylesheet" href="CSS/darkmode.css" id="darkmode-stylesheet">
     <?php endif; ?>
 
     <style>
-    body.dark-mode {
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+        body.dark-mode {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
     </style>
 </head>
 
@@ -56,49 +56,49 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
             <div class="header-links" style="width: 550px; display: flex; align-items: center; height: 50px;">
                 <div class="account-links" style="width: 200px;">
                     <?php if (isLoggedIn()): ?>
-                    <div href="#" style="padding-right:25px;">
-                        <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
-                            aria-pressed="false" style="display: flex;">
-                            <i></i> Welcome, <?php echo htmlspecialchars($userInfo['first_name']); ?>
-                        </span>
-                    </div>
-                    <div style="justify-content: center; font-size: x-small">
-                        <ul style="list-style-type:none; display: flex; padding:0; margin:0">
-                            <li>
-                                <a href="dashboard.php" rel="nofollow"
-                                    style="border-right: 1px solid #5d5c5c; padding-right: 5px;">
-                                    My Account
-                                </a>
-                            </li>
-                            <li>
-                                <a href="logout.php" rel="nofollow" style="padding-left: 5px;">
-                                    Log Out
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <div href="#" style="padding-right:25px;">
+                            <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
+                                aria-pressed="false" style="display: flex;">
+                                <i></i> Welcome, <?php echo htmlspecialchars($userInfo['first_name']); ?>
+                            </span>
+                        </div>
+                        <div style="justify-content: center; font-size: x-small">
+                            <ul style="list-style-type:none; display: flex; padding:0; margin:0">
+                                <li>
+                                    <a href="dashboard.php" rel="nofollow"
+                                        style="border-right: 1px solid #5d5c5c; padding-right: 5px;">
+                                        My Account
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="logout.php" rel="nofollow" style="padding-left: 5px;">
+                                        Log Out
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     <?php else: ?>
-                    <div href="#" style="padding-right:25px;">
-                        <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
-                            aria-pressed="false" style="display: flex;">
-                            <i></i> My Account
-                        </span>
-                    </div>
-                    <div style="justify-content: center; font-size: x-small">
-                        <ul style="list-style-type:none; display: flex; padding:0; margin:0">
-                            <li>
-                                <a href="login.php" rel="nofollow"
-                                    style="border-right: 1px solid #5d5c5c; padding-right: 5px;">
-                                    Log In
-                                </a>
-                            </li>
-                            <li>
-                                <a href="signup.php" rel="nofollow" style="padding-left: 5px;">
-                                    Create Account
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <div href="#" style="padding-right:25px;">
+                            <span data-action="myAccountMenu" role="button" aria-label="open my account menu"
+                                aria-pressed="false" style="display: flex;">
+                                <i></i> My Account
+                            </span>
+                        </div>
+                        <div style="justify-content: center; font-size: x-small">
+                            <ul style="list-style-type:none; display: flex; padding:0; margin:0">
+                                <li>
+                                    <a href="login.php" rel="nofollow"
+                                        style="border-right: 1px solid #5d5c5c; padding-right: 5px;">
+                                        Log In
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="signup.php" rel="nofollow" style="padding-left: 5px;">
+                                        Create Account
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     <?php endif; ?>
                 </div>
 
@@ -120,9 +120,9 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                         style="display: flex; align-items: center; text-decoration: none; color: inherit; padding: 5px 10px; border-radius: 20px; background: #f0f0f0;">
                         <span id="darkmode-icon" style="margin-right: 5px;">
                             <?php if (isDarkModeEnabled($_SESSION['user_id'] ?? 0)): ?>
-                            <img src="Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
+                                <img src="Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
                             <?php else: ?>
-                            <img src="Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
+                                <img src="Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
                             <?php endif; ?>
                         </span>
                         <span id="darkmode-text" style="font-size: 12px;">
@@ -158,35 +158,52 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
                     padding: 0 10px 0 16px; color: #707070; margin-top: 8px; margin-right: 14px;">
                 <ul style="margin:0; padding:0; list-style:none;" id="cartItemsList">
                     <?php if (isLoggedIn() && $cartCount > 0): ?>
-                    <?php
-                    $user_id = $_SESSION['user_id'];
-                    $cartQuery = "SELECT c.*, p.product_name, p.price 
-                                 FROM cart c 
-                                 JOIN products p ON c.product_id = p.product_id 
-                                 WHERE c.user_id = $user_id";
-                    $cartResult = mysqli_query($conn, $cartQuery);
-                    
-                    while ($cartItem = mysqli_fetch_assoc($cartResult)):
-                        $itemTotal = $cartItem['price'] * $cartItem['quantity'];
-                    ?>
-                    <li>
-                        <div
-                            style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee;">
-                            <div>
-                                <strong><?php echo htmlspecialchars($cartItem['product_name']); ?></strong><br>
-                                <small>Qty: <?php echo $cartItem['quantity']; ?> ×
-                                    £<?php echo number_format($cartItem['price'], 2); ?></small>
-                            </div>
-                            <div>£<?php echo number_format($itemTotal, 2); ?></div>
-                        </div>
-                    </li>
-                    <?php endwhile; ?>
+                        <?php
+                        $user_id = $_SESSION['user_id'];
+                        $cartQuery = "SELECT c.*, p.product_name, p.price, p.image_url
+              FROM cart c 
+              JOIN products p ON c.product_id = p.product_id 
+              WHERE c.user_id = $user_id";
+                        $cartResult = mysqli_query($conn, $cartQuery);
+
+                        while ($cartItem = mysqli_fetch_assoc($cartResult)):
+                            $itemTotal = $cartItem['price'] * $cartItem['quantity'];
+                        ?>
+                            <li>
+                                <div style="display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #eee; align-items: center;">
+
+                                    <!-- IMAGE -->
+                                    <div style="width: 60px; height: 60px; background:#f5f5f5; border-radius:6px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                                        <?php if (!empty($cartItem['image_url'])): ?>
+                                            <img src="<?php echo htmlspecialchars($cartItem['image_url']); ?>"
+                                                alt="<?php echo htmlspecialchars($cartItem['product_name']); ?>"
+                                                style="max-width:100%; max-height:100%; object-fit:contain;">
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <!-- INFO -->
+                                    <div style="flex:1;text-align: left;">
+                                        <strong><?php echo htmlspecialchars($cartItem['product_name']); ?></strong><br>
+                                        <small>
+                                            Qty: <?php echo $cartItem['quantity']; ?> ×
+                                            £<?php echo number_format($cartItem['price'], 2); ?>
+                                        </small>
+                                    </div>
+
+                                    <!-- TOTAL -->
+                                    <div>
+                                        £<?php echo number_format($itemTotal, 2); ?>
+                                    </div>
+
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
                     <?php else: ?>
-                    <li class="basketEmpty" style="text-align: center;">
-                        <i style="font-weight: normal; padding-top: 60px; display: block; color: #cccccc;">
-                            You have no products in your basket
-                        </i>
-                    </li>
+                        <li class="basketEmpty" style="text-align: center;">
+                            <i style="font-weight: normal; padding-top: 60px; display: block; color: #cccccc;">
+                                You have no products in your basket
+                            </i>
+                        </li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -232,23 +249,23 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
         </div>
 
         <script>
-        (function() {
-            const bg = document.getElementById("popupBackground");
-            const pop = document.getElementById("popup");
-            const basketLink = document.getElementById("basket-links");
-            const closePopup = document.getElementById("closePopup");
+            (function() {
+                const bg = document.getElementById("popupBackground");
+                const pop = document.getElementById("popup");
+                const basketLink = document.getElementById("basket-links");
+                const closePopup = document.getElementById("closePopup");
 
-            function toggleBasket(event) {
-                if (event) event.preventDefault();
-                const visible = bg.style.display === "block";
-                bg.style.display = visible ? "none" : "block";
-                pop.style.display = visible ? "none" : "block";
-            }
+                function toggleBasket(event) {
+                    if (event) event.preventDefault();
+                    const visible = bg.style.display === "block";
+                    bg.style.display = visible ? "none" : "block";
+                    pop.style.display = visible ? "none" : "block";
+                }
 
-            if (basketLink) basketLink.addEventListener("click", toggleBasket);
-            if (bg) bg.addEventListener("click", toggleBasket);
-            if (closePopup) closePopup.addEventListener("click", toggleBasket);
-        })();
+                if (basketLink) basketLink.addEventListener("click", toggleBasket);
+                if (bg) bg.addEventListener("click", toggleBasket);
+                if (closePopup) closePopup.addEventListener("click", toggleBasket);
+            })();
         </script>
 
         <ul class="topnav">
@@ -262,18 +279,18 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
         </ul>
 
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            <?php if (isLoggedIn() && isDarkModeEnabled($_SESSION['user_id'])): ?>
-            document.body.classList.add('dark-mode');
+            document.addEventListener('DOMContentLoaded', function() {
+                <?php if (isLoggedIn() && isDarkModeEnabled($_SESSION['user_id'])): ?>
+                    document.body.classList.add('dark-mode');
 
-            const toggleBtn = document.getElementById('darkmode-toggle-btn');
-            const toggleIcon = document.getElementById('darkmode-icon');
-            const toggleText = document.getElementById('darkmode-text');
+                    const toggleBtn = document.getElementById('darkmode-toggle-btn');
+                    const toggleIcon = document.getElementById('darkmode-icon');
+                    const toggleText = document.getElementById('darkmode-text');
 
-            if (toggleBtn) toggleBtn.title = 'Switch to Light Mode';
-            toggleIcon.innerHTML = '<img src="/Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">';
-            if (toggleText) toggleText.textContent = 'Light';
-            <?php endif; ?>
-        });
+                    if (toggleBtn) toggleBtn.title = 'Switch to Light Mode';
+                    toggleIcon.innerHTML = '<img src="/Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">';
+                    if (toggleText) toggleText.textContent = 'Light';
+                <?php endif; ?>
+            });
         </script>
     </header>

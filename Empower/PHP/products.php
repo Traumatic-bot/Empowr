@@ -235,7 +235,7 @@ $total_pages = ceil($total_products / $per_page);
                                     <form method="post" action="add_to_cart.php" style="flex:1;">
                                         <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
                                         <input type="hidden" name="quantity" value="1">
-                                        <input type="hidden" name="price" value="<?php echo $discounted_price; ?>">
+                                        <input type="hidden" name="discounted_price" value="<?php echo $discounted_price; ?>">
                                         <button type="submit" style="width:100%; padding:10px; background:#ffee32; border:none; border-radius:6px; color:#111; font-weight:bold;">
                                             Add to Basket
                                         </button>
