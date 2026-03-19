@@ -66,6 +66,15 @@ function isLoggedIn()
     return isset($_SESSION['user_id']);
 }
 
+function isStaff() {
+    if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == "staff") {
+        return true;
+    } else{
+        return false;
+    }
+    
+}
+
 function getUserInfo()
 {
     if (isLoggedIn()) {
