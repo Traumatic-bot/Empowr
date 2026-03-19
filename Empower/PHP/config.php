@@ -18,6 +18,14 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+if (isset($_SESSION['user_id']) && !isset($_SESSION['user_type'])) {
+    $uid = (int)$_SESSION['user_id']; 
+    $result = mysqli_query($conn, "SELECT user_type FROM users WHERE user_id = $uid");
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        $_SESSION['user_type'] = $row['user_type'];
+    }
+}
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
