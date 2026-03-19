@@ -1,22 +1,15 @@
-@font-face {
-    font-family: 'Heavitas';
-    src: url('../Fonts/Heavitas.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body {
     background-color: #ffffff;
     text-align: center;
     padding: 10px;
-    font-family: 'Heavitas', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 button,
 input,
 select,
 textarea {
-    font-family: 'Heavitas', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 ul {
@@ -444,7 +437,7 @@ main {
     background: #ffffff;
     cursor: pointer;
     font-size: 13px;
-    font-family: 'Heavitas', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 .product-layout {
@@ -632,7 +625,7 @@ main {
     border: 2px solid transparent;
     padding: 12px 28px;
     font-size: 15px;
-    font-family: 'Heavitas', sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
     cursor: pointer;
 }
 

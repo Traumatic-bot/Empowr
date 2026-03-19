@@ -68,7 +68,7 @@ $discounted_price = $discount > 0 ? $price - ($price * $discount / 100) : $price
                     <span style="text-decoration:line-through;color:#777;font-size:20px;">
                         £<?php echo number_format($price, 2); ?>
                     </span>
-                    &nbsp;
+                       
                     <span style="color:#e53935;">
                         £<?php echo number_format($discounted_price, 2); ?>
                     </span>
