@@ -29,10 +29,10 @@ if (!$product) {
     exit;
 }
 
-// Determine final price (use discounted price if available)
-$finalPrice = !empty($product['discounted_price']) && $product['discounted_price'] < $product['price']
-    ? $product['discounted_price']
-    : $product['price'];
+// --- Discount calculation ---
+$discount = isset($product['discount_percent']) ? (float)$product['discount_percent'] : 0;
+$price = (float)$product['price'];
+$discounted_price = $discount > 0 ? $price - ($price * $discount / 100) : $price;
 ?>
 
 <main style="max-width:1000px;margin:40px auto;padding:20px;">
@@ -62,12 +62,21 @@ $finalPrice = !empty($product['discounted_price']) && $product['discounted_price
                 SKU: <?php echo htmlspecialchars($product['product_id']); ?>
             </div>
 
+            <!-- Price with discount -->
             <div style="margin:15px 0;font-size:28px;font-weight:bold;color:#111;">
-                <?php if($product['discounted_price'] && $product['discounted_price'] < $product['price']): ?>
-                    <del style="font-size:20px;color:#777;">£<?php echo number_format($product['price'], 2); ?></del>
-                    <span style="color:#d00;"> £<?php echo number_format($product['discounted_price'], 2); ?></span>
+                <?php if($discount > 0): ?>
+                    <span style="text-decoration:line-through;color:#777;font-size:20px;">
+                        £<?php echo number_format($price, 2); ?>
+                    </span>
+                    &nbsp;
+                    <span style="color:#e53935;">
+                        £<?php echo number_format($discounted_price, 2); ?>
+                    </span>
+                    <span style="background:#e53935;color:#fff;padding:2px 6px;border-radius:6px;font-size:12px;margin-left:5px;">
+                        -<?php echo $discount; ?>%
+                    </span>
                 <?php else: ?>
-                    £<?php echo number_format($product['price'], 2); ?>
+                    £<?php echo number_format($price, 2); ?>
                 <?php endif; ?>
             </div>
 
@@ -96,7 +105,7 @@ $finalPrice = !empty($product['discounted_price']) && $product['discounted_price
             <?php if(isLoggedIn() && $product['stock_quantity'] > 0): ?>
                 <form method="post" action="add_to_cart.php" style="display:flex;gap:10px;align-items:center;margin-bottom:20px;">
                     <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                    <input type="hidden" name="discounted_price" value="<?php echo $finalPrice; ?>">
+                    <input type="hidden" name="discounted_price" value="<?php echo $discounted_price; ?>">
 
                     <label style="font-size:14px;">
                         Qty:
