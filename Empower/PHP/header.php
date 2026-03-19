@@ -268,14 +268,13 @@ if ($isLoggedIn && isset($_SESSION['user_id'])) {
             })();
         </script>
 
-        <ul class="topnav">
-            <li><a href="products.php?category=Cameras+and+Microphones">Cameras and Microphones</a></li>
-            <li><a href="products.php?category=Controllers">Controllers</a></li>
-            <li><a href="products.php?category=Desks+%26+Chairs">Desks & Chairs</a></li>
-            <li><a href="products.php?category=Keyboards">Keyboards</a></li>
-            <li><a href="products.php?category=Mice">Mice</a></li>
-            <li><a href="products.php?category=Monitors">Monitors</a></li>
-            <li><a href="products.php?category=Printers">Printers</a></li>
+        <ul class="topnav" id="topnav">
+            <li><a href="index.php">Home</a></li>
+            <li><a href="products.php">Products</a></li>
+            <li><a href="products.php">Easter Sale!</a></li>
+            <!-- <li><a href="products.php?category=deals">Easter Sale!</a></li> -->
+            <li><a href="about_us.php">About us</a></li>
+            <li><a href="contact_us.php">Contact us</a></li>
         </ul>
 
         <script>
