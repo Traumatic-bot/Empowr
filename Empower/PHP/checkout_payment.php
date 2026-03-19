@@ -111,14 +111,13 @@ require_once 'header.php';
         <section class="checkout-items">
             <h1>PAYMENT</h1>
 
-            <div style="text-align:left; max-width: 350px; background-color: #ffffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 1px 20px; border-radius: 20px; position: relative; margin: 60px auto;">
-                <p><strong>Logged in as</strong><br>
-                <div style="padding-left: 40px;">
-                    <?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?><br>
-                    <?php echo htmlspecialchars($_SESSION['email']); ?>
-                </div>
-                </p>
-            </div>
+            <div class="logged-in-box" style="text-align:left; max-width: 350px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); padding: 1px 20px; border-radius: 20px; position: relative; margin: 60px auto;">
+    <strong>Logged in as</strong><br>
+    <div style="padding-left: 40px;">
+        <?php echo htmlspecialchars($_SESSION['first_name'] . ' ' . $_SESSION['last_name']); ?><br>
+        <?php echo htmlspecialchars($_SESSION['email']); ?>
+    </div>
+</div>
 
             <form method="post" class="form" id="payment-form" style="text-align:left;">
 
