@@ -1,8 +1,7 @@
 <?php
-//conect to database
 $host = 'localhost';
-$username = 'root'; //cs2team6
-$password = ''; //FCyDO3BMeFyeQqthl69HyXhut
+$username = 'root';
+$password = '';
 $database = 'cs2team6_db';
 
 $conn = mysqli_connect($host, $username, $password, $database);
@@ -13,11 +12,12 @@ if (!$conn) {
 
 mysqli_set_charset($conn, "utf8");
 
-// Start session if not already started
+// SESSION
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// LOAD USER TYPE
 if (isset($_SESSION['user_id']) && !isset($_SESSION['user_type'])) {
     $uid = (int)$_SESSION['user_id']; 
     $result = mysqli_query($conn, "SELECT user_type FROM users WHERE user_id = $uid");
@@ -29,10 +29,40 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['user_type'])) {
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// SAFE OUTPUT
 function sanitize($data)
+{
+    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
+}
+
+// OPTIONAL SQL ESCAPE
+function escape($data)
 {
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
+}
+
+function isLoggedIn()
+{
+    return isset($_SESSION['user_id']);
+}
+
+function isStaff()
+{
+    return isset($_SESSION['user_type']) && $_SESSION['user_type'] == "staff";
+}
+
+function getUserInfo()
+{
+    if (isLoggedIn()) {
+        return [
+            'user_id' => $_SESSION['user_id'],
+            'first_name' => $_SESSION['first_name'],
+            'last_name' => $_SESSION['last_name'],
+            'email' => $_SESSION['email']
+        ];
+    }
+    return null;
 }
 
 function isDarkModeEnabled($user_id)
@@ -61,47 +91,28 @@ function toggleDarkMode($user_id)
     return mysqli_query($conn, $query);
 }
 
-function isLoggedIn()
-{
-    return isset($_SESSION['user_id']);
-}
-
-function isStaff() {
-    if (isset($_SESSION['user_type']) && $_SESSION['user_type'] == "staff") {
-        return true;
-    } else{
-        return false;
-    }
-    
-}
-
-function getUserInfo()
-{
-    if (isLoggedIn()) {
-        return [
-            'user_id' => $_SESSION['user_id'],
-            'first_name' => $_SESSION['first_name'],
-            'last_name' => $_SESSION['last_name'],
-            'email' => $_SESSION['email']
-        ];
-    }
-    return null;
-}
-
+// ✅ UPDATED WITH DISCOUNTS
 function calculateCartTotal($user_id)
 {
     global $conn;
     $total = 0;
 
     if ($user_id) {
-        $query = "SELECT SUM(p.price * c.quantity) as total 
+        $query = "SELECT c.quantity, p.price, p.discount_percent
                   FROM cart c 
                   JOIN products p ON c.product_id = p.product_id 
                   WHERE c.user_id = $user_id";
+
         $result = mysqli_query($conn, $query);
 
-        if ($result && $row = mysqli_fetch_assoc($result)) {
-            $total = $row['total'] ?: 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $price = $row['price'];
+
+            if (!empty($row['discount_percent']) && $row['discount_percent'] > 0) {
+                $price = $price - ($price * ($row['discount_percent'] / 100));
+            }
+
+            $total += $price * $row['quantity'];
         }
     }
 
@@ -132,17 +143,10 @@ function getDisplayOrderStatus($status, $orderDate)
     if (strtolower($status) === 'processing') {
         $days_since_order = floor((time() - strtotime($orderDate)) / 86400);
 
-        if ($days_since_order >= 4) {
-            $display_status = 'Delivered';
-        } elseif ($days_since_order >= 3) {
-            $display_status = 'Out for Delivery';
-        } elseif ($days_since_order >= 2) {
-            $display_status = 'In Transit';
-        } elseif ($days_since_order >= 1) {
-            $display_status = 'Order Packed';
-        } else {
-            $display_status = 'Processing';
-        }
+        if ($days_since_order >= 4) return 'Delivered';
+        if ($days_since_order >= 3) return 'Out for Delivery';
+        if ($days_since_order >= 2) return 'In Transit';
+        if ($days_since_order >= 1) return 'Order Packed';
     }
 
     return $display_status;
