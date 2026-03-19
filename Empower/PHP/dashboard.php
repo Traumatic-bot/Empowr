@@ -7,6 +7,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isStaff()) {
+    header('Location: /admin_dashboard.php');
+    exit();
+}
+
 $pageTitle = 'My Account';
 require_once 'header.php';
 $user_id = $_SESSION['user_id'];
