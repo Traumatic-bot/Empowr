@@ -111,20 +111,20 @@ body {
             <h2>What Data We Collect and Why</h2>
             <p>We only collect the personal data we need. Here is an overview of when and why we collect it:</p>
 
-            <p><b>Creating an account</b> — When you register, we collect your name, email address, and password (stored securely using one-way hashing — we cannot read it in plain text). Your account gives you access to Order History and Saved Baskets.</p>
+            <p><b>Creating an account</b> - When you register, we collect your name, email address, and password (stored securely using one-way hashing - we cannot read it in plain text). Your account gives you access to Order History and Saved Baskets.</p>
 
-            <p><b>Placing an order</b> — We collect your name, delivery address, contact details, and payment information. Your delivery details are shared with your chosen courier (e.g. DPD, UPS). Payment details are handled securely by our payment provider (Braintree / PayPal) and we only store your card number in a masked format in line with PCI standards. We will email you with order updates and may send SMS messages if you provide your mobile number.</p>
+            <p><b>Placing an order</b> - We collect your name, delivery address, contact details, and payment information. Your delivery details are shared with your chosen courier (e.g. DPD, UPS). Payment details are handled securely by our payment provider (Braintree / PayPal) and we only store your card number in a masked format in line with PCI standards. We will email you with order updates and may send SMS messages if you provide your mobile number.</p>
 
-            <p><b>Contacting us</b> — When you get in touch, we process the details you share so our team can assist you. We use Zendesk Chat for live chat support.</p>
+            <p><b>Contacting us</b> - When you get in touch, we process the details you share so our team can assist you. We use Zendesk Chat for live chat support.</p>
 
-            <p><b>Browsing our website</b> — We collect standard technical data such as your IP address and browsing behaviour to keep the site secure and improve your experience. We use Cloudflare to protect against cyber-attacks, and may use tools such as Webtrends and ContentSquare (with your consent) to analyse how the site is used.</p>
+            <p><b>Browsing our website</b> - We collect standard technical data such as your IP address and browsing behaviour to keep the site secure and improve your experience. We use Cloudflare to protect against cyber-attacks, and may use tools such as Webtrends and ContentSquare (with your consent) to analyse how the site is used.</p>
 
-            <p><b>Reviews</b> — Our reviews feature is provided by Bazaarvoice, who carry out quality checks before publishing your review.</p>
+            <p><b>Reviews</b> - Our reviews feature is provided by Bazaarvoice, who carry out quality checks before publishing your review.</p>
 
-            <p><b>Competitions</b> — Competitions are managed via Gleam. Entry data is used only to run the competition and produce anonymised statistics. Your consent is requested at the point of entry.</p>
+            <p><b>Competitions</b> - Competitions are managed via Gleam. Entry data is used only to run the competition and produce anonymised statistics. Your consent is requested at the point of entry.</p>
 
             <h2>A Note on Assistive Technology</h2>
-            <p>We do not require you to share any health or disability information to shop with us. Any product guidance we provide is general and does not constitute medical or clinical advice — please speak to a qualified professional if you need an assessment. If you do choose to share sensitive information with our support team, we handle it with extra care.</p>
+            <p>We do not require you to share any health or disability information to shop with us. Any product guidance we provide is general and does not constitute medical or clinical advice - please speak to a qualified professional if you need an assessment. If you do choose to share sensitive information with our support team, we handle it with extra care.</p>
 
             <h2>Marketing Emails</h2>
             <p>We send promotional emails to customers who have consented, and to existing customers who have not opted out. You can unsubscribe at any time by:</p>
@@ -142,17 +142,17 @@ body {
             <h2>Lawful Basis for Processing</h2>
             <p>We process your data under the following lawful bases:</p>
             <ul>
-                <li><b>Contractual performance</b> — to fulfil your order and our obligations to you</li>
-                <li><b>Legal obligation</b> — where required by law (e.g. tax records)</li>
-                <li><b>Legitimate interests</b> — to improve our website, prevent fraud, and market our products to customers</li>
-                <li><b>Consent</b> — for advertising cookies, session recording, and competition entries. You may withdraw consent at any time.</li>
+                <li><b>Contractual performance</b> - to fulfil your order and our obligations to you</li>
+                <li><b>Legal obligation</b> - where required by law (e.g. tax records)</li>
+                <li><b>Legitimate interests</b> - to improve our website, prevent fraud, and market our products to customers</li>
+                <li><b>Consent</b> - for advertising cookies, session recording, and competition entries. You may withdraw consent at any time.</li>
             </ul>
 
             <h2>Automated Decision Making</h2>
             <p>We may use automated tools to assess orders based on factors such as order history or fraud indicators. If you believe a decision has been made in error, you can contact us to request a manual review.</p>
 
             <h2>Data Retention</h2>
-            <p>We keep your data only for as long as necessary — for example, to meet accounting or warranty obligations. When data is no longer needed, it is securely deleted or permanently anonymised.</p>
+            <p>We keep your data only for as long as necessary - for example, to meet accounting or warranty obligations. When data is no longer needed, it is securely deleted or permanently anonymised.</p>
 
             <h2>Data Storage and Transfers</h2>
             <p>Your data is stored on secure servers. Some third-party processors may store data outside the UK or EEA (e.g. US-based cloud services). We ensure appropriate safeguards are in place, such as standard contractual clauses, before any such transfer.</p>
@@ -178,7 +178,7 @@ body {
 
             <h2>Right to Complain</h2>
             <p>If you are unhappy with how we handle your personal data, you can lodge a complaint with the UK's supervisory authority:</p>
-            <p><b>Information Commissioner's Office (ICO)</b> — <a href="https://ico.org.uk/" target="_blank">ico.org.uk</a></p>
+            <p><b>Information Commissioner's Office (ICO)</b> - <a href="https://ico.org.uk/" target="_blank">ico.org.uk</a></p>
 
         </div>
     </div>

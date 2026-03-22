@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php';
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -12,22 +11,18 @@ require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
 
-// Get user details from database
 $userQuery = "SELECT title, first_name, last_name, email, phone FROM users WHERE user_id = $user_id";
 $userResult = mysqli_query($conn, $userQuery);
 $userData = mysqli_fetch_assoc($userResult);
 
-// Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
     $title = sanitize($_POST['title']);
     $first_name = sanitize($_POST['first_name']);
     $last_name = sanitize($_POST['last_name']);
     $phone = sanitize($_POST['phone']);
     
-    // Check if email is being changed
     $email = sanitize($_POST['email']);
     if ($email !== $_SESSION['email']) {
-        // Check if new email already exists
         $emailCheckQuery = "SELECT user_id FROM users WHERE email = '$email' AND user_id != $user_id";
         $emailCheckResult = mysqli_query($conn, $emailCheckQuery);
         
@@ -44,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                            WHERE user_id = $user_id";
             
             if (mysqli_query($conn, $updateQuery)) {
-                // Update session variables
                 $_SESSION['first_name'] = $first_name;
                 $_SESSION['last_name'] = $last_name;
                 $_SESSION['email'] = $email;
@@ -52,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                 $message = "Personal details updated successfully!";
                 $messageType = "success";
                 
-                // Refresh user data
                 $userResult = mysqli_query($conn, $userQuery);
                 $userData = mysqli_fetch_assoc($userResult);
             } else {
@@ -61,7 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
             }
         }
     } else {
-        // Email not changed, just update other fields
         $updateQuery = "UPDATE users SET 
                        title = '$title',
                        first_name = '$first_name',
@@ -70,14 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                        WHERE user_id = $user_id";
         
         if (mysqli_query($conn, $updateQuery)) {
-            // Update session variables
             $_SESSION['first_name'] = $first_name;
             $_SESSION['last_name'] = $last_name;
             
             $message = "Personal details updated successfully!";
             $messageType = "success";
             
-            // Refresh user data
             $userResult = mysqli_query($conn, $userQuery);
             $userData = mysqli_fetch_assoc($userResult);
         } else {
@@ -101,6 +91,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
             </div>
 
             <nav class="account-nav">
+                <?php if (isStaff()): ?>
+                <a href="admin_dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin_products.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Products</span>
+                </a>
+                <a href="admin_orders.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Orders</span>
+                </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+                <a href="admin_users.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Users</span>
+                </a>
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <?php endif; ?>
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
