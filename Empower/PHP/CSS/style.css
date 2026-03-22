@@ -2352,9 +2352,6 @@ ul.topnav li a:hover {
 .deals-banner h1 { margin: 0; font-size: 32px; font-weight: bold; color: #000; }
 .deals-banner p { color: #555; margin-top: 8px; }
 
-.deals-sort-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-.deals-sort-label { font-size: 15px; }
-.deals-sort-select { padding: 5px 10px; border-radius: 6px; }
 
 .deals-layout { grid-template-columns: 260px 1fr; gap: 25px; }
 
