@@ -50,26 +50,29 @@ require_once 'header.php';
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
                 <a href="admin_users.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
-                <p>------ Customer Dashboard------</p>
-                <nav class="account-nav">
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
                 </a>
-
                 <a href="personal_details.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Personal Details</span>
                 </a>
-
                 <a href="address_book.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Addresses</span>
                 </a>
+
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
@@ -124,7 +127,7 @@ require_once 'header.php';
                         <td><?php echo date('d M Y', strtotime($order['order_date'])); ?></td>
                         <td>&pound;<?php echo number_format($order['total_amount'], 2); ?></td>
                         <td><?php echo htmlspecialchars($order['status']); ?></td>
-                        <td><a href="admin_order_details.php?order_id=<?php echo $order['order_id']; ?>" class="view-order">View</a></td>
+                        <td><a href="admin_orders.php" class="view-order">View</a></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
