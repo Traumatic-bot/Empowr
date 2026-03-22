@@ -121,7 +121,9 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
                                 <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
                                 <select name="status" onchange="this.form.submit()" style="padding: 5px;">
                                     <option value="Processing" <?php echo $order['status'] == 'Processing' ? 'selected' : ''; ?>>Processing</option>
-                                    <option value="Shipped" <?php echo $order['status'] == 'Shipped' ? 'selected' : ''; ?>>Shipped</option>
+                                    <option value="Order Packed" <?php echo $order['status'] == 'Order Packed' ? 'selected' : ''; ?>>Order Packed</option>
+                                    <option value="In Transit" <?php echo $order['status'] == 'In Transit' ? 'selected' : ''; ?>>In Transit</option>
+                                    <option value="Out for Delivery" <?php echo $order['status'] == 'Out for Delivery' ? 'selected' : ''; ?>>Out for Delivery</option>
                                     <option value="Delivered" <?php echo $order['status'] == 'Delivered' ? 'selected' : ''; ?>>Delivered</option>
                                     <option value="Cancelled" <?php echo $order['status'] == 'Cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                                 </select>

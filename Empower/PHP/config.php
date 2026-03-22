@@ -148,6 +148,9 @@ function getCartCount($user_id) {
 }
 
 function getDisplayOrderStatus($status, $orderDate) {
+    $manual = ['Order Packed', 'In Transit', 'Out for Delivery', 'Delivered', 'Cancelled'];
+    if (in_array($status, $manual)) return $status;
+
     if (strtolower($status) === 'processing') {
         $days_since_order = floor((time() - strtotime($orderDate)) / 86400);
 
