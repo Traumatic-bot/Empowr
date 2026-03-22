@@ -14,6 +14,8 @@ $user_id = $_SESSION['user_id'];
 
 $order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;
 
+$userFilter = isStaff() ? '' : "AND o.user_id = $user_id";
+
 $query = "SELECT
             o.*,
             COALESCE(SUM(oi.quantity), 0) AS item_count,
@@ -21,7 +23,7 @@ $query = "SELECT
           FROM orders o
           LEFT JOIN order_items oi ON o.order_id = oi.order_id
           WHERE o.order_id = $order_id
-          AND o.user_id = $user_id
+          $userFilter
           GROUP BY o.order_id
           LIMIT 1";
 
@@ -279,7 +281,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                                         <div class="order-item-meta"><?php echo htmlspecialchars($item['description']); ?></div>
                                         <div class="order-item-meta">Unit price: £<?php echo number_format($item['unit_price'], 2); ?></div>
 
-                                        <?php if ($is_delivered): ?>
+                                        <?php if ($is_delivered && (!isStaff() || $order['user_id'] == $user_id)): ?>
                                             <div class="od-item-actions">
                                                 <?php if ($hasReturn): ?>
                                                     <span class="od-tag od-tag--return">Return Requested</span>
@@ -418,7 +420,7 @@ unset($_SESSION['success'], $_SESSION['error']);
                     </section>
                 </div>
 
-                <?php if ($is_delivered): ?>
+                <?php if ($is_delivered && (!isStaff() || $order['user_id'] == $user_id)): ?>
                 <section class="order-service-review">
                     <h4>Rate our Service</h4>
                     <p class="od-service-desc">How was your overall experience with this order?</p>
