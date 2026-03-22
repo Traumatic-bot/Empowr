@@ -114,9 +114,9 @@ $total_pages = ceil($total_products / $per_page);
     </section>
 
     <div class="filters-row">
-        <div class="deals-sort-row">
-            <label class="deals-sort-label">Sort by
-                <select class="deals-sort-select"
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
+            <label style="font-size: 15px;">Sort by
+                <select style="padding: 5px 10px; border-radius: 6px;"
                     onchange="window.location.href='?<?php echo buildQueryString(['sort' => '']); ?>&sort='+this.value">
                     <option value="popular" <?php echo $sort == 'popular' ? 'selected' : ''; ?>>Most Popular</option>
                     <option value="price_high" <?php echo $sort == 'price_high' ? 'selected' : ''; ?>>Price: High to Low

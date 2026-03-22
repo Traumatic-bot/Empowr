@@ -17,7 +17,7 @@ $cartQuery = "SELECT c.*, p.product_name, p.stock_quantity, p.image_url,
               WHERE c.user_id = $user_id";
 $cartResult = mysqli_query($conn, $cartQuery);
 
-$cartTotal = $subtotal; 
+$subtotal = 0;
 $shipping = 4.99;
 ?>
 
