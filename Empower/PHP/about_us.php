@@ -12,13 +12,14 @@ body {
 }
 
 .hero-about {
-    width: 100%;
-    padding: 70px 0;
+    width: 85%;              
+    margin: 40px auto;     
+    padding: 70px 30px;     
     background: linear-gradient(to right, #ffe100, #ffef7a);
     text-align: center;
     color: #000;
     font-weight: bold;
-    margin-bottom: 50px;
+    border-radius: 20px;    
 }
 
 .hero-about h1 {
