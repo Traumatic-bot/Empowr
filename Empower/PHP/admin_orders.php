@@ -12,7 +12,6 @@ require_once 'header.php';
 $message = '';
 $messageType = '';
 
-// Update order status
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $order_id = (int)$_POST['order_id'];
     $new_status = sanitize($_POST['status']);
@@ -26,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     }
 }
 
-// Fetch all orders with user info
 $ordersQuery = "SELECT o.*, u.first_name, u.last_name, u.email 
                 FROM orders o
                 JOIN users u ON o.user_id = u.user_id
@@ -37,7 +35,7 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
 <main class="account-main-content">
     <div class="account-wrapper">
         <aside class="account-sidebar">
-            <!-- same sidebar as admin_products.php, but highlight Manage Orders -->
+
             <div class="account-user">
                 <div class="account-user-name">
                     Admin: <?php echo htmlspecialchars($_SESSION['first_name']); ?>
@@ -60,14 +58,29 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
                 <a href="admin_users.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
-                <a href="dashboard.php" class="account-nav-item">
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
-                    <span>Back to My Account</span>
+                    <span>Order History</span>
                 </a>
+                <a href="personal_details.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Personal Details</span>
+                </a>
+                <a href="address_book.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Addresses</span>
+                </a>
+
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>

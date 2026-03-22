@@ -10,15 +10,14 @@ $pageTitle = 'Checkout';
 require_once 'header.php';
 $user_id = $_SESSION['user_id'];
 
-// get cart items with discounted price if available
-$cartQuery = "SELECT c.*, p.product_name, p.price, p.stock_quantity, 
-                     IFNULL(c.discounted_price, p.price) AS final_price
-             FROM cart c 
-             JOIN products p ON c.product_id = p.product_id 
-             WHERE c.user_id = $user_id";
+$cartQuery = "SELECT c.*, p.product_name, p.stock_quantity, p.image_url,
+                     COALESCE(c.discounted_price, p.price) as final_price
+              FROM cart c 
+              JOIN products p ON c.product_id = p.product_id 
+              WHERE c.user_id = $user_id";
 $cartResult = mysqli_query($conn, $cartQuery);
 
-$subtotal = 0;
+$cartTotal = $subtotal; 
 $shipping = 4.99;
 ?>
 
@@ -29,15 +28,18 @@ $shipping = 4.99;
 
             <?php if (mysqli_num_rows($cartResult) > 0): ?>
             <?php while ($item = mysqli_fetch_assoc($cartResult)): 
-                    $itemTotal = $item['final_price'] * $item['quantity'];
-                    $subtotal += $itemTotal;
-                ?>
+                $itemTotal = $item['final_price'] * $item['quantity'];
+                $subtotal += $itemTotal;
+            ?>
+
             <article class="checkout-item">
                 <div class="checkout-thumb">
                     <?php if (!empty($item['image_url'])): ?>
-                        <img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>" style="max-width: 80px; max-height: 80px;">
+                    <img src="<?php echo htmlspecialchars($item['image_url']); ?>"
+                        alt="<?php echo htmlspecialchars($item['product_name']); ?>"
+                        style="width:100%; height:100%; object-fit: contain;">
                     <?php else: ?>
-                        <div class="checkout-thumb-placeholder"></div>
+                    <div class="checkout-thumb-placeholder"></div>
                     <?php endif; ?>
                 </div>
 
@@ -48,10 +50,13 @@ $shipping = 4.99;
                     <div class="checkout-meta">
                         <div>
                             <span>Qty: </span>
-                            <button onclick="updateCartQuantity(<?php echo $item['product_id']; ?>, -1)" style="background: #eee; border: 1px solid #ccc; padding: 2px 8px; cursor: pointer;">-</button>
+                            <button onclick="updateCartQuantity(<?php echo $item['product_id']; ?>, -1)"
+                                style="background: #eee; border: 1px solid #ccc; padding: 2px 8px; cursor: pointer;">-</button>
                             <span style="padding: 0 10px;"><?php echo $item['quantity']; ?></span>
-                            <button onclick="updateCartQuantity(<?php echo $item['product_id']; ?>, 1)" style="background: #eee; border: 1px solid #ccc; padding: 2px 8px; cursor: pointer;">+</button>
-                            <button onclick="removeFromCart(<?php echo $item['product_id']; ?>)" style="background: #ff4444; color: white; border: none; padding: 5px 10px; margin-left: 10px; cursor: pointer; border-radius: 3px;">
+                            <button onclick="updateCartQuantity(<?php echo $item['product_id']; ?>, 1)"
+                                style="background: #eee; border: 1px solid #ccc; padding: 2px 8px; cursor: pointer;">+</button>
+                            <button onclick="removeFromCart(<?php echo $item['product_id']; ?>)" style="background: #ff4444; color: white; border: none; padding: 5px 10px; 
+                                                   margin-left: 10px; cursor: pointer; border-radius: 3px;">
                                 Remove
                             </button>
                         </div>
@@ -101,21 +106,25 @@ $shipping = 4.99;
 
 <script>
 function updateCartQuantity(productId, delta) {
-    fetch('cart.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: 'product_id=' + productId + '&quantity_change=' + delta
-    })
-    .then(() => window.location.reload());
+    fetch('update_cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'product_id=' + productId + '&quantity_change=' + delta
+        })
+        .then(() => window.location.reload());
 }
 
 function removeFromCart(productId) {
-    fetch('cart.php', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: 'product_id=' + productId + '&remove=1'
-    })
-    .then(() => window.location.reload());
+    fetch('update_cart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'product_id=' + productId + '&remove=1'
+        })
+        .then(() => window.location.reload());
 }
 </script>
 

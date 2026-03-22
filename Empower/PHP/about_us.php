@@ -5,7 +5,7 @@ $pageTitle = 'About Us';
 
 require_once 'header.php';
 ?>
-<!--this os needed for the text boxes-->
+
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
@@ -109,7 +109,7 @@ body {
                 quality of life for individuals with disabilities.
                 We provide modern assistive products designed to support mobility, communication, comfort, and daily
                 living.
-                At Empowr, we believe that technology should empower — not exclude — and our mission is to ensure
+                At Empowr, we believe that technology should empower, not exclude, and our mission is to ensure
                 everyone has access to tools that help them thrive.
             </p>
         </div>

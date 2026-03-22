@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'root';
 $database = 'cs2team6_db';
 
 $conn = mysqli_connect($host, $username, $password, $database);
@@ -12,14 +12,12 @@ if (!$conn) {
 
 mysqli_set_charset($conn, "utf8");
 
-// SESSION
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// LOAD USER TYPE
 if (isset($_SESSION['user_id']) && !isset($_SESSION['user_type'])) {
-    $uid = (int)$_SESSION['user_id']; 
+    $uid = (int)$_SESSION['user_id'];
     $result = mysqli_query($conn, "SELECT user_type FROM users WHERE user_id = $uid");
     if ($result && $row = mysqli_fetch_assoc($result)) {
         $_SESSION['user_type'] = $row['user_type'];
@@ -29,44 +27,12 @@ if (isset($_SESSION['user_id']) && !isset($_SESSION['user_type'])) {
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// SAFE OUTPUT
-function sanitize($data)
-{
-    return htmlspecialchars(trim($data), ENT_QUOTES, 'UTF-8');
-}
-
-// OPTIONAL SQL ESCAPE
-function escape($data)
-{
+function sanitize($data) {
     global $conn;
     return mysqli_real_escape_string($conn, trim($data));
 }
 
-function isLoggedIn()
-{
-    return isset($_SESSION['user_id']);
-}
-
-function isStaff()
-{
-    return isset($_SESSION['user_type']) && $_SESSION['user_type'] == "staff";
-}
-
-function getUserInfo()
-{
-    if (isLoggedIn()) {
-        return [
-            'user_id' => $_SESSION['user_id'],
-            'first_name' => $_SESSION['first_name'],
-            'last_name' => $_SESSION['last_name'],
-            'email' => $_SESSION['email']
-        ];
-    }
-    return null;
-}
-
-function isDarkModeEnabled($user_id)
-{
+function isDarkModeEnabled($user_id) {
     global $conn;
     if (!$user_id) return false;
 
@@ -79,8 +45,7 @@ function isDarkModeEnabled($user_id)
     return false;
 }
 
-function toggleDarkMode($user_id)
-{
+function toggleDarkMode($user_id) {
     global $conn;
     if (!$user_id) return false;
 
@@ -91,36 +56,82 @@ function toggleDarkMode($user_id)
     return mysqli_query($conn, $query);
 }
 
-// ✅ UPDATED WITH DISCOUNTS
-function calculateCartTotal($user_id)
-{
+function isLoggedIn() {
+    return isset($_SESSION['user_id']);
+}
+
+function isStaff() {
+    return isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'staff';
+}
+
+function getTextSize($user_id) {
+    global $conn;
+    if (!$user_id) return 'normal';
+    $query = "SELECT text_size FROM users WHERE user_id = $user_id";
+    $result = mysqli_query($conn, $query);
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        return $row['text_size'];
+    }
+    return 'normal';
+}
+
+function toggleTextSize($user_id) {
+    global $conn;
+    if (!$user_id) return false;
+    $current = getTextSize($user_id);
+    $new = ($current === 'normal') ? 'large' : 'normal';
+    $query = "UPDATE users SET text_size = '$new' WHERE user_id = $user_id";
+    return mysqli_query($conn, $query);
+}
+
+function getFontScale($user_id) {
+    global $conn;
+    if (!$user_id) return 1.00;
+    $query = "SELECT font_scale FROM users WHERE user_id = $user_id";
+    $result = mysqli_query($conn, $query);
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        return (float)$row['font_scale'];
+    }
+    return 1.00;
+}
+
+function setFontScale($user_id, $scale) {
+    global $conn;
+    if (!$user_id) return false;
+    $scale = min(max((float)$scale, 1.00), 2.00);
+    $query = "UPDATE users SET font_scale = $scale WHERE user_id = $user_id";
+    return mysqli_query($conn, $query);
+}
+
+function getUserInfo() {
+    if (isLoggedIn()) {
+        return [
+            'user_id' => $_SESSION['user_id'],
+            'first_name' => $_SESSION['first_name'],
+            'last_name' => $_SESSION['last_name'],
+            'email' => $_SESSION['email']
+        ];
+    }
+    return null;
+}
+
+function calculateCartTotal($user_id) {
     global $conn;
     $total = 0;
-
     if ($user_id) {
-        $query = "SELECT c.quantity, p.price, p.discount_percent
-                  FROM cart c 
-                  JOIN products p ON c.product_id = p.product_id 
+        $query = "SELECT SUM(COALESCE(c.discounted_price, p.price) * c.quantity) as total
+                  FROM cart c
+                  JOIN products p ON c.product_id = p.product_id
                   WHERE c.user_id = $user_id";
-
         $result = mysqli_query($conn, $query);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $price = $row['price'];
-
-            if (!empty($row['discount_percent']) && $row['discount_percent'] > 0) {
-                $price = $price - ($price * ($row['discount_percent'] / 100));
-            }
-
-            $total += $price * $row['quantity'];
+        if ($result && $row = mysqli_fetch_assoc($result)) {
+            $total = $row['total'] ?: 0;
         }
     }
-
     return number_format($total, 2);
 }
 
-function getCartCount($user_id)
-{
+function getCartCount($user_id) {
     global $conn;
     $count = 0;
 
@@ -136,10 +147,7 @@ function getCartCount($user_id)
     return $count;
 }
 
-function getDisplayOrderStatus($status, $orderDate)
-{
-    $display_status = $status;
-
+function getDisplayOrderStatus($status, $orderDate) {
     if (strtolower($status) === 'processing') {
         $days_since_order = floor((time() - strtotime($orderDate)) / 86400);
 
@@ -149,5 +157,6 @@ function getDisplayOrderStatus($status, $orderDate)
         if ($days_since_order >= 1) return 'Order Packed';
     }
 
-    return $display_status;
+    return $status;
 }
+?>

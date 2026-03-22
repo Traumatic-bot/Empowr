@@ -159,7 +159,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
             </div>
         </div>
 
-        <!-- Basket overlay -->
+
         <div id="popupBackground" style="cursor: pointer; height: 100%; left: 0; opacity: 0.7; position: fixed; top: 0;
                 width: 100%; z-index: 10; background: #333; display:none;">
         </div>

@@ -12,7 +12,6 @@ require_once 'header.php';
 $message = '';
 $messageType = '';
 
-// Update user type or delete
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['update_type'])) {
         $user_id = (int)$_POST['user_id'];
@@ -27,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['delete_user'])) {
         $user_id = (int)$_POST['user_id'];
-        // Optional: prevent deleting yourself
         if ($user_id == $_SESSION['user_id']) {
             $message = "You cannot delete your own account.";
             $messageType = 'error';
@@ -44,7 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Fetch all users except maybe hide passwords
 $usersQuery = "SELECT user_id, title, first_name, last_name, email, phone, user_type, created_at FROM users ORDER BY user_id";
 $usersResult = mysqli_query($conn, $usersQuery);
 ?>
@@ -52,7 +49,7 @@ $usersResult = mysqli_query($conn, $usersQuery);
 <main class="account-main-content">
     <div class="account-wrapper">
         <aside class="account-sidebar">
-            <!-- same sidebar with active highlight for Manage Users -->
+
             <div class="account-user">
                 <div class="account-user-name">
                     Admin: <?php echo htmlspecialchars($_SESSION['first_name']); ?>
@@ -75,14 +72,29 @@ $usersResult = mysqli_query($conn, $usersQuery);
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
                 <a href="admin_users.php" class="account-nav-item is-active">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
-                <a href="dashboard.php" class="account-nav-item">
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
-                    <span>Back to My Account</span>
+                    <span>Order History</span>
                 </a>
+                <a href="personal_details.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Personal Details</span>
+                </a>
+                <a href="address_book.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Addresses</span>
+                </a>
+
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>

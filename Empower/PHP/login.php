@@ -4,7 +4,6 @@ require_once 'config.php';
 $pageTitle = 'Login';
 $error = '';
 
-// Check if user is already logged in
 if (isset($_SESSION['user_id'])) {
     header('Location: dashboard.php');
     exit();
@@ -14,21 +13,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = sanitize($_POST['email']);
     $password = $_POST['password'];
     
-    // Check if user exists
     $query = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
     
     if ($result && mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
-        if ($password === $user['password']) { 
-            // Set session variables
+        if ($password === $user['password']) {
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['email'] = $user['email'];
-            
-            // Redirect to dashboard
+            $_SESSION['user_type'] = $user['user_type'];
+            $_SESSION['text_size'] = $user['text_size'];
+            $_SESSION['font_scale'] = $user['font_scale'];
+
             header('Location: dashboard.php');
             exit();
         } else {

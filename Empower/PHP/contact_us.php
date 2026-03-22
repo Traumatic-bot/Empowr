@@ -31,7 +31,7 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 ?>
 
 <style>
-/* --- Contact Page Specific Styles --- */
+
 
 .contact-info-grid {
     display: grid;
@@ -59,7 +59,7 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 }
 
 
-/* Styling for the Form container and inputs */
+
 .contact-form .form-group {
     margin-bottom: 20px;
 }

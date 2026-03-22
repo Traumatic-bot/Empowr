@@ -5,7 +5,7 @@ $pageTitle = 'Home';
 
 require_once 'header.php';
 ?>
-<!-- required for boxes for text -->
+
 <style>
 
 
