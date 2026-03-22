@@ -66,16 +66,16 @@ body.dark-mode .search button[type="submit"] {
 
 /* Footer */
 body.dark-mode footer {
-    background-color: #1a1a1a !important;
-    color: #e0e0e0 !important;
+    background-color: #ffee32 !important;
+    color: black !important;
 }
 
 body.dark-mode footer a {
-    color: #e0e0e0 !important;
+    color: black !important;
 }
 
 body.dark-mode .footer-links {
-    color: #e0e0e0 !important;
+    color: black !important;
 }
 
 /* Login/Registration Forms */
