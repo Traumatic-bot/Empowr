@@ -11,6 +11,7 @@ $pageTitle = 'Payment';
 $user_id = $_SESSION['user_id'];
 $error = '';
 
+// Get cart total
 $cartQuery = "SELECT SUM(COALESCE(c.discounted_price, p.price) * c.quantity) as total 
              FROM cart c 
              JOIN products p ON c.product_id = p.product_id 
@@ -25,6 +26,7 @@ if ($cartResult && $row = mysqli_fetch_assoc($cartResult)) {
 $shipping = 4.99;
 $total = $cartTotal + $shipping;
 
+// Process payment
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address1 = sanitize($_POST['address1']);
     $address2 = sanitize($_POST['address2']);
@@ -47,34 +49,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $billing_address = $shipping_address;
     }
 
-    if (!preg_match('/^\d+\s+\S/', $address1)) {
-        $error = 'Address line 1 must start with a house number followed by the road name (e.g. 12 High Street).';
-    }
-
-    $postcode = strtoupper(trim($postcode));
-    if (!$error && !preg_match('/^[A-Z]{1,2}[0-9][0-9A-Z]?\s*[0-9][A-Z]{2}$/', $postcode)) {
-        $error = 'Please enter a valid UK postcode (e.g. SW1A 1AA).';
-    }
-
-    if (!$error && $different_billing) {
-        $billing_postcode = strtoupper(trim($billing_postcode));
-        if (!preg_match('/^\d+\s+\S/', $billing_address1)) {
-            $error = 'Billing address line 1 must start with a house number followed by the road name.';
-        } elseif (!preg_match('/^[A-Z]{1,2}[0-9][0-9A-Z]?\s*[0-9][A-Z]{2}$/', $billing_postcode)) {
-            $error = 'Please enter a valid UK billing postcode (e.g. SW1A 1AA).';
-        }
-    }
-
-    if (!$error) {
-
     mysqli_begin_transaction($conn);
 
 try {
+    // Insert order record
     $orderQuery = "INSERT INTO orders (user_id, total_amount, shipping_address, billing_address, payment_method) 
                   VALUES ($user_id, $total, '$shipping_address', '$billing_address', 'Credit Card')";
     mysqli_query($conn, $orderQuery);
     $order_id = mysqli_insert_id($conn);
 
+    // Get cart items with final price
     $itemsQuery = "SELECT c.*, p.product_name, p.stock_quantity,
                           COALESCE(c.discounted_price, p.price) AS final_price
                    FROM cart c 
@@ -85,20 +69,29 @@ try {
     while ($item = mysqli_fetch_assoc($itemsResult)) {
         $itemTotal = $item['final_price'] * $item['quantity'];
 
+        // Check stock
         if ($item['quantity'] > $item['stock_quantity']) {
             throw new Exception('Insufficient stock for ' . $item['product_name']);
         }
 
+        // Insert order item
         $orderItemQuery = "INSERT INTO order_items (order_id, product_id, quantity, unit_price, total_price) 
                           VALUES ($order_id, {$item['product_id']}, {$item['quantity']}, {$item['final_price']}, $itemTotal)";
         mysqli_query($conn, $orderItemQuery);
 
+        // Update stock
         $updateStockQuery = "UPDATE products 
                             SET stock_quantity = stock_quantity - {$item['quantity']} 
                             WHERE product_id = {$item['product_id']}";
-        mysqli_query($conn, $updateStockQuery);
+         if (!mysqli_query($conn, $updateStockQuery)) {
+                throw new Exception('Failed to update stock');
+            }
+
+            // Check stock level and send alert email if needed
+            checkAndSendStockAlert($item['product_id']);
     }
 
+    // Clear cart
     $clearCartQuery = "DELETE FROM cart WHERE user_id = $user_id";
     mysqli_query($conn, $clearCartQuery);
 
@@ -109,8 +102,6 @@ try {
     mysqli_rollback($conn);
     $error = $e->getMessage();
 }
-
-    }
 }
 
 require_once 'header.php';
@@ -261,70 +252,8 @@ require_once 'header.php';
 
 <script>
 document.getElementById('different_billing').addEventListener('change', function() {
-    document.getElementById('billing-fields').style.display = this.checked ? 'block' : 'none';
-});
-
-document.querySelectorAll('.input-field').forEach(function(el) {
-    el.addEventListener('input', function() { this.setCustomValidity(''); });
-});
-
-document.getElementById('payment-form').addEventListener('submit', function(e) {
-
-    var postcodeEl = document.querySelector('[name="postcode"]');
-    postcodeEl.value = postcodeEl.value.toUpperCase().trim();
-    var billingPostcodeEl = document.querySelector('[name="billing_postcode"]');
-    if (billingPostcodeEl) billingPostcodeEl.value = billingPostcodeEl.value.toUpperCase().trim();
-
-    var ukPostcode = /^[A-Z]{1,2}[0-9][0-9A-Z]?\s*[0-9][A-Z]{2}$/;
-    var houseNumber = /^\d+\s+\S/;
-
-    function fail(el, msg) {
-        el.setCustomValidity(msg);
-        el.reportValidity();
-        e.preventDefault();
-    }
-
-    var expiryEl = document.querySelector('[name="expiry"]');
-    var expiryVal = expiryEl.value.trim();
-    if (!/^\d{2}\/\d{2}$/.test(expiryVal)) {
-        return fail(expiryEl, 'Please enter expiry in MM/YY format.');
-    }
-    var parts = expiryVal.split('/');
-    var mm = parseInt(parts[0], 10);
-    var yy = parseInt(parts[1], 10);
-    if (mm < 1 || mm > 12) {
-        return fail(expiryEl, 'Month must be between 01 and 12.');
-    }
-    var now = new Date();
-    var expDate = new Date(2000 + yy, mm); // first moment of the month after expiry
-    if (expDate <= now) {
-        return fail(expiryEl, 'Card has expired.');
-    }
-    expiryEl.setCustomValidity('');
-
-    var addr1El = document.querySelector('[name="address1"]');
-    if (!houseNumber.test(addr1El.value.trim())) {
-        return fail(addr1El, 'Address must start with a house number followed by the road name (e.g. 12 High Street).');
-    }
-    addr1El.setCustomValidity('');
-
-    if (!ukPostcode.test(postcodeEl.value)) {
-        return fail(postcodeEl, 'Please enter a valid UK postcode (e.g. SW1A 1AA).');
-    }
-    postcodeEl.setCustomValidity('');
-
-    if (document.getElementById('different_billing').checked) {
-        var bAddr1El = document.querySelector('[name="billing_address1"]');
-        if (!houseNumber.test(bAddr1El.value.trim())) {
-            return fail(bAddr1El, 'Billing address must start with a house number followed by the road name.');
-        }
-        bAddr1El.setCustomValidity('');
-
-        if (!ukPostcode.test(billingPostcodeEl.value)) {
-            return fail(billingPostcodeEl, 'Please enter a valid UK billing postcode (e.g. SW1A 1AA).');
-        }
-        billingPostcodeEl.setCustomValidity('');
-    }
+    const billingFields = document.getElementById('billing-fields');
+    billingFields.style.display = this.checked ? 'block' : 'none';
 });
 </script>
 
