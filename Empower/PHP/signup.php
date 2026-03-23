@@ -14,13 +14,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password1'];
     $confirm_password = $_POST['password2'];
     
+<<<<<<< HEAD
     // Validation
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     if ($password !== $confirm_password) {
         $error = 'Passwords do not match';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = 'Invalid email format';
     } else {
+<<<<<<< HEAD
         // Check if email already exists
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $checkQuery = "SELECT * FROM users WHERE email = '$email'";
         $checkResult = mysqli_query($conn, $checkQuery);
         
@@ -35,7 +41,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             if (mysqli_query($conn, $query)) {
                 $success = 'Registration successful! You can now log in.';
+<<<<<<< HEAD
                 // Clear form
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 $_POST = array();
             } else {
                 $error = 'Registration failed: ' . mysqli_error($conn);

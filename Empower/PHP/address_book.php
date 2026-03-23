@@ -1,7 +1,10 @@
 <?php
 require_once 'config.php';
 
+<<<<<<< HEAD
 // check if user is logged in
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -12,10 +15,15 @@ require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
 
+<<<<<<< HEAD
 // handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_address'])) {
         // add new address
+=======
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['add_address'])) {
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $address_type = sanitize($_POST['address_type']);
         $address_line1 = sanitize($_POST['address_line1']);
         $address_line2 = sanitize($_POST['address_line2']);
@@ -24,7 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $country = sanitize($_POST['country']);
         $is_default = isset($_POST['is_default']) ? 1 : 0;
         
+<<<<<<< HEAD
         // if setting as default, update existing default addresses
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         if ($is_default) {
             $updateQuery = "UPDATE user_addresses SET is_default = 0 WHERE user_id = $user_id";
             mysqli_query($conn, $updateQuery);
@@ -42,7 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
     } elseif (isset($_POST['edit_address'])) {
+<<<<<<< HEAD
         // edit existing address
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $address_id = sanitize($_POST['address_id']);
         $address_type = sanitize($_POST['address_type']);
         $address_line1 = sanitize($_POST['address_line1']);
@@ -52,7 +66,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $country = sanitize($_POST['country']);
         $is_default = isset($_POST['is_default']) ? 1 : 0;
         
+<<<<<<< HEAD
         // if setting as default, update existing default addresses
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         if ($is_default) {
             $updateQuery = "UPDATE user_addresses SET is_default = 0 WHERE user_id = $user_id AND address_id != $address_id";
             mysqli_query($conn, $updateQuery);
@@ -77,7 +94,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
     } elseif (isset($_POST['delete_address'])) {
+<<<<<<< HEAD
         // delete address
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $address_id = sanitize($_POST['address_id']);
         
         $deleteQuery = "DELETE FROM user_addresses WHERE address_id = $address_id AND user_id = $user_id";
@@ -92,11 +112,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+<<<<<<< HEAD
 // get user's addresses
 $addressQuery = "SELECT * FROM user_addresses WHERE user_id = $user_id ORDER BY is_default DESC, address_type ASC";
 $addressResult = mysqli_query($conn, $addressQuery);
 
 // check if we're in edit mode
+=======
+$addressQuery = "SELECT * FROM user_addresses WHERE user_id = $user_id ORDER BY is_default DESC, address_type ASC";
+$addressResult = mysqli_query($conn, $addressQuery);
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 $editMode = false;
 $editAddress = null;
 if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
@@ -124,6 +150,32 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
             </div>
 
             <nav class="account-nav">
+<<<<<<< HEAD
+=======
+                <?php if (isStaff()): ?>
+                <a href="admin_dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin_products.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Products</span>
+                </a>
+                <a href="admin_orders.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Orders</span>
+                </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+                <a href="admin_users.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Users</span>
+                </a>
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <?php endif; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
@@ -139,6 +191,14 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
                     <span>Addresses</span>
                 </a>
 
+<<<<<<< HEAD
+=======
+                <a href="dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Back</span>
+                </a>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
@@ -162,7 +222,10 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
             </div>
             <?php endif; ?>
 
+<<<<<<< HEAD
             <!-- address Form (for add/edit) -->
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <?php if (isset($_GET['add']) || $editMode): ?>
             <div class="address-form-container" style="margin-bottom: 30px;">
                 <h2><?php echo $editMode ? 'Edit Address' : 'Add New Address'; ?></h2>
@@ -270,7 +333,10 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
             </div>
             <?php endif; ?>
 
+<<<<<<< HEAD
             <!-- display existing addresses -->
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <?php if (mysqli_num_rows($addressResult) > 0): ?>
             <?php while ($address = mysqli_fetch_assoc($addressResult)): 
                     $addressType = ucfirst($address['address_type']);
@@ -328,7 +394,10 @@ if (isset($_GET['edit']) && is_numeric($_GET['edit'])) {
 <script>
 function confirmDelete(addressId) {
     if (confirm('Are you sure you want to delete this address?')) {
+<<<<<<< HEAD
         // create a form and submit it
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         const form = document.createElement('form');
         form.method = 'POST';
         form.action = 'address_book.php';

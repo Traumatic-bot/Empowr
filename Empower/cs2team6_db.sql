@@ -218,6 +218,7 @@ INSERT INTO `products` (`product_id`, `product_name`, `price`, `discount_percent
 (34, 'Logitech Wave Keys Wireless Ergonomic Keyboard with Cushioned Palm Rest', 149.99, 0.00, 12, 'Keyboards', 'Ergonomic wireless keyboard', 'https://m.media-amazon.com/images/I/71Yp7pxBFOL._AC_SX425_.jpg'),
 (35, 'Logitech MX Mechanical Wireless Illuminated Performance Keyboard', 179.99, 0.00, 10, 'Keyboards', 'Mechanical wireless keyboard with illumination', 'https://m.media-amazon.com/images/I/61++ok6AqtL._AC_SY300_SX300_QL70_FMwebp_.jpg');
 
+<<<<<<< HEAD
 -- Add discounted products to the database with Easter sale discounts
 -- First, update existing products with discounts
 UPDATE products SET discount_percent = 20 WHERE product_id IN (1, 2, 3);
@@ -277,6 +278,8 @@ INSERT INTO `products` (`product_id`, `product_name`, `price`, `discount_percent
 -- Update the Easter sale deals page to show all discounted products
 -- Verify the count of discounted products
 SELECT COUNT(*) as total_discounted_products FROM products WHERE discount_percent > 0;
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 -- --------------------------------------------------------
 
 --

@@ -27,7 +27,11 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
     <meta charset="UTF-8">
     <meta name="description" content="Empowr">
     <meta name="keywords" content="Empowr, ecommerce, tech, accessories">
+<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     <title><?php echo isset($pageTitle) ? $pageTitle . ' | Empowr' : 'Empowr'; ?></title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="icon" type="image/x-icon" href="Images/favicon.ico">
@@ -39,6 +43,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
     body.dark-mode {
         transition: background-color 0.3s ease, color 0.3s ease;
     }
+<<<<<<< HEAD
     
     /* Mobile Navigation Styles */
     .nav-toggle {
@@ -230,12 +235,30 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
     }
     </style>
     
+=======
+    </style>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     <style>
     <?php if (isLoggedIn() && isset($_SESSION['font_scale'])): ?>body {
         font-size: <?php echo $_SESSION['font_scale'] * 100;
         ?>% !important;
     }
+<<<<<<< HEAD
     <?php endif; ?>
+=======
+
+    <?php endif;
+    ?>
+    </style>
+    <style>
+    <?php if (isLoggedIn() && isset($_SESSION['font_scale'])): ?>body {
+        font-size: <?php echo $_SESSION['font_scale'] * 100;
+        ?>% !important;
+    }
+
+    <?php endif;
+    ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     </style>
 </head>
 
@@ -244,6 +267,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
     <header>
         <div class="header">
             <a href="index.php" class="logo-link" style="text-decoration: none; display: inline-block;">
+<<<<<<< HEAD
                 <img src="http://localhost/Empowr/Images/Empowr_Logo_C.svg" alt="Empowr Logo" class="logo-image"
                     style="padding-top: 20px; padding-bottom: 20px; scale: 0.8; margin-left: -20px;">
             </a>
@@ -253,6 +277,18 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
                     <input type="text" placeholder="Search products..." name="q" style="width:480px">
                     <button type="submit" aria-label="Search">
                         <img src="http://localhost/Empowr/Images/search_logo.svg" alt="Search" style="width:30px; height:30px;">
+=======
+                <img src="Images/Empowr_Logo_C.svg" alt="Empowr Logo" class="logo-image"
+                    style="padding-top: 20px; padding-bottom: 20px; scale: 0.8; margin-left: -20px;">
+            </a>
+
+            </form>
+            <div class="search">
+                <form method="get" action="products.php" style="display:flex;">
+                    <input type="text" placeholder="Search.." name="q" style="width:480px">
+                    <button type="submit">
+                        <img src="Images/search_logo.svg" alt="Search" style="width:30px; height:30px;">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                     </button>
                 </form>
             </div>
@@ -308,6 +344,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
 
                 <div class="basket-links">
                     <a id="basket-links" href="#"
+<<<<<<< HEAD
                         style="margin-left:20px; padding-left: 5px; display: flex; justify-content: center; align-items: center;"
                         aria-label="View basket">
                         <span class="items"><strong><?php echo $cartCount; ?></strong></span>
@@ -316,6 +353,15 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
                         <span class="price"
                             style="margin-left: 3px; margin-right: 3px;">£<?php echo $cartTotal; ?></span>
                         <img src="http://localhost/Empowr/Images/Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
+=======
+                        style="margin-left:20px; padding-left: 5px; display: flex; justify-content: center; align-items: center;">
+                        <span class="items"><strong><?php echo $cartCount; ?></strong></span>
+                        <img src="Images/Basket_Logo.svg" alt="Basket Logo"
+                            style="width: 35px; margin-left: 3px; margin-right: 3px;">
+                        <span class="price"
+                            style="margin-left: 3px; margin-right: 3px;">£<?php echo $cartTotal; ?></span>
+                        <img src="Images/Dropdown_Arrow.svg" alt="Dropdown Arrow" class="btn"
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                             style="width:20px; margin-left: 3px; margin-right: 3px;">
                     </a>
                 </div>
@@ -325,9 +371,15 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
                         style="display: flex; align-items: center; text-decoration: none; color: inherit; padding: 5px 10px; border-radius: 20px; background: #f0f0f0;">
                         <span id="darkmode-icon" style="margin-right: 5px;">
                             <?php if (isDarkModeEnabled($_SESSION['user_id'] ?? 0)): ?>
+<<<<<<< HEAD
                             <img src="http://localhost/Empowr/Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
                             <?php else: ?>
                             <img src="http://localhost/Empowr/Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
+=======
+                            <img src="Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">
+                            <?php else: ?>
+                            <img src="Images/moon.png" alt="moon" style="width: 16px; height: 16px;">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                             <?php endif; ?>
                         </span>
                         <span id="darkmode-text" style="font-size: 12px;">
@@ -338,6 +390,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
             </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Mobile Navigation Toggle Button -->
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">☰ Menu</button>
 
@@ -351,6 +404,9 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
         </ul>
 
         <!-- Basket overlay -->
+=======
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         <div id="popupBackground" style="cursor: pointer; height: 100%; left: 0; opacity: 0.7; position: fixed; top: 0;
                 width: 100%; z-index: 10; background: #333; display:none;">
         </div>
@@ -358,8 +414,13 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
         <div id="popup" style="display:none;">
             <div class="header"
                 style="background: #ebecec; display: flex; height: 80px; align-items:center; padding:0 15px;">
+<<<<<<< HEAD
                 <div style="flex:1; font-weight: bold;">Your Basket</div>
                 <span class="btn" id="closePopup" style="cursor: pointer;">
+=======
+                <div style="flex:1;">Basket</div>
+                <span class="btn" id="closePopup">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                     <i style="display: block;
                           border-left: 3px solid #000000;
                           border-top: 3px solid #000000;
@@ -401,7 +462,11 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
                     <?php else: ?>
                     <li class="basketEmpty" style="text-align: center;">
                         <i style="font-weight: normal; padding-top: 60px; display: block; color: #cccccc;">
+<<<<<<< HEAD
                             Your basket is empty
+=======
+                            You have no products in your basket
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                         </i>
                     </li>
                     <?php endif; ?>
@@ -444,12 +509,19 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
             </div>
 
             <div class="Total" style="height: 80px; overflow: hidden; margin: 0 15px;">
+<<<<<<< HEAD
                 <a href="checkout.php" style="display: block; text-align: center; background: #ffee32; padding: 14px; border-radius: 8px; text-decoration: none; color: #111; font-weight: bold;">CHECKOUT</a>
+=======
+                <a class="" href="checkout.php">CHECKOUT</a>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </div>
         </div>
 
         <script>
+<<<<<<< HEAD
         // Basket popup functionality
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         (function() {
             const bg = document.getElementById("popupBackground");
             const pop = document.getElementById("popup");
@@ -468,6 +540,7 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
             if (closePopup) closePopup.addEventListener("click", toggleBasket);
         })();
         </script>
+<<<<<<< HEAD
 
         <script>
         // Mobile navigation toggle functionality
@@ -514,6 +587,19 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
 
         <script>
         // Dark mode toggle functionality
+=======
+        <br>
+        <br>
+        <ul class="topnav" id="topnav">
+            <li><a href="/index.php">Home</a></li>
+            <li><a href="/products.php">Products</a></li>
+            <li><a href="deals.php">Easter Sale!</a></li>
+            <li><a href="/about_us.php">About Us</a></li>
+            <li><a href="/contact_us.php">Contact Us</a></li>
+        </ul>
+
+        <script>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         document.addEventListener('DOMContentLoaded', function() {
             <?php if (isLoggedIn() && isDarkModeEnabled($_SESSION['user_id'])): ?>
             document.body.classList.add('dark-mode');
@@ -523,9 +609,27 @@ $bodyClassString = !empty($bodyClasses) ? 'class="' . implode(' ', $bodyClasses)
             const toggleText = document.getElementById('darkmode-text');
 
             if (toggleBtn) toggleBtn.title = 'Switch to Light Mode';
+<<<<<<< HEAD
             if (toggleIcon) toggleIcon.innerHTML = '<img src="Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">';
+=======
+            toggleIcon.innerHTML = '<img src="/Images/sun.png" alt="Sun" style="width: 16px; height: 16px;">';
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             if (toggleText) toggleText.textContent = 'Light';
             <?php endif; ?>
         });
         </script>
+<<<<<<< HEAD
+=======
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggle = document.querySelector('.nav-toggle');
+            const nav = document.getElementById('topnav');
+            if (toggle && nav) {
+                toggle.addEventListener('click', function() {
+                    nav.classList.toggle('show');
+                });
+            }
+        });
+        </script>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     </header>

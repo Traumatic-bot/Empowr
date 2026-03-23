@@ -3,6 +3,7 @@ require_once 'config.php';
 $pageTitle = 'Contact Us';
 require_once 'header.php';
 
+<<<<<<< HEAD
 // Handle form submission if this is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = [];
@@ -192,24 +193,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Display success/error messages
 if (isset($_SESSION['contact_success'])) {
     echo '<div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; margin: 20px auto; border-radius: 4px; border: 1px solid #c3e6cb; max-width: 1200px;">
+=======
+if (isset($_SESSION['contact_success'])) {
+    echo '<div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; margin: 20px 0; border-radius: 4px; border: 1px solid #c3e6cb;">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <i class="fas fa-check-circle"></i> ' . $_SESSION['contact_success'] . '
           </div>';
     unset($_SESSION['contact_success']);
 }
 
 if (isset($_SESSION['contact_error'])) {
+<<<<<<< HEAD
     echo '<div class="alert alert-danger" style="background-color: #f8d7da; color: #721c24; padding: 15px; margin: 20px auto; border-radius: 4px; border: 1px solid #f5c6cb; max-width: 1200px;">
+=======
+    echo '<div class="alert alert-danger" style="background-color: #f8d7da; color: #721c24; padding: 15px; margin: 20px 0; border-radius: 4px; border: 1px solid #f5c6cb;">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <i class="fas fa-exclamation-circle"></i> ' . $_SESSION['contact_error'] . '
           </div>';
     unset($_SESSION['contact_error']);
 }
 
 if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
+<<<<<<< HEAD
     echo '<div class="alert alert-warning" style="background-color: #fff3cd; color: #856404; padding: 15px; margin: 20px auto; border-radius: 4px; border: 1px solid #ffeaa7; max-width: 1200px;">
             <h4><i class="fas fa-exclamation-triangle"></i> Please fix the following errors:</h4>
             <ul style="margin: 10px 0 0 20px; padding: 0;">';
     foreach ($_SESSION['contact_errors'] as $error) {
         echo '<li>' . htmlspecialchars($error) . '</li>';
+=======
+    echo '<div class="alert alert-warning" style="background-color: #fff3cd; color: #856404; padding: 15px; margin: 20px 0; border-radius: 4px; border: 1px solid #ffeaa7;">
+            <h4><i class="fas fa-exclamation-triangle"></i> Please fix the following errors:</h4>
+            <ul style="margin: 10px 0 0 20px; padding: 0;">';
+    foreach ($_SESSION['contact_errors'] as $error) {
+        echo '<li>' . $error . '</li>';
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     }
     echo '</ul>
           </div>';
@@ -218,6 +235,7 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 ?>
 
 <style>
+<<<<<<< HEAD
 /* --- Contact Page Specific Styles --- */
 :root {
     --primary-yellow: #ffe100;
@@ -317,6 +335,36 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
+=======
+
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    align-items: start;
+    margin-top: 10px;
+}
+
+.contact-image {
+    margin-top: 0;
+}
+
+.contact-image img {
+    width: 60%;
+    height: auto;
+    border-radius: 2px;
+}
+
+@media (max-width: 992px) {
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 
 .contact-form .form-group {
     margin-bottom: 20px;
@@ -324,10 +372,17 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 
 .contact-form label {
     display: block;
+<<<<<<< HEAD
     margin-bottom: 8px;
     font-weight: 600;
     color: var(--dark-color);
     font-size: 14px;
+=======
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--dark-color);
+    font-size: 0.95em;
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 }
 
 .contact-form .required {
@@ -340,16 +395,26 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 .contact-form input[type="email"],
 .contact-form textarea {
     width: 100%;
+<<<<<<< HEAD
     padding: 12px 15px;
     border: 2px solid #e5e5e5;
     border-radius: 8px;
     font-size: 15px;
     font-family: inherit;
     transition: all 0.3s ease;
+=======
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
+<<<<<<< HEAD
     border-color: var(--primary-yellow);
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 225, 0, 0.1);
@@ -411,10 +476,36 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
 }
 
 /* Responsive Design */
+=======
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+}
+
+.contact-form textarea {
+    resize: none;
+    min-height: 150px;
+}
+
+.contact-form button[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+.contact-form .form-note {
+    font-size: 0.85em;
+    color: var(--secondary-color);
+    margin-top: 15px;
+}
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 @media (max-width: 992px) {
     .contact-content-wrapper {
         grid-template-columns: 1fr;
         gap: 40px;
+<<<<<<< HEAD
         padding: 30px 20px;
     }
     
@@ -465,11 +556,14 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
     
     .button--primary {
         padding: 10px 24px;
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     }
 }
 </style>
 
 <main class="main">
+<<<<<<< HEAD
     <section class="page-title-section">
         <div class="container">
             <h1>Reach Out To Us</h1>
@@ -491,6 +585,43 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
                         <li><i class="fas fa-map-marker-alt"></i> 123 Aston Lane, City Centre, CV1 1JB</li>
                         <li><i class="fas fa-phone-alt"></i> 01234 567890</li>
                         <li><i class="fas fa-envelope"></i> <a href="mailto:support@empowrtech.com">support@empowrtech.com</a></li>
+=======
+
+    <section class="page-title-section section"
+        style="background-color: var(--light-color); padding-top: 40px; padding-bottom: 40px;">
+
+        <div class="container">
+            <h1 style="text-align: center;">Reach Out To Us</h1>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto;">We are happy to assist you! Use the form
+                below to send a message to our admin team, or view our contact information.</p>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="contact-section section">
+
+
+
+        <div class="container contact-content-wrapper">
+
+            <div class="contact-info-container">
+                <h2>Contact Information</h2>
+
+                <div class="contact-info-content">
+                    <div class="contact-image">
+                        <a href="https://maps.app.goo.gl/TNNfdAcCTrwwNSJw8" target="_blank" rel="noopener noreferrer">
+                            <img src="Images/aston_map.png" alt="Click to view map on Google Maps">
+                        </a>
+                    </div>
+                    <ul class="contact-info-container">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Aston Lane, City Centre, CV1 1JB</li>
+                        <li><i class="fas fa-phone-alt"></i> 01234 567890</li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:support@empowrtech.com MOCK">support@empowrtech.com
+                            </a></li>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                         <li><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
                         <li><i class="fas fa-clock"></i> Saturday: By Appointment</li>
                         <li><i class="fas fa-clock"></i> Sunday: Closed</li>
@@ -498,6 +629,7 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div class="contact-form-container">
                 <h2>Send Us a Message</h2>
                 <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" class="contact-form">
@@ -537,6 +669,71 @@ if (isset($_SESSION['contact_errors']) && !empty($_SESSION['contact_errors'])) {
             </div>
         </div>
     </section>
+=======
+
+
+            <div class="contact-form-container">
+
+                <h2>Send Us a Message</h2>
+
+                <form action="submit-message.php" method="POST" class="contact-form">
+
+                    <div class="form-group">
+
+                        <label for="contact-name">Full Name <span class="required">*</span></label>
+
+                        <input type="text" id="contact-name" name="contact-name" required
+                            placeholder="Enter your full name">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contact-email">Email Address <span class="required">*</span></label>
+
+                        <input type="email" id="contact-email" name="contact-email" required
+                            placeholder="Enter your email">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contact-subject">Subject <span class="required">*</span></label>
+
+                        <input type="text" id="contact-subject" name="contact-subject" required
+                            placeholder="Enter the message subject">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="contact-message">Your Message <span class="required">*</span></label>
+
+                        <textarea id="contact-message" name="contact-message" rows="7" required
+                            placeholder="Type your message here..."></textarea>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <button type="submit" class="button button--primary">Send Message</button>
+
+                    </div>
+
+                    <p class="form-note"><span class="required">*</span> Required fields.</p>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 </main>
 
 <?php require_once 'footer.php'; ?>

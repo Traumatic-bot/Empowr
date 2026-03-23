@@ -1,7 +1,10 @@
 <?php
 require_once 'config.php';
 
+<<<<<<< HEAD
 // Check if user is logged in 
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -13,17 +16,30 @@ require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
 
+<<<<<<< HEAD
 // Get orders
 $order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;
 
 $query = "SELECT 
             o.*, 
+=======
+$order_id = isset($_GET['order_id']) ? (int)$_GET['order_id'] : 0;
+
+$userFilter = isStaff() ? '' : "AND o.user_id = $user_id";
+
+$query = "SELECT
+            o.*,
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             COALESCE(SUM(oi.quantity), 0) AS item_count,
             COALESCE(SUM(oi.total_price), 0) AS subtotal
           FROM orders o
           LEFT JOIN order_items oi ON o.order_id = oi.order_id
           WHERE o.order_id = $order_id
+<<<<<<< HEAD
           AND o.user_id = $user_id
+=======
+          $userFilter
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
           GROUP BY o.order_id
           LIMIT 1";
 
@@ -33,7 +49,12 @@ $order = mysqli_fetch_assoc($result);
 $orderItems = [];
 
 if ($order) {
+<<<<<<< HEAD
     $itemsQuery = "SELECT 
+=======
+    $itemsQuery = "SELECT
+                    oi.order_item_id,
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                     oi.product_id,
                     oi.quantity,
                     oi.unit_price,
@@ -58,11 +79,16 @@ $subtotal = $order ? (float)$order['subtotal'] : 0;
 $total = $order ? (float)$order['total_amount'] : 0;
 $delivery = $total - $subtotal;
 
+<<<<<<< HEAD
 $card_type = 'Visa';       // placeholder
 $card_last4 = '1234';      // placeholder
 
 $display_status = getDisplayOrderStatus($order['status'], $order['order_date']);
 $status = strtolower($display_status);
+=======
+$card_type = 'Visa';
+$card_last4 = '1234';
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 
 $current_step = 1;
 $progress_ratio = 0;
@@ -74,12 +100,21 @@ if ($order) {
     $status = strtolower($display_status);
 
     $steps = [
+<<<<<<< HEAD
         'processing' => [1, 0],
         'order placed' => [1, 0],
         'order packed' => [2, 0.25],
         'in transit' => [3, 0.5],
         'out for delivery' => [4, 0.75],
         'delivered' => [5, 1],
+=======
+        'processing'       => [1, 0],
+        'order placed'     => [1, 0],
+        'order packed'     => [2, 0.25],
+        'in transit'       => [3, 0.5],
+        'out for delivery' => [4, 0.75],
+        'delivered'        => [5, 1],
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     ];
 
     if (isset($steps[$status])) {
@@ -87,6 +122,39 @@ if ($order) {
     }
 }
 
+<<<<<<< HEAD
+=======
+$is_delivered = ($status === 'delivered');
+
+$existingReturns = [];
+$existingReviews = [];
+$serviceReview   = null;
+
+if ($order) {
+    $returnsResult = mysqli_query($conn,
+        "SELECT order_item_id FROM `returns`
+         WHERE order_id = $order_id AND user_id = $user_id");
+    while ($r = mysqli_fetch_assoc($returnsResult)) {
+        $existingReturns[$r['order_item_id']] = true;
+    }
+
+    $reviewsResult = mysqli_query($conn,
+        "SELECT product_id, review_type, rating, review_text
+         FROM reviews
+         WHERE order_id = $order_id AND user_id = $user_id");
+    while ($rv = mysqli_fetch_assoc($reviewsResult)) {
+        if ($rv['review_type'] === 'service') {
+            $serviceReview = $rv;
+        } else {
+            $existingReviews[(int)$rv['product_id']] = $rv;
+        }
+    }
+}
+
+$flashSuccess = isset($_SESSION['success']) ? $_SESSION['success'] : null;
+$flashError   = isset($_SESSION['error'])   ? $_SESSION['error']   : null;
+unset($_SESSION['success'], $_SESSION['error']);
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 ?>
 
 <main class="account-main-content">
@@ -102,6 +170,32 @@ if ($order) {
             </div>
 
             <nav class="account-nav">
+<<<<<<< HEAD
+=======
+                <?php if (isStaff()): ?>
+                <a href="admin_dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin_products.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Products</span>
+                </a>
+                <a href="admin_orders.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Orders</span>
+                </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+                <a href="admin_users.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Users</span>
+                </a>
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <?php endif; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
@@ -124,6 +218,7 @@ if ($order) {
             </nav>
         </aside>
 
+<<<<<<< HEAD
         <main class="account-main" style="margin: 50px 20px;">
 
             <a href="order_history.php" style="text-decoration: none; color: inherit;">
@@ -133,6 +228,24 @@ if ($order) {
                 </div>
             </a>
 
+=======
+        <main class="account-main">
+
+            <a href="order_history.php" class="od-back-link">
+                <div class="od-back-inner">
+                    <img src="../../Images/Dropdown_Arrow.svg" alt="" class="od-back-arrow">
+                    <h3>Order Details</h3>
+                </div>
+            </a>
+
+            <?php if ($flashSuccess): ?>
+                <div class="od-flash od-flash--success"><?php echo htmlspecialchars($flashSuccess); ?></div>
+            <?php endif; ?>
+            <?php if ($flashError): ?>
+                <div class="od-flash od-flash--error"><?php echo htmlspecialchars($flashError); ?></div>
+            <?php endif; ?>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <?php if ($order): ?>
 
                 <div class="order-details-summary">
@@ -205,10 +318,23 @@ if ($order) {
 
                     <?php if (!empty($orderItems)): ?>
                         <div class="order-items-list">
+<<<<<<< HEAD
                             <?php foreach ($orderItems as $item): ?>
                                 <div class="order-item-row">
                                     <div class="order-item-image">
                                         <img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>" style="width: 80px; height: auto;">
+=======
+                            <?php foreach ($orderItems as $item):
+                                $item_id   = (int)$item['order_item_id'];
+                                $product_id = (int)$item['product_id'];
+                                $hasReturn  = isset($existingReturns[$item_id]);
+                                $hasReview  = isset($existingReviews[$product_id]);
+                                $review     = $hasReview ? $existingReviews[$product_id] : null;
+                            ?>
+                                <div class="order-item-row">
+                                    <div class="order-item-image">
+                                        <img src="<?php echo htmlspecialchars($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['product_name']); ?>">
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                                     </div>
 
                                     <div class="order-item-info">
@@ -216,6 +342,79 @@ if ($order) {
                                         <div class="order-item-meta"><?php echo htmlspecialchars($item['category']); ?></div>
                                         <div class="order-item-meta"><?php echo htmlspecialchars($item['description']); ?></div>
                                         <div class="order-item-meta">Unit price: £<?php echo number_format($item['unit_price'], 2); ?></div>
+<<<<<<< HEAD
+=======
+
+                                        <?php if ($is_delivered && (!isStaff() || $order['user_id'] == $user_id)): ?>
+                                            <div class="od-item-actions">
+                                                <?php if ($hasReturn): ?>
+                                                    <span class="od-tag od-tag--return">Return Requested</span>
+                                                <?php else: ?>
+                                                    <button type="button" class="od-action-btn od-action-btn--return"
+                                                        onclick="togglePanel('return-<?php echo $item_id; ?>')">
+                                                        Return Item
+                                                    </button>
+                                                <?php endif; ?>
+
+                                                <?php if ($hasReview): ?>
+                                                    <button type="button" class="od-action-btn od-action-btn--review"
+                                                        onclick="togglePanel('review-<?php echo $item_id; ?>')">
+                                                        Edit Review
+                                                    </button>
+                                                <?php else: ?>
+                                                    <button type="button" class="od-action-btn od-action-btn--review"
+                                                        onclick="togglePanel('review-<?php echo $item_id; ?>')">
+                                                        Rate Product
+                                                    </button>
+                                                <?php endif; ?>
+                                            </div>
+
+                                            <?php if (!$hasReturn): ?>
+                                            <div id="return-<?php echo $item_id; ?>" class="od-panel" style="display:none;">
+                                                <form method="post" action="submit_return.php">
+                                                    <input type="hidden" name="order_id"      value="<?php echo $order_id; ?>">
+                                                    <input type="hidden" name="order_item_id" value="<?php echo $item_id; ?>">
+                                                    <label class="od-panel-label">Reason for return</label>
+                                                    <textarea name="reason" class="od-panel-textarea"
+                                                        placeholder="Please describe the reason for your return…" required></textarea>
+                                                    <div class="od-panel-footer">
+                                                        <button type="submit" class="od-submit-btn">Submit Return</button>
+                                                        <button type="button" class="od-cancel-btn"
+                                                            onclick="togglePanel('return-<?php echo $item_id; ?>')">Cancel</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <?php endif; ?>
+
+                                            <div id="review-<?php echo $item_id; ?>" class="od-panel" style="display:none;">
+                                                <form method="post" action="submit_review.php"
+                                                    id="review-form-<?php echo $item_id; ?>">
+                                                    <input type="hidden" name="order_id"    value="<?php echo $order_id; ?>">
+                                                    <input type="hidden" name="product_id"  value="<?php echo $product_id; ?>">
+                                                    <input type="hidden" name="review_type" value="product">
+                                                    <input type="hidden" name="rating"      value="<?php echo $hasReview ? $review['rating'] : 0; ?>">
+                                                    <label class="od-panel-label">Your rating</label>
+                                                    <div class="od-stars"
+                                                        data-form="review-form-<?php echo $item_id; ?>">
+                                                        <?php for ($s = 1; $s <= 5; $s++): ?>
+                                                            <span class="od-star <?php echo ($hasReview && $s <= $review['rating']) ? 'is-active' : ''; ?>"
+                                                                data-val="<?php echo $s; ?>">&#9733;</span>
+                                                        <?php endfor; ?>
+                                                    </div>
+                                                    <label class="od-panel-label od-panel-label--spaced">Your review <span class="od-optional">(optional)</span></label>
+                                                    <textarea name="review_text" class="od-panel-textarea"
+                                                        placeholder="Share your thoughts about this product…"><?php echo $hasReview ? htmlspecialchars($review['review_text']) : ''; ?></textarea>
+                                                    <div class="od-panel-footer">
+                                                        <button type="submit" class="od-submit-btn">
+                                                            <?php echo $hasReview ? 'Update Review' : 'Submit Review'; ?>
+                                                        </button>
+                                                        <button type="button" class="od-cancel-btn"
+                                                            onclick="togglePanel('review-<?php echo $item_id; ?>')">Cancel</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <?php endif; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                                     </div>
 
                                     <div class="order-item-qty">
@@ -286,6 +485,63 @@ if ($order) {
                     </section>
                 </div>
 
+<<<<<<< HEAD
+=======
+                <?php if ($is_delivered && (!isStaff() || $order['user_id'] == $user_id)): ?>
+                <section class="order-service-review">
+                    <h4>Rate our Service</h4>
+                    <p class="od-service-desc">How was your overall experience with this order?</p>
+
+                    <?php if ($serviceReview): ?>
+                        <div class="od-existing-review">
+                            <div class="od-stars od-stars--static">
+                                <?php for ($s = 1; $s <= 5; $s++): ?>
+                                    <span class="od-star <?php echo $s <= $serviceReview['rating'] ? 'is-active' : ''; ?>">&#9733;</span>
+                                <?php endfor; ?>
+                            </div>
+                            <?php if (!empty($serviceReview['review_text'])): ?>
+                                <p class="od-existing-text">"<?php echo htmlspecialchars($serviceReview['review_text']); ?>"</p>
+                            <?php endif; ?>
+                            <button type="button" class="od-action-btn od-action-btn--review od-action-btn--spaced"
+                                onclick="togglePanel('service-review-panel')">
+                                Edit Review
+                            </button>
+                        </div>
+                    <?php else: ?>
+                        <button type="button" class="od-action-btn od-action-btn--review"
+                            onclick="togglePanel('service-review-panel')">
+                            Leave a Review
+                        </button>
+                    <?php endif; ?>
+
+                    <div id="service-review-panel" class="od-panel" style="display:none;">
+                        <form method="post" action="submit_review.php" id="service-review-form">
+                            <input type="hidden" name="order_id"    value="<?php echo $order_id; ?>">
+                            <input type="hidden" name="review_type" value="service">
+                            <input type="hidden" name="rating"      value="<?php echo $serviceReview ? $serviceReview['rating'] : 0; ?>">
+                            <label class="od-panel-label">Your rating</label>
+                            <div class="od-stars" data-form="service-review-form">
+                                <?php for ($s = 1; $s <= 5; $s++): ?>
+                                    <span class="od-star <?php echo ($serviceReview && $s <= $serviceReview['rating']) ? 'is-active' : ''; ?>"
+                                        data-val="<?php echo $s; ?>">&#9733;</span>
+                                <?php endfor; ?>
+                            </div>
+                            <label class="od-panel-label od-panel-label--spaced">Your comments <span class="od-optional">(optional)</span></label>
+                            <textarea name="review_text" class="od-panel-textarea"
+                                placeholder="Tell us about your delivery, packaging, and overall experience…"><?php echo $serviceReview ? htmlspecialchars($serviceReview['review_text']) : ''; ?></textarea>
+                            <div class="od-panel-footer">
+                                <button type="submit" class="od-submit-btn">
+                                    <?php echo $serviceReview ? 'Update Review' : 'Submit Review'; ?>
+                                </button>
+                                <button type="button" class="od-cancel-btn"
+                                    onclick="togglePanel('service-review-panel')">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+                <?php endif; ?>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <?php else: ?>
                 <div class="empty-box">
                     <p>Order not found.</p>
@@ -295,4 +551,44 @@ if ($order) {
     </div>
 </main>
 
+<<<<<<< HEAD
 <?php require_once 'footer.php'; ?>
+=======
+<script>
+function togglePanel(id) {
+    var panel = document.getElementById(id);
+    if (!panel) return;
+    panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.od-stars').forEach(function (starGroup) {
+        var formId = starGroup.getAttribute('data-form');
+        var form   = formId ? document.getElementById(formId) : null;
+        var stars  = starGroup.querySelectorAll('.od-star');
+
+        stars.forEach(function (star, idx) {
+            star.addEventListener('mouseenter', function () {
+                stars.forEach(function (s, i) {
+                    s.classList.toggle('is-hover', i <= idx);
+                });
+            });
+            star.addEventListener('mouseleave', function () {
+                stars.forEach(function (s) { s.classList.remove('is-hover'); });
+            });
+            star.addEventListener('click', function () {
+                var val = parseInt(star.getAttribute('data-val'));
+                if (form) {
+                    form.querySelector('input[name="rating"]').value = val;
+                }
+                stars.forEach(function (s, i) {
+                    s.classList.toggle('is-active', i < val);
+                });
+            });
+        });
+    });
+});
+</script>
+
+<?php require_once 'footer.php'; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec

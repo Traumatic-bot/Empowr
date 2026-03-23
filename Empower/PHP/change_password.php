@@ -5,7 +5,10 @@ $pageTitle = 'Change Password';
 $error = '';
 $success = '';
 
+<<<<<<< HEAD
 // Check if user is logged in
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();

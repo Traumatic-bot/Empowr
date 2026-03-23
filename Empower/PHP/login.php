@@ -4,7 +4,10 @@ require_once 'config.php';
 $pageTitle = 'Login';
 $error = '';
 
+<<<<<<< HEAD
 // Check if user is already logged in
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (isset($_SESSION['user_id'])) {
     header('Location: dashboard.php');
     exit();
@@ -14,21 +17,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = sanitize($_POST['email']);
     $password = $_POST['password'];
     
+<<<<<<< HEAD
     // Check if user exists
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
     $query = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $query);
     
     if ($result && mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
         
+<<<<<<< HEAD
         if ($password === $user['password']) { 
             // Set session variables
+=======
+        if ($password === $user['password']) {
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             $_SESSION['user_id'] = $user['user_id'];
             $_SESSION['first_name'] = $user['first_name'];
             $_SESSION['last_name'] = $user['last_name'];
             $_SESSION['email'] = $user['email'];
+<<<<<<< HEAD
             
             // Redirect to dashboard
+=======
+            $_SESSION['user_type'] = $user['user_type'];
+            $_SESSION['text_size'] = $user['text_size'];
+            $_SESSION['font_scale'] = $user['font_scale'];
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             header('Location: dashboard.php');
             exit();
         } else {

@@ -50,26 +50,48 @@ require_once 'header.php';
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+<<<<<<< HEAD
+=======
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="admin_users.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
+<<<<<<< HEAD
                 <p>------ Customer Dashboard------</p>
                 <nav class="account-nav">
+=======
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
                 </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="personal_details.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Personal Details</span>
                 </a>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="address_book.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Addresses</span>
                 </a>
+<<<<<<< HEAD
+=======
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
@@ -124,7 +146,11 @@ require_once 'header.php';
                         <td><?php echo date('d M Y', strtotime($order['order_date'])); ?></td>
                         <td>&pound;<?php echo number_format($order['total_amount'], 2); ?></td>
                         <td><?php echo htmlspecialchars($order['status']); ?></td>
+<<<<<<< HEAD
                         <td><a href="admin_order_details.php?order_id=<?php echo $order['order_id']; ?>" class="view-order">View</a></td>
+=======
+                        <td><a href="admin_orders.php" class="view-order">View</a></td>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

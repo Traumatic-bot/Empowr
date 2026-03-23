@@ -117,18 +117,31 @@ body {
 
             <h2>Our contract with you</h2>
             <p>
+<<<<<<< HEAD
                 When you place an order, you’re offering to buy the product(s) from us.
                 We’ll send an order acknowledgement, but your order is only accepted once your product(s) are ready to be dispatched.
             </p>
             <p>
                 Until then, we may decline or cancel an order (we try not to!) for reasons like pricing errors, stock problems,
                 or if we can’t get hold of the item you need. If we cancel your order, we’ll refund anything you paid for that item.
+=======
+                When you place an order, you are offering to buy the product(s) from us.
+                We will send an order acknowledgement, but your order is only accepted once your product(s) are ready to be dispatched.
+            </p>
+            <p>
+                Until then, we may decline or cancel an order (we try not to!) for reasons like pricing errors, stock problems,
+                or if we cannot get hold of the item you need. If we cancel your order, we will refund anything you paid for that item.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Availability</h2>
             <p>
                 We show availability and estimated delivery dates on the website. Sometimes stock systems get it wrong.
+<<<<<<< HEAD
                 If that happens, we’ll tell you as soon as we can and work with you on the best option (replacement, alternative, or refund).
+=======
+                If that happens, we will tell you as soon as we can and work with you on the best option (replacement, alternative, or refund).
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Website information</h2>
@@ -141,10 +154,17 @@ body {
             <h2>Choosing the right product (important for assistive tech)</h2>
             <p>
                 A lot of our products are designed to support accessibility and disability needs, but suitability can vary person to person.
+<<<<<<< HEAD
                 If you’re unsure about compatibility or whether something will meet your needs, contact us before ordering and we’ll help.
             </p>
             <p>
                 Any guidance we give is general product support and isn’t medical advice.
+=======
+                If you are unsure about compatibility or whether something will meet your needs, contact us before ordering and we will help.
+            </p>
+            <p>
+                Any guidance we give is general product support and is not medical advice.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 If you need clinical advice or an assessment, please speak to a qualified professional.
             </p>
 
@@ -157,7 +177,11 @@ body {
             <h2>Payment</h2>
             <p>
                 You can pay using the payment methods shown at checkout. Payment is taken before we dispatch your order.
+<<<<<<< HEAD
                 If there’s a problem processing payment, we’ll let you know.
+=======
+                If there is a problem processing payment, we will let you know.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Delivery</h2>
@@ -174,6 +198,7 @@ body {
 
             <h2>Cancellations &amp; returns (change of mind)</h2>
             <p>
+<<<<<<< HEAD
                 If you’re a consumer buying online, you normally have 14 days after delivery to cancel your order (cooling-off period).
                 To cancel, email us at <strong>support@empowrtech.com</strong> with your order number.
             </p>
@@ -181,6 +206,15 @@ body {
                 You’ll need to return the item unused, complete, and in the original packaging where possible.
                 Unless the item is faulty, you’re responsible for return postage costs.
                 When we receive the return, we’ll refund you within 14 days.
+=======
+                If you are a consumer buying online, you normally have 14 days after delivery to cancel your order (cooling-off period).
+                To cancel, email us at <strong>support@empowrtech.com</strong> with your order number.
+            </p>
+            <p>
+                You will need to return the item unused, complete, and in the original packaging where possible.
+                Unless the item is faulty, you are responsible for return postage costs.
+                When we receive the return, we will refund your purchase within two business weeks.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Returns exceptions</h2>
@@ -196,7 +230,11 @@ body {
             <h2>If something is faulty</h2>
             <p>
                 If your product is faulty or not as described, you have legal rights under the Consumer Rights Act 2015.
+<<<<<<< HEAD
                 Contact us and we’ll put it right (repair, replacement, or refund depending on the issue and timing).
+=======
+                Contact us and we will put it right (repair, replacement, or refund depending on the issue and timing).
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
             <p>
                 We may ask for photos/video or to test the item to confirm the fault.
@@ -205,26 +243,45 @@ body {
             <h2>Warranty</h2>
             <p>
                 Some products come with a manufacturer warranty and/or our standard warranty (where stated on the product page).
+<<<<<<< HEAD
                 Warranties don’t cover accidental damage, misuse, incorrect installation, or normal wear and tear.
+=======
+                Warranties do not cover accidental damage, misuse, incorrect installation, or normal wear and tear.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Data and backups (for computers, tablets, and devices)</h2>
             <p>
                 If a device needs repair or replacement, it may be reset and data could be lost.
+<<<<<<< HEAD
                 We recommend backing up your data regularly. We can’t accept responsibility for lost data.
+=======
+                We recommend backing up your data regularly. We cannot accept responsibility for lost data.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Our liability (plain English)</h2>
             <p>
+<<<<<<< HEAD
                 We’re responsible for foreseeable loss or damage caused by us.
                 We’re not responsible for losses that are not foreseeable, or for business losses if you’re buying as a business.
                 Nothing in these terms limits liability where the law says it can’t be limited (like death or personal injury caused by negligence, or fraud).
+=======
+                We are responsible for foreseeable loss or damage caused by us.
+                We are not responsible for losses that are not foreseeable, or for business losses if you are buying as a business.
+                Nothing in these terms limits liability where the law says it cannot be limited (like death or personal injury caused by negligence, or fraud).
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Things beyond our control</h2>
             <p>
+<<<<<<< HEAD
                 We’re not liable for delays or failure to supply caused by events outside our reasonable control
                 (for example courier disruption, supplier issues, or extreme weather). If this happens, we’ll keep you updated and offer options.
+=======
+                We are not liable for delays or failure to supply caused by events outside our reasonable control
+                (for example courier disruption, supplier issues, or extreme weather). If this happens, we will keep you updated and offer options.
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             </p>
 
             <h2>Privacy</h2>

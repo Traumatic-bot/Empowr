@@ -1,7 +1,10 @@
 <?php
 require_once 'config.php';
 
+<<<<<<< HEAD
 // Check if user is logged in
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -12,22 +15,33 @@ require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
 
+<<<<<<< HEAD
 // Get user details from database
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 $userQuery = "SELECT title, first_name, last_name, email, phone FROM users WHERE user_id = $user_id";
 $userResult = mysqli_query($conn, $userQuery);
 $userData = mysqli_fetch_assoc($userResult);
 
+<<<<<<< HEAD
 // Handle form submission
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
     $title = sanitize($_POST['title']);
     $first_name = sanitize($_POST['first_name']);
     $last_name = sanitize($_POST['last_name']);
     $phone = sanitize($_POST['phone']);
     
+<<<<<<< HEAD
     // Check if email is being changed
     $email = sanitize($_POST['email']);
     if ($email !== $_SESSION['email']) {
         // Check if new email already exists
+=======
+    $email = sanitize($_POST['email']);
+    if ($email !== $_SESSION['email']) {
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $emailCheckQuery = "SELECT user_id FROM users WHERE email = '$email' AND user_id != $user_id";
         $emailCheckResult = mysqli_query($conn, $emailCheckQuery);
         
@@ -44,7 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                            WHERE user_id = $user_id";
             
             if (mysqli_query($conn, $updateQuery)) {
+<<<<<<< HEAD
                 // Update session variables
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 $_SESSION['first_name'] = $first_name;
                 $_SESSION['last_name'] = $last_name;
                 $_SESSION['email'] = $email;
@@ -52,7 +69,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                 $message = "Personal details updated successfully!";
                 $messageType = "success";
                 
+<<<<<<< HEAD
                 // Refresh user data
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 $userResult = mysqli_query($conn, $userQuery);
                 $userData = mysqli_fetch_assoc($userResult);
             } else {
@@ -61,7 +81,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
             }
         }
     } else {
+<<<<<<< HEAD
         // Email not changed, just update other fields
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         $updateQuery = "UPDATE users SET 
                        title = '$title',
                        first_name = '$first_name',
@@ -70,14 +93,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
                        WHERE user_id = $user_id";
         
         if (mysqli_query($conn, $updateQuery)) {
+<<<<<<< HEAD
             // Update session variables
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             $_SESSION['first_name'] = $first_name;
             $_SESSION['last_name'] = $last_name;
             
             $message = "Personal details updated successfully!";
             $messageType = "success";
             
+<<<<<<< HEAD
             // Refresh user data
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             $userResult = mysqli_query($conn, $userQuery);
             $userData = mysqli_fetch_assoc($userResult);
         } else {
@@ -101,6 +130,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_details'])) {
             </div>
 
             <nav class="account-nav">
+<<<<<<< HEAD
+=======
+                <?php if (isStaff()): ?>
+                <a href="admin_dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin_products.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Products</span>
+                </a>
+                <a href="admin_orders.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Orders</span>
+                </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+                <a href="admin_users.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Users</span>
+                </a>
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <?php endif; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>

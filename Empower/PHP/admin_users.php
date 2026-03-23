@@ -12,7 +12,10 @@ require_once 'header.php';
 $message = '';
 $messageType = '';
 
+<<<<<<< HEAD
 // Update user type or delete
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['update_type'])) {
         $user_id = (int)$_POST['user_id'];
@@ -27,7 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($_POST['delete_user'])) {
         $user_id = (int)$_POST['user_id'];
+<<<<<<< HEAD
         // Optional: prevent deleting yourself
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
         if ($user_id == $_SESSION['user_id']) {
             $message = "You cannot delete your own account.";
             $messageType = 'error';
@@ -44,7 +50,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+<<<<<<< HEAD
 // Fetch all users except maybe hide passwords
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 $usersQuery = "SELECT user_id, title, first_name, last_name, email, phone, user_type, created_at FROM users ORDER BY user_id";
 $usersResult = mysqli_query($conn, $usersQuery);
 ?>
@@ -52,7 +61,11 @@ $usersResult = mysqli_query($conn, $usersQuery);
 <main class="account-main-content">
     <div class="account-wrapper">
         <aside class="account-sidebar">
+<<<<<<< HEAD
             <!-- same sidebar with active highlight for Manage Users -->
+=======
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <div class="account-user">
                 <div class="account-user-name">
                     Admin: <?php echo htmlspecialchars($_SESSION['first_name']); ?>
@@ -75,14 +88,39 @@ $usersResult = mysqli_query($conn, $usersQuery);
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+<<<<<<< HEAD
+=======
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="admin_users.php" class="account-nav-item is-active">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
+<<<<<<< HEAD
                 <a href="dashboard.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Back to My Account</span>
                 </a>
+=======
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <a href="order_history.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Order History</span>
+                </a>
+                <a href="personal_details.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Personal Details</span>
+                </a>
+                <a href="address_book.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Addresses</span>
+                </a>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>

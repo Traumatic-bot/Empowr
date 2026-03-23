@@ -12,7 +12,10 @@ require_once 'header.php';
 $message = '';
 $messageType = '';
 
+<<<<<<< HEAD
 // Update order status
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $order_id = (int)$_POST['order_id'];
     $new_status = sanitize($_POST['status']);
@@ -26,7 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     }
 }
 
+<<<<<<< HEAD
 // Fetch all orders with user info
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 $ordersQuery = "SELECT o.*, u.first_name, u.last_name, u.email 
                 FROM orders o
                 JOIN users u ON o.user_id = u.user_id
@@ -37,7 +43,11 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
 <main class="account-main-content">
     <div class="account-wrapper">
         <aside class="account-sidebar">
+<<<<<<< HEAD
             <!-- same sidebar as admin_products.php, but highlight Manage Orders -->
+=======
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
             <div class="account-user">
                 <div class="account-user-name">
                     Admin: <?php echo htmlspecialchars($_SESSION['first_name']); ?>
@@ -60,14 +70,39 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
+<<<<<<< HEAD
+=======
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="admin_users.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
+<<<<<<< HEAD
                 <a href="dashboard.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Back to My Account</span>
                 </a>
+=======
+
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <a href="order_history.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Order History</span>
+                </a>
+                <a href="personal_details.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Personal Details</span>
+                </a>
+                <a href="address_book.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Addresses</span>
+                </a>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
@@ -108,7 +143,13 @@ $ordersResult = mysqli_query($conn, $ordersQuery);
                                 <input type="hidden" name="order_id" value="<?php echo $order['order_id']; ?>">
                                 <select name="status" onchange="this.form.submit()" style="padding: 5px;">
                                     <option value="Processing" <?php echo $order['status'] == 'Processing' ? 'selected' : ''; ?>>Processing</option>
+<<<<<<< HEAD
                                     <option value="Shipped" <?php echo $order['status'] == 'Shipped' ? 'selected' : ''; ?>>Shipped</option>
+=======
+                                    <option value="Order Packed" <?php echo $order['status'] == 'Order Packed' ? 'selected' : ''; ?>>Order Packed</option>
+                                    <option value="In Transit" <?php echo $order['status'] == 'In Transit' ? 'selected' : ''; ?>>In Transit</option>
+                                    <option value="Out for Delivery" <?php echo $order['status'] == 'Out for Delivery' ? 'selected' : ''; ?>>Out for Delivery</option>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                                     <option value="Delivered" <?php echo $order['status'] == 'Delivered' ? 'selected' : ''; ?>>Delivered</option>
                                     <option value="Cancelled" <?php echo $order['status'] == 'Cancelled' ? 'selected' : ''; ?>>Cancelled</option>
                                 </select>

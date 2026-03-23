@@ -1,7 +1,10 @@
 <?php
 require_once 'config.php';
 
+<<<<<<< HEAD
 // Check if user is logged in 
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 if (!isset($_SESSION['user_id'])) {
     header('Location: /login.php');
     exit();
@@ -13,7 +16,10 @@ require_once 'header.php';
 
 $user_id = $_SESSION['user_id'];
 
+<<<<<<< HEAD
 // Get orders
+=======
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
 $query = "SELECT * FROM orders WHERE user_id = $user_id ORDER BY order_date DESC";
 $result = mysqli_query($conn, $query);
 ?>
@@ -31,6 +37,32 @@ $result = mysqli_query($conn, $query);
             </div>
 
             <nav class="account-nav">
+<<<<<<< HEAD
+=======
+                <?php if (isStaff()): ?>
+                <a href="admin_dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin_products.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Products</span>
+                </a>
+                <a href="admin_orders.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Orders</span>
+                </a>
+                <a href="admin_returns.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Returns</span>
+                </a>
+                <a href="admin_users.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Manage Users</span>
+                </a>
+                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
+                <?php endif; ?>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="order_history.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Order History</span>
@@ -46,6 +78,14 @@ $result = mysqli_query($conn, $query);
                     <span>Addresses</span>
                 </a>
 
+<<<<<<< HEAD
+=======
+                <a href="dashboard.php" class="account-nav-item">
+                    <span class="icon"></span>
+                    <span>Back</span>
+                </a>
+
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
@@ -70,6 +110,7 @@ $result = mysqli_query($conn, $query);
                     <tbody>
                         <?php while ($order = mysqli_fetch_assoc($result)):
                             $order_date = date('d M Y', strtotime($order['order_date']));
+<<<<<<< HEAD
                             $display_status = getDisplayOrderStatus($order['status'], $order['order_date']);
                             $status_key = strtolower($display_status);
 
@@ -81,11 +122,15 @@ $result = mysqli_query($conn, $query);
                                 'delivered' => 'status-delivered',
                                 default => 'status-processing',
                             };
+=======
+                            $status_class = strtolower($order['status']) == 'delivered' ? 'status-delivered' : 'status-processing';
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                         ?>
                             <tr>
                                 <td>#<?php echo str_pad($order['order_id'], 6, '0', STR_PAD_LEFT); ?></td>
                                 <td><?php echo $order_date; ?></td>
                                 <td>£<?php echo number_format($order['total_amount'], 2); ?></td>
+<<<<<<< HEAD
                                 <td>
                                     <span class="order-status <?php echo $status_class; ?>">
                                         <?php echo htmlspecialchars($display_status); ?>
@@ -93,6 +138,12 @@ $result = mysqli_query($conn, $query);
                                 </td>
                                 <td>
                                     <a href="order_details.php?order_id=<?php echo $order['order_id']; ?>" class="view-order">View</a>
+=======
+                                <td><span
+                                        class="order-status <?php echo $status_class; ?>"><?php echo htmlspecialchars($order['status']); ?></span>
+                                </td>
+                                <td> <a href="order_details.php?order_id=<?php echo $order['order_id']; ?>" class="view-order">View</a>
+>>>>>>> e01683e1057fcc8626370d197f8ab0b125c61cec
                                 </td>
                             </tr>
                         <?php endwhile; ?>
