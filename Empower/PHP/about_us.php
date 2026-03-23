@@ -5,21 +5,21 @@ $pageTitle = 'About Us';
 
 require_once 'header.php';
 ?>
-
 <style>
 body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
 .hero-about {
-    width: 85%;              
-    margin: 40px auto;     
-    padding: 70px 30px;     
+    width: 85%;
+    max-width: 1100px;
+    padding: 70px 30px;
     background: linear-gradient(to right, #ffe100, #ffef7a);
     text-align: center;
     color: #000;
     font-weight: bold;
-    border-radius: 20px;    
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .hero-about h1 {
@@ -95,11 +95,15 @@ body {
 </style>
 
 <main>
-    <div class="hero-about">
-        <h1>About Empowr</h1>
-        <p>Innovating assistive technology to empower lives, enhance independence, and create equality through design.
-        </p>
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <div class="hero-about">
+            <h1>About Empowr</h1>
+            <p>Innovating assistive technology to empower lives, enhance independence, and create equality through
+                design.
+            </p>
+        </div>
     </div>
+
 
     <div class="about-container">
 
