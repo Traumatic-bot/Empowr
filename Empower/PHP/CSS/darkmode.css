@@ -1,88 +1,100 @@
+/* dark mode*/
+
 body.dark-mode {
-    background-color: #121212 !important;
+    background: #121212 !important;
     color: #e0e0e0 !important;
+    color-scheme: dark;
 }
 
-/* Header and Navigation */
-body.dark-mode header {
-    background-color: #1e1e1e !important;
-    color: #e0e0e0 !important;
+body.dark-mode a {
+    color: #c0c0c0 !important;
 }
 
+body.dark-mode a:hover {
+    color: #fff !important;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: #2a2a2a !important;
+    color: #e0e0e0 !important;
+    border-color: #555 !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #888 !important;
+}
+
+body.dark-mode button,
+body.dark-mode input[type="submit"] {
+    background: #333 !important;
+    color: #e0e0e0 !important;
+    border-color: #555 !important;
+}
+
+/* Header nav bar */
+body.dark-mode header,
 body.dark-mode .header {
-    background-color: #1e1e1e !important;
+    background: #1a1a1a !important;
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .header a {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .header-links a {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .header-links span {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .account-links a {
-    color: #e0e0e0 !important;
-}
-
+body.dark-mode .header a,
+body.dark-mode .header-links a,
+body.dark-mode .header-links span,
+body.dark-mode .account-links a,
 body.dark-mode .account-links span {
     color: #e0e0e0 !important;
 }
 
 body.dark-mode ul.topnav {
-    background-color: #2d2d2d !important;
+    background: #2d2d2d !important;
 }
 
 body.dark-mode ul.topnav li a {
-    background-color: #2d2d2d !important;
+    background: #2d2d2d !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode ul.topnav li a:hover {
-    background-color: #3d3d3d !important;
-    color: #ffffff !important;
+    background: #3d3d3d !important;
+    color: #fff !important;
 }
 
-/* Search Bar */
+/* Search bar */
 body.dark-mode .search input[type="text"] {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
     color: #e0e0e0 !important;
-    border-color: #444 !important;
+    border-color: #555 !important;
 }
 
 body.dark-mode .search input[type="text"]::placeholder {
-    color: #aaa !important;
+    color: #999 !important;
 }
 
 body.dark-mode .search button[type="submit"] {
-    background-color: #333 !important;
+    background: #444 !important;
     color: #e0e0e0 !important;
 }
 
 /* Footer */
 body.dark-mode footer {
-    background-color: #ffee32 !important;
-    color: black !important;
-}
-
-body.dark-mode footer a {
-    color: black !important;
-}
-
-body.dark-mode .footer-links {
-    color: black !important;
-}
-
-/* Login/Registration Forms */
-body.dark-mode .form {
-    background-color: #1e1e1e !important;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+    background: #1a1a1a !important;
     color: #e0e0e0 !important;
+}
+
+body.dark-mode footer a,
+body.dark-mode .footer-links {
+    color: #e0e0e0 !important;
+}
+
+/* Login  signup dark mode page */
+body.dark-mode .form {
+    background: #1e1e1e !important;
+    color: #e0e0e0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
 }
 
 body.dark-mode .form h1 {
@@ -90,155 +102,135 @@ body.dark-mode .form h1 {
 }
 
 body.dark-mode .form p {
-    color: #e0e0e0 !important;
+    color: #b0b0b0 !important;
 }
 
-body.dark-mode .form a {
-    color: #8ab4f8 !important;
+body.dark-mode .form a,
+body.dark-mode .forgot-password {
+    color: #c0c0c0 !important;
 }
 
 body.dark-mode .input-field {
     color: #e0e0e0 !important;
-    border-bottom-color: #555 !important;
+    border-bottom-color: #666 !important;
 }
 
 body.dark-mode .input-field::placeholder {
     color: #888 !important;
 }
 
-body.dark-mode .input-field:focus {
-    color: #ffee32 !important;
-}
-
 body.dark-mode .input-label {
     color: #aaa !important;
 }
 
-body.dark-mode .input-field:focus + .input-label {
-    color: #ffee32 !important;
-}
-
 body.dark-mode .submit {
-    background-color: #333 !important;
+    background: #333 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .submit:hover {
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
-body.dark-mode .forgot-password {
-    color: #8ab4f8 !important;
-}
-
-/* Product Pages */
+/* Products page */
 body.dark-mode .page-banner h1 {
     color: #e0e0e0 !important;
 }
+
 
 body.dark-mode .page-banner p {
     color: #aaa !important;
 }
 
-body.dark-mode .page-banner a {
-    color: #8ab4f8 !important;
+
+
+body.dark-mode .page-banner a,
+body.dark-mode .result-meta a,
+body.dark-mode .view-order,
+body.dark-mode .address-actions a,
+body.dark-mode .empty-basket a,
+body.dark-mode .contact-details-list li a {
+    color: #c0c0c0 !important;
 }
 
-body.dark-mode .filters-row label {
+body.dark-mode .filters-row label,
+body.dark-mode .filter-panel,
+body.dark-mode .filter-panel h3,
+body.dark-mode .filter-panel label,
+body.dark-mode .filter-panel label span,
+body.dark-mode .filter-panel div[style*="font-size"] {
     color: #e0e0e0 !important;
+}
+
+body.dark-mode .filter-panel {
+    background: #1e1e1e !important;
+    border-color: #444 !important;
 }
 
 body.dark-mode .product-card {
-    background-color: #1e1e1e !important;
-    border-color: #333 !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+    background: #1e1e1e !important;
+    border-color: #444 !important;
     color: #e0e0e0 !important;
+    box-shadow: none !important;
 }
 
 body.dark-mode .product-card h3 {
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .product-card p {
-    color: #aaa !important;
-}
-
-body.dark-mode .filter-panel {
-    background-color: #1e1e1e !important;
-    border-color: #333 !important;
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .filter-panel h3 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .filter-panel div[style*="font-size"] {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .filter-panel label {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .filter-panel label span {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .product-image {
-    background-color: #2d2d2d !important;
-}
-
-body.dark-mode .rating-line {
-    color: #aaa !important;
-}
-
-body.dark-mode .rating-line strong {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .price-line {
-    color: #e0e0e0 !important;
-}
-
+body.dark-mode .product-card p,
+body.dark-mode .rating-line,
 body.dark-mode .result-meta {
     color: #aaa !important;
 }
 
+body.dark-mode .rating-line strong,
+body.dark-mode .price-line,
 body.dark-mode .result-meta span {
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .result-meta a {
-    color: #8ab4f8 !important;
+
+
+body.dark-mode .product-image {
+    background: #2a2a2a !important;
 }
 
+
+
+
+
+
 body.dark-mode .btn-outline {
-    border-color: #e0e0e0 !important;
+    border-color: #888 !important;
     color: #e0e0e0 !important;
 }
 
+
+
+
 body.dark-mode .btn-primary {
-    background-color: #333 !important;
+    background: #333 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .btn-primary:hover {
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
-/* Account Pages */
+/* Account page */
 body.dark-mode .account-main-content {
-    background-color: #121212 !important;
+    background: #121212 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .account-sidebar {
-    background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .account-user-name {
+body.dark-mode .account-user-name,
+body.dark-mode .account-nav-item {
     color: #e0e0e0 !important;
 }
 
@@ -246,33 +238,24 @@ body.dark-mode .account-user-email {
     color: #aaa !important;
 }
 
-body.dark-mode .account-nav-item {
-    color: #e0e0e0 !important;
-}
-
 body.dark-mode .account-nav-item:hover {
-    background-color: #2d2d2d !important;
+    background: #2d2d2d !important;
 }
 
 body.dark-mode .account-nav-item.logout {
-    color: #ff6b6b !important;
+    color: #e57373 !important;
 }
 
 body.dark-mode .account-main {
-    background-color: #1e1e1e !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+    background: #1e1e1e !important;
     color: #e0e0e0 !important;
+    box-shadow: none !important;
 }
 
-body.dark-mode .account-main h1 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .account-main h2 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .dashboard-welcome h1 {
+body.dark-mode .account-main h1,
+body.dark-mode .account-main h2,
+body.dark-mode .dashboard-welcome h1,
+body.dark-mode .quick-actions h2 {
     color: #e0e0e0 !important;
 }
 
@@ -281,8 +264,8 @@ body.dark-mode .dashboard-welcome p {
 }
 
 body.dark-mode .stat-card {
-    background-color: #2d2d2d !important;
-    border-color: #333 !important;
+    background: #2a2a2a !important;
+    border-color: #444 !important;
     color: #e0e0e0 !important;
 }
 
@@ -294,73 +277,67 @@ body.dark-mode .stat-label {
     color: #aaa !important;
 }
 
-body.dark-mode .quick-actions h2 {
-    color: #e0e0e0 !important;
-}
-
 body.dark-mode .action-button {
-    background-color: #333 !important;
+    background: #333 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .action-button:hover {
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
-/* Order History */
+/* Orders */
 body.dark-mode .orders-table {
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .orders-table th {
-    background-color: #2d2d2d !important;
-    border-bottom-color: #444 !important;
+    background: #2a2a2a !important;
+    border-bottom-color: #555 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .orders-table td {
-    border-bottom-color: #333 !important;
+    border-bottom-color: #444 !important;
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .view-order {
-    color: #8ab4f8 !important;
-}
+
 
 body.dark-mode .empty-box {
-    background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
     color: #aaa !important;
 }
 
-/* Personal Details Form */
+
+
+
+
+/* Personal details page */
 body.dark-mode .details-form label {
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .details-form input,
 body.dark-mode .details-form select {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
     color: #e0e0e0 !important;
-    border-color: #444 !important;
-}
-
-body.dark-mode .details-form input::placeholder {
-    color: #888 !important;
+    border-color: #555 !important;
 }
 
 body.dark-mode .save-btn {
-    background-color: #333 !important;
+    background: #333 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .save-btn:hover {
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
-/* Address Book */
+/* Addresses */
 body.dark-mode .address-card {
-    background-color: #2d2d2d !important;
-    border-color: #333 !important;
+    background: #2a2a2a !important;
+    border-color: #444 !important;
     color: #e0e0e0 !important;
 }
 
@@ -372,70 +349,58 @@ body.dark-mode .address-card p {
     color: #aaa !important;
 }
 
-body.dark-mode .address-actions a {
-    color: #8ab4f8 !important;
-}
-
 body.dark-mode .add-address-btn {
-    background-color: #333 !important;
+    background: #333 !important;
+
     color: #e0e0e0 !important;
 }
 
-/* Checkout Pages */
-body.dark-mode .checkout-page {
+
+
+
+
+/* Checkout page  */
+body.dark-mode .checkout-page,
+body.dark-mode .checkout-items,
+body.dark-mode .checkout-items h1,
+body.dark-mode .checkout-item h2,
+body.dark-mode .checkout-summary,
+body.dark-mode .checkout-summary h2,
+body.dark-mode .summary-row {
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .checkout-items {
-    background-color: #1e1e1e !important;
-    color: #e0e0e0 !important;
+    background: #1e1e1e !important;
 }
 
-body.dark-mode .checkout-items h1 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .checkout-item h2 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .checkout-item p {
-    color: #aaa !important;
-}
-
-body.dark-mode .checkout-summary {
-    background-color: #2d2d2d !important;
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .checkout-summary h2 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .summary-row {
-    border-bottom-color: #444 !important;
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .summary-total {
-    border-top-color: #555 !important;
-}
-
+body.dark-mode .checkout-item p,
 body.dark-mode .empty-basket {
     color: #aaa !important;
 }
 
-body.dark-mode .empty-basket a {
-    color: #8ab4f8 !important;
+body.dark-mode .checkout-summary {
+    background: #2a2a2a !important;
 }
 
-/* Contact Page */
+body.dark-mode .summary-row {
+    border-bottom-color: #555 !important;
+}
+
+body.dark-mode .summary-total {
+    border-top-color: #666 !important;
+}
+
+
+/* Contact  page*/
 body.dark-mode .contact-section {
-    background-color: #121212 !important;
+    background: #121212 !important;
     color: #e0e0e0 !important;
 }
 
-body.dark-mode .contact-info-container h2 {
+body.dark-mode .contact-info-container h2,
+body.dark-mode .contact-form-container h2,
+body.dark-mode .contact-form label {
     color: #e0e0e0 !important;
 }
 
@@ -443,40 +408,25 @@ body.dark-mode .contact-details-list li {
     color: #aaa !important;
 }
 
-body.dark-mode .contact-details-list li a {
-    color: #8ab4f8 !important;
-}
 
-body.dark-mode .contact-form-container h2 {
-    color: #e0e0e0 !important;
-}
-
-body.dark-mode .contact-form label {
-    color: #e0e0e0 !important;
-}
 
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
     color: #e0e0e0 !important;
-    border-color: #444 !important;
+    border-color: #555 !important;
 }
 
-body.dark-mode .contact-form input::placeholder,
-body.dark-mode .contact-form textarea::placeholder {
-    color: #888 !important;
-}
-
-/* About/Privacy Pages */
+/* Home and about page*/
 body.dark-mode .hero-about {
-    background: linear-gradient(to right, #333, #444) !important;
+    background: #252525 !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .section-modern {
-    background-color: #1e1e1e !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    background: #1e1e1e !important;
     color: #e0e0e0 !important;
+    box-shadow: none !important;
 }
 
 body.dark-mode .section-modern h2 {
@@ -484,11 +434,11 @@ body.dark-mode .section-modern h2 {
 }
 
 body.dark-mode .section-modern p {
-    color: #aaa !important;
+    color: #b0b0b0 !important;
 }
 
 body.dark-mode .value-card {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
     color: #e0e0e0 !important;
 }
 
@@ -496,23 +446,41 @@ body.dark-mode .value-card h3 {
     color: #e0e0e0 !important;
 }
 
+
 body.dark-mode .value-card p {
     color: #aaa !important;
 }
 
-/* Popup Basket */
+/* Basket page for the pop up */
 body.dark-mode #popup {
-    background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
     color: #e0e0e0 !important;
 }
+
 
 body.dark-mode #popup .header {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
+
     color: #e0e0e0 !important;
 }
 
+body.dark-mode #popup .header .btn i {
+    border-left-color: #e0e0e0 !important;
+    border-top-color: #e0e0e0 !important;
+    background: #2a2a2a !important;
+}
+
+
+
+body.dark-mode #popupBackground {
+    background: #000 !important;
+    opacity: 0.65 !important;
+}
+
+
+
 body.dark-mode .productList {
-    background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
     color: #aaa !important;
 }
 
@@ -520,56 +488,35 @@ body.dark-mode .productList strong {
     color: #e0e0e0 !important;
 }
 
+
+
 body.dark-mode .subTotal,
 body.dark-mode .Total {
-    background-color: #1e1e1e !important;
+    background: #1e1e1e !important;
+
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .subTotal ul li {
-    border-bottom-color: #444 !important;
+    border-bottom-color: #555 !important;
 }
 
 body.dark-mode .subTotal .title {
     color: #aaa !important;
 }
 
-body.dark-mode .subTotal .title strong {
-    color: #e0e0e0 !important;
-}
-
+body.dark-mode .subTotal .title strong,
 body.dark-mode .subTotal .price {
     color: #e0e0e0 !important;
 }
 
-/* Dropdowns and Selects */
-body.dark-mode select {
-    background-color: #2d2d2d !important;
-    color: #e0e0e0 !important;
-    border-color: #444 !important;
-}
-
 body.dark-mode select option {
-    background-color: #2d2d2d !important;
+    background: #2a2a2a !important;
     color: #e0e0e0 !important;
 }
 
-/* Checkboxes and Radio buttons */
-body.dark-mode input[type="checkbox"],
-body.dark-mode input[type="radio"] {
-    accent-color: #ffee32 !important;
-}
 
-/* Links in dark mode */
-body.dark-mode a {
-    color: #8ab4f8 !important;
-}
-
-body.dark-mode a:hover {
-    color: #a8c7fa !important;
-}
-
-/* Text colors for specific elements */
+/*  text */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
@@ -580,7 +527,7 @@ body.dark-mode h6 {
 }
 
 body.dark-mode p {
-    color: #aaa !important;
+    color: #b0b0b0 !important;
 }
 
 body.dark-mode strong {
@@ -588,51 +535,49 @@ body.dark-mode strong {
 }
 
 body.dark-mode small {
-    color: #888 !important;
+    color: #999 !important;
 }
 
-body.dark-mode span {
-    color: #e0e0e0 !important;
-}
-
-/* Dark mode toggle button */
+/* Theme toggle   */
 body.dark-mode .darkmode-toggle a {
-    background-color: #333 !important;
+    background: #333 !important;
+
     color: #e0e0e0 !important;
 }
+
+
 
 body.dark-mode .darkmode-toggle a:hover {
-    background-color: #444 !important;
+    background: #444 !important;
 }
 
-/* Message boxes */
-body.dark-mode .message.success {
-    background-color: #1e4620 !important;
-    color: #a5d6a7 !important;
-    border-color: #2e7d32 !important;
-}
 
-body.dark-mode .message.error {
-    background-color: #4a1c1c !important;
-    color: #ef9a9a !important;
-    border-color: #c62828 !important;
-}
-
-/* Alert boxes */
+/* Messages dark/light*/
+body.dark-mode .message.success,
 body.dark-mode .alert-success {
-    background-color: #1e4620 !important;
-    color: #a5d6a7 !important;
+    background: #1b3d1f !important;
+
+    color: #c8e6c9 !important;
+
     border-color: #2e7d32 !important;
 }
+
+body.dark-mode .message.error,
 
 body.dark-mode .alert-danger {
-    background-color: #4a1c1c !important;
-    color: #ef9a9a !important;
+    background: #3d1a1a !important;
+
+    color: #ffcdd2 !important;
+
     border-color: #c62828 !important;
 }
 
+
+
 body.dark-mode .alert-warning {
-    background-color: #4a3800 !important;
+    background: #3d3310 !important;
+
     color: #ffe082 !important;
-    border-color: #ff8f00 !important;
+
+    border-color: #f9a825 !important;
 }
