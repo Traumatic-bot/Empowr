@@ -2400,3 +2400,35 @@ ul.topnav li a:hover {
 
 .form-inline { display: inline; }
 .ar-empty { padding: 40px 0; text-align: center; color: #888; }
+
+@media (max-width: 768px) {
+    #popup {
+        width: calc(100% - 30px) !important;
+        right: 15px !important;
+        left: 15px !important;
+        top: 70px !important;
+        max-width: none;
+        padding: 15px !important;
+    }
+
+    .basket-links a {
+        padding: 5px !important;
+        font-size: 12px !important;
+    }
+
+    .items {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 12px !important;
+    }
+
+    .productList {
+        max-height: 250px !important;
+    }
+
+    #popup .subTotal .title,
+    #popup .subTotal .price,
+    #popup .Total a {
+        font-size: 14px !important;
+    }
+}
