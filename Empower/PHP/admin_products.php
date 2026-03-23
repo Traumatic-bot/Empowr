@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (mysqli_query($conn, $updateQuery)) {
                 $message = "Product updated successfully.";
                 $messageType = 'success';
+                resetStockAlertFlags($product_id, $stock_quantity);
             } else {
                 $message = "Error updating product: " . mysqli_error($conn);
                 $messageType = 'error';
@@ -105,29 +106,14 @@ $productsResult = mysqli_query($conn, $productsQuery);
                     <span class="icon"></span>
                     <span>Manage Orders</span>
                 </a>
-                <a href="admin_returns.php" class="account-nav-item">
-                    <span class="icon"></span>
-                    <span>Manage Returns</span>
-                </a>
                 <a href="admin_users.php" class="account-nav-item">
                     <span class="icon"></span>
                     <span>Manage Users</span>
                 </a>
-
-                <p class="account-nav-section-label">------ Customer Dashboard ------</p>
-                <a href="order_history.php" class="account-nav-item">
+                <a href="dashboard.php" class="account-nav-item">
                     <span class="icon"></span>
-                    <span>Order History</span>
+                    <span>Back to My Account</span>
                 </a>
-                <a href="personal_details.php" class="account-nav-item">
-                    <span class="icon"></span>
-                    <span>Personal Details</span>
-                </a>
-                <a href="address_book.php" class="account-nav-item">
-                    <span class="icon"></span>
-                    <span>Addresses</span>
-                </a>
-
                 <a href="logout.php" class="account-nav-item logout">
                     <span class="icon"></span>
                     <span>Sign Out</span>
