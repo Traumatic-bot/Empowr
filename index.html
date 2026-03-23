@@ -321,5 +321,73 @@
   </footer>
 
   <script src="script.js"></script>
+<button id="accessibility-trigger" aria-label="Open accessibility settings">Access</button>
+
+<div id="accessibility-overlay"></div>
+
+<div id="accessibility-panel">
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <h2>Accessibility Settings</h2>
+    <button id="accessibility-close" style="background:none;border:none;cursor:pointer;font-size:1.2rem;">Close</button>
+  </div>
+
+  <div class="accessibility-section-label">Vision</div>
+
+  <div class="accessibility-row">
+    Dark mode
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-dark">
+      <span class="toggle-track"></span>
+    </label>
+  </div>
+
+  <div class="accessibility-row">
+    High contrast
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-contrast">
+      <span class="toggle-track"></span>
+    </label>
+  </div>
+
+  <div class="accessibility-section-label">Text</div>
+
+  <div class="accessibility-row" style="flex-direction:column;align-items:flex-start;gap:8px;">
+    Text size
+    <div class="font-btns">
+      <button class="font-btn" data-size="0.85">Small</button>
+      <button class="font-btn active" data-size="1">Default</button>
+      <button class="font-btn" data-size="1.15">Large</button>
+      <button class="font-btn" data-size="1.3">XL</button>
+    </div>
+  </div>
+
+  <div class="accessibility-row">
+    Dyslexia-friendly font
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-dyslexia">
+      <span class="toggle-track"></span>
+    </label>
+  </div>
+
+  <div class="accessibility-section-label">Motion and Focus</div>
+
+  <div class="accessibility-row">
+    Reduce motion
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-motion">
+      <span class="toggle-track"></span>
+    </label>
+  </div>
+
+  <div class="accessibility-row">
+    Enhanced focus
+    <label class="toggle-switch">
+      <input type="checkbox" id="toggle-focus">
+      <span class="toggle-track"></span>
+    </label>
+  </div>
+
+  <button id="accessibility-reset">Reset to defaults</button>
+</div>
 </body>
 </html>
